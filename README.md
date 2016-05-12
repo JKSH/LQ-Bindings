@@ -84,7 +84,7 @@ not optimized, and (iv) you might experience crashes. Other issues include:
 
 Copyright and Licensing
 -----------------------
-Copyright (c) 2016 Sze Howe Koh <szehowe.koh@gmail.com>
+Copyright (c) 2016 Sze Howe Koh <<szehowe.koh@gmail.com>>
 
 Please see [LICENSE.MPLv2](LICENSE.MPLv2) for licensing details.
 
