@@ -1,0 +1,111 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<Project Type="Project" LVVersion="14008000">
+	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
+	<Item Name="My Computer" Type="My Computer">
+		<Property Name="server.app.propertiesEnabled" Type="Bool">true</Property>
+		<Property Name="server.control.propertiesEnabled" Type="Bool">true</Property>
+		<Property Name="server.tcp.enabled" Type="Bool">false</Property>
+		<Property Name="server.tcp.port" Type="Int">0</Property>
+		<Property Name="server.tcp.serviceName" Type="Str">My Computer/VI Server</Property>
+		<Property Name="server.tcp.serviceName.default" Type="Str">My Computer/VI Server</Property>
+		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
+		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
+		<Property Name="specify.custom.address" Type="Bool">false</Property>
+		<Item Name="Source" Type="Folder">
+			<Item Name="Widget Builders" Type="Folder">
+				<Item Name="Abstract Widget Builder.lvclass" Type="LVClass" URL="../Source/Widget Builders/Abstract Widget Builder/Abstract Widget Builder.lvclass"/>
+				<Item Name="MDI Area Builder.lvclass" Type="LVClass" URL="../Source/Widget Builders/MDI Area Builder/MDI Area Builder.lvclass"/>
+				<Item Name="Splitter Builder.lvclass" Type="LVClass" URL="../Source/Widget Builders/Splitter Builder/Splitter Builder.lvclass"/>
+				<Item Name="Tab Widget Builder.lvclass" Type="LVClass" URL="../Source/Widget Builders/Tab Widget Builder/Tab Widget Builder.lvclass"/>
+				<Item Name="Tool Box Builder.lvclass" Type="LVClass" URL="../Source/Widget Builders/Tool Box Builder/Tool Box Builder.lvclass"/>
+			</Item>
+			<Item Name="Widgets" Type="Folder">
+				<Item Name="Growable Widget.lvclass" Type="LVClass" URL="../Source/Widgets/Growable Widget/Growable Widget.lvclass"/>
+				<Item Name="New Button Gallery.vi" Type="VI" URL="../Source/Widgets/New Button Gallery.vi"/>
+				<Item Name="New Chart.vi" Type="VI" URL="../Source/Widgets/New Chart.vi"/>
+				<Item Name="New Input Gallery.vi" Type="VI" URL="../Source/Widgets/New Input Gallery.vi"/>
+			</Item>
+			<Item Name="Global Chart List Action.ctl" Type="VI" URL="../Source/Global Chart List Action.ctl"/>
+			<Item Name="Global Chart List.vi" Type="VI" URL="../Source/Global Chart List.vi"/>
+			<Item Name="Main.vi" Type="VI" URL="../Source/Main.vi"/>
+		</Item>
+		<Item Name="Dependencies" Type="Dependencies">
+			<Item Name="vi.lib" Type="Folder">
+				<Item Name="BuildHelpPath.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/BuildHelpPath.vi"/>
+				<Item Name="Check Special Tags.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Check Special Tags.vi"/>
+				<Item Name="Clear Errors.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Clear Errors.vi"/>
+				<Item Name="Convert property node font to graphics font.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Convert property node font to graphics font.vi"/>
+				<Item Name="Details Display Dialog.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Details Display Dialog.vi"/>
+				<Item Name="DialogType.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/DialogType.ctl"/>
+				<Item Name="DialogTypeEnum.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/DialogTypeEnum.ctl"/>
+				<Item Name="Error Cluster From Error Code.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Error Cluster From Error Code.vi"/>
+				<Item Name="Error Code Database.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Error Code Database.vi"/>
+				<Item Name="ErrWarn.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/ErrWarn.ctl"/>
+				<Item Name="eventsource.ctl" Type="VI" URL="/&lt;vilib&gt;/event_ctls.llb/eventsource.ctl"/>
+				<Item Name="eventvkey.ctl" Type="VI" URL="/&lt;vilib&gt;/event_ctls.llb/eventvkey.ctl"/>
+				<Item Name="Find Tag.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Find Tag.vi"/>
+				<Item Name="Format Message String.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Format Message String.vi"/>
+				<Item Name="General Error Handler CORE.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/General Error Handler CORE.vi"/>
+				<Item Name="General Error Handler.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/General Error Handler.vi"/>
+				<Item Name="Get LV Class Name.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/LVClass/Get LV Class Name.vi"/>
+				<Item Name="Get String Text Bounds.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Get String Text Bounds.vi"/>
+				<Item Name="Get Text Rect.vi" Type="VI" URL="/&lt;vilib&gt;/picture/picture.llb/Get Text Rect.vi"/>
+				<Item Name="GetHelpDir.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/GetHelpDir.vi"/>
+				<Item Name="GetRTHostConnectedProp.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/GetRTHostConnectedProp.vi"/>
+				<Item Name="Longest Line Length in Pixels.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Longest Line Length in Pixels.vi"/>
+				<Item Name="LVBoundsTypeDef.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVBoundsTypeDef.ctl"/>
+				<Item Name="LVNumericRepresentation.ctl" Type="VI" URL="/&lt;vilib&gt;/numeric/LVNumericRepresentation.ctl"/>
+				<Item Name="Not Found Dialog.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Not Found Dialog.vi"/>
+				<Item Name="Search and Replace Pattern.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Search and Replace Pattern.vi"/>
+				<Item Name="Set Bold Text.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Set Bold Text.vi"/>
+				<Item Name="Set String Value.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Set String Value.vi"/>
+				<Item Name="Simple Error Handler.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Simple Error Handler.vi"/>
+				<Item Name="TagReturnType.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/TagReturnType.ctl"/>
+				<Item Name="Three Button Dialog CORE.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Three Button Dialog CORE.vi"/>
+				<Item Name="Three Button Dialog.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Three Button Dialog.vi"/>
+				<Item Name="Trim Whitespace.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Trim Whitespace.vi"/>
+				<Item Name="VariantType.lvlib" Type="Library" URL="/&lt;vilib&gt;/Utility/VariantDataType/VariantType.lvlib"/>
+				<Item Name="whitespace.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/whitespace.ctl"/>
+			</Item>
+			<Item Name="LQ Core.lvlib" Type="Library" URL="../../../src/LabVIEW/LQ Core/LQ Core.lvlib"/>
+			<Item Name="LQChart.lvclass" Type="LVClass" URL="../../../src/LabVIEW/LQ Extras/LQChart/LQChart.lvclass"/>
+			<Item Name="QAbstractButton.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QAbstractButton/QAbstractButton.lvclass"/>
+			<Item Name="QAbstractScrollArea.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QAbstractScrollArea/QAbstractScrollArea.lvclass"/>
+			<Item Name="QAbstractSpinBox.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QAbstractSpinBox/QAbstractSpinBox.lvclass"/>
+			<Item Name="QAction.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QAction/QAction.lvclass"/>
+			<Item Name="QBoxLayout.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QBoxLayout/QBoxLayout.lvclass"/>
+			<Item Name="QBrush.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt GUI/QBrush/QBrush.lvclass"/>
+			<Item Name="QCheckBox.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QCheckBox/QCheckBox.lvclass"/>
+			<Item Name="QColor.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt GUI/QColor/QColor.lvclass"/>
+			<Item Name="QComboBox.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QComboBox/QComboBox.lvclass"/>
+			<Item Name="QDoubleSpinBox.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QDoubleSpinBox/QDoubleSpinBox.lvclass"/>
+			<Item Name="QFont.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt GUI/QFont/QFont.lvclass"/>
+			<Item Name="QFontComboBox.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QFontComboBox/QFontComboBox.lvclass"/>
+			<Item Name="QFrame.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QFrame/QFrame.lvclass"/>
+			<Item Name="QGroupBox.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QGroupBox/QGroupBox.lvclass"/>
+			<Item Name="QIcon.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt GUI/QIcon/QIcon.lvclass"/>
+			<Item Name="QLayout.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QLayout/QLayout.lvclass"/>
+			<Item Name="QLineEdit.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QLineEdit/QLineEdit.lvclass"/>
+			<Item Name="QMargins.ctl" Type="VI" URL="../../../src/LabVIEW/LQ Core/QMargins.ctl"/>
+			<Item Name="QMdiArea.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QMdiArea/QMdiArea.lvclass"/>
+			<Item Name="QMdiSubWindow.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QMdiSubWindow/QMdiSubWindow.lvclass"/>
+			<Item Name="QPixmap.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt GUI/QPixmap/QPixmap.lvclass"/>
+			<Item Name="QPoint.ctl" Type="VI" URL="../../../src/LabVIEW/LQ Core/QPoint.ctl"/>
+			<Item Name="QPushButton.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QPushButton/QPushButton.lvclass"/>
+			<Item Name="QRadioButton.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QRadioButton/QRadioButton.lvclass"/>
+			<Item Name="QRect.ctl" Type="VI" URL="../../../src/LabVIEW/LQ Core/QRect.ctl"/>
+			<Item Name="QScreen.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt GUI/QScreen/QScreen.lvclass"/>
+			<Item Name="QSize.ctl" Type="VI" URL="../../../src/LabVIEW/LQ Core/QSize.ctl"/>
+			<Item Name="QSpinBox.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QSpinBox/QSpinBox.lvclass"/>
+			<Item Name="QSplitter.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QSplitter/QSplitter.lvclass"/>
+			<Item Name="Qt.lvlib" Type="Library" URL="../../../src/LabVIEW/LQ Core/Qt/Qt.lvlib"/>
+			<Item Name="QTabWidget.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QTabWidget/QTabWidget.lvclass"/>
+			<Item Name="QTextEdit.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QTextEdit/QTextEdit.lvclass"/>
+			<Item Name="QToolBox.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QToolBox/QToolBox.lvclass"/>
+			<Item Name="QWidget.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt Widgets/QWidget/QWidget.lvclass"/>
+			<Item Name="QWindow.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qt GUI/QWindow/QWindow.lvclass"/>
+			<Item Name="QwtPlot.lvclass" Type="LVClass" URL="../../../src/LabVIEW/Qwt/QwtPlot/QwtPlot.lvclass"/>
+		</Item>
+		<Item Name="Build Specifications" Type="Build"/>
+	</Item>
+</Project>
