@@ -85,13 +85,9 @@ Copyright and Licensing
 -----------------------
 Copyright (c) 2016 Sze Howe Koh <<szehowe.koh@gmail.com>>
 
-Please see [LICENSE.MPLv2](LICENSE.MPLv2) for licensing details.
+The LQ Widgets library is published under the Mozilla Public License v2.0 (see
+[LICENSE.MPLv2](LICENSE.MPLv2)), while examples are published under the MIT
+License (see [examples/LICENSE.MIT](examples/LICENSE.MIT)).
 
-
-Acknowledgements
-----------------
-This project uses the following software:
-* [Qt](http://code.qt.io/cgit), licensed under the GNU Lesser General Public
-  License v3.0.
-* [Qwt](http://qwt.sf.net) - Qt Widgets for Technical Applications, licensed
-  under the Qwt license v1.0.
+LQ Widgets also uses third party software that are licensed under different
+terms. Please see the [3rdparty](3rdparty) folder for details.
