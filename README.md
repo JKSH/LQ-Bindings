@@ -55,7 +55,10 @@ NOTE 2: The LabVIEW code in the Git repo has "Separate compiled code from source
 Examples
 --------
 Please see the [examples](examples) folder. Here is a video compilation of some
-of these examples: https://www.youtube.com/watch?v=YChRI1cMfiI
+of these examples:
+
+[![Video thumbnail](doc/demo_vid_0.1.0_thumb.png)]
+(https://www.youtube.com/watch?v=YChRI1cMfiI)
 
 
 Known Issues
