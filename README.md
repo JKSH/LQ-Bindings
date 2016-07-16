@@ -54,12 +54,8 @@ NOTE 2: The LabVIEW code in the Git repo has "Separate compiled code from source
 
 Examples
 --------
-Please see the [examples](examples) folder. "Hello World - Introduction to
-Widgets" is the recommended starting point; it consists of 6 small tutorials
-where each tutorial builds upon the previous.
-
-Here is a video compilation of some of these examples:
-https://www.youtube.com/watch?v=YChRI1cMfiI
+Please see the [examples](examples) folder. Here is a video compilation of some
+of these examples: https://www.youtube.com/watch?v=YChRI1cMfiI
 
 
 Known Issues
