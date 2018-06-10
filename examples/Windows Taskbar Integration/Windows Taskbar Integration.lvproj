@@ -19,11 +19,7 @@
 			<Item Name="refresh.png" Type="Document" URL="../Resources/refresh.png"/>
 			<Item Name="stop.png" Type="Document" URL="../Resources/stop.png"/>
 		</Item>
-		<Item Name="Source" Type="Folder">
-			<Item Name="Command.ctl" Type="VI" URL="../Source/Command.ctl"/>
-			<Item Name="Main.vi" Type="VI" URL="../Source/Main.vi"/>
-			<Item Name="State.ctl" Type="VI" URL="../Source/State.ctl"/>
-		</Item>
+		<Item Name="Windows Taskbar Integration.lvlib" Type="Library" URL="../Source/Windows Taskbar Integration.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="Application Directory.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Application Directory.vi"/>

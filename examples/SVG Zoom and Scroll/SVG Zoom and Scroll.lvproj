@@ -15,9 +15,7 @@
 			<Item Name="README.txt" Type="Document" URL="../Resources/README.txt"/>
 			<Item Name="SVG_logo.svg" Type="Document" URL="../Resources/SVG_logo.svg"/>
 		</Item>
-		<Item Name="Source" Type="Folder">
-			<Item Name="Main.vi" Type="VI" URL="../Source/Main.vi"/>
-		</Item>
+		<Item Name="SVG Zoom and Scroll.lvlib" Type="Library" URL="../Source/SVG Zoom and Scroll.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="Application Directory.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Application Directory.vi"/>

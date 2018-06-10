@@ -11,11 +11,7 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
-		<Item Name="Source" Type="Folder">
-			<Item Name="Dual Mode Thermometer.lvclass" Type="LVClass" URL="../Source/Dual Mode Thermometer/Dual Mode Thermometer.lvclass"/>
-			<Item Name="Main.vi" Type="VI" URL="../Source/Main.vi"/>
-			<Item Name="Set Up Front Panel.vi" Type="VI" URL="../Source/Set Up Front Panel.vi"/>
-		</Item>
+		<Item Name="Porting from XControls - Dual Mode Thermometer.lvlib" Type="Library" URL="../Source/Porting from XControls - Dual Mode Thermometer.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="BuildHelpPath.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/BuildHelpPath.vi"/>

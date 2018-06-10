@@ -15,10 +15,7 @@
 			<Item Name="greetings.ini" Type="Document" URL="../Resources/greetings.ini"/>
 			<Item Name="README.txt" Type="Document" URL="../Resources/README.txt"/>
 		</Item>
-		<Item Name="Source" Type="Folder">
-			<Item Name="Fetch Messages.vi" Type="VI" URL="../Source/Fetch Messages.vi"/>
-			<Item Name="Main.vi" Type="VI" URL="../Source/Main.vi"/>
-		</Item>
+		<Item Name="Hello World - Multilingual Greetings (UTF-8).lvlib" Type="Library" URL="../Source/Hello World - Multilingual Greetings (UTF-8).lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="8.6CompatibleGlobalVar.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/config.llb/8.6CompatibleGlobalVar.vi"/>

@@ -11,24 +11,7 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
-		<Item Name="Source" Type="Folder">
-			<Item Name="Widget Builders" Type="Folder">
-				<Item Name="Abstract Widget Builder.lvclass" Type="LVClass" URL="../Source/Widget Builders/Abstract Widget Builder/Abstract Widget Builder.lvclass"/>
-				<Item Name="MDI Area Builder.lvclass" Type="LVClass" URL="../Source/Widget Builders/MDI Area Builder/MDI Area Builder.lvclass"/>
-				<Item Name="Splitter Builder.lvclass" Type="LVClass" URL="../Source/Widget Builders/Splitter Builder/Splitter Builder.lvclass"/>
-				<Item Name="Tab Widget Builder.lvclass" Type="LVClass" URL="../Source/Widget Builders/Tab Widget Builder/Tab Widget Builder.lvclass"/>
-				<Item Name="Tool Box Builder.lvclass" Type="LVClass" URL="../Source/Widget Builders/Tool Box Builder/Tool Box Builder.lvclass"/>
-			</Item>
-			<Item Name="Widgets" Type="Folder">
-				<Item Name="Growable Widget.lvclass" Type="LVClass" URL="../Source/Widgets/Growable Widget/Growable Widget.lvclass"/>
-				<Item Name="New Button Gallery.vi" Type="VI" URL="../Source/Widgets/New Button Gallery.vi"/>
-				<Item Name="New Chart.vi" Type="VI" URL="../Source/Widgets/New Chart.vi"/>
-				<Item Name="New Input Gallery.vi" Type="VI" URL="../Source/Widgets/New Input Gallery.vi"/>
-			</Item>
-			<Item Name="Global Chart List Action.ctl" Type="VI" URL="../Source/Global Chart List Action.ctl"/>
-			<Item Name="Global Chart List.vi" Type="VI" URL="../Source/Global Chart List.vi"/>
-			<Item Name="Main.vi" Type="VI" URL="../Source/Main.vi"/>
-		</Item>
+		<Item Name="Dynamic GUI Composition and Management.lvlib" Type="Library" URL="../Source/Dynamic GUI Composition and Management.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="BuildHelpPath.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/BuildHelpPath.vi"/>

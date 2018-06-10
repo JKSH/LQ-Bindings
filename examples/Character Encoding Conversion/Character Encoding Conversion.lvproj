@@ -20,10 +20,7 @@
 			<Item Name="Thai.tis-620" Type="Document" URL="../Resources/Thai.tis-620"/>
 			<Item Name="Thai.utf-8" Type="Document" URL="../Resources/Thai.utf-8"/>
 		</Item>
-		<Item Name="Source" Type="Folder">
-			<Item Name="Get Available Codecs.vi" Type="VI" URL="../Source/Get Available Codecs.vi"/>
-			<Item Name="Main.vi" Type="VI" URL="../Source/Main.vi"/>
-		</Item>
+		<Item Name="Character Encoding Conversion.lvlib" Type="Library" URL="../Source/Character Encoding Conversion.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="Application Directory.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Application Directory.vi"/>

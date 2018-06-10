@@ -1,5 +1,7 @@
 ﻿<?xml version='1.0' encoding='UTF-8'?>
 <LVClass LVVersion="14008000">
+	<Property Name="NI.Lib.ContainingLib" Type="Str">Dynamic GUI Composition and Management.lvlib</Property>
+	<Property Name="NI.Lib.ContainingLibPath" Type="Str">../../../Dynamic GUI Composition and Management.lvlib</Property>
 	<Property Name="NI.Lib.Description" Type="Str">Copyright (c) 2016 Sze Howe Koh
 This code is licensed under the MIT license</Property>
 	<Property Name="NI.Lib.HelpPath" Type="Str"></Property>
