@@ -45,24 +45,24 @@ public:
 
 public slots:
 	void postLVEvent_void() {
-		SignalPacket<bool> packet{(quint64)sender(), senderSignalIndex(), false};
+		SignalPacket<bool> packet{reinterpret_cast<quint64>(sender()), senderSignalIndex(), false};
 		PostLVUserEvent(ref_void, &packet);
 	}
 	void postLVEvent_bool(bool value) {
-		SignalPacket<bool> packet{(quint64)sender(), senderSignalIndex(), value};
+		SignalPacket<bool> packet{reinterpret_cast<quint64>(sender()), senderSignalIndex(), value};
 		PostLVUserEvent(ref_bool, &packet);
 	}
 	void postLVEvent_i32(int value) {
-		SignalPacket<qint32> packet{(quint64)sender(), senderSignalIndex(), value};
+		SignalPacket<qint32> packet{reinterpret_cast<quint64>(sender()), senderSignalIndex(), value};
 		PostLVUserEvent(ref_i32, &packet);
 	}
 	void postLVEvent_dbl(double value) {
-		SignalPacket<double> packet{(quint64)sender(), senderSignalIndex(), value};
+		SignalPacket<double> packet{reinterpret_cast<quint64>(sender()), senderSignalIndex(), value};
 		PostLVUserEvent(ref_dbl, &packet);
 	}
 	void postLVEvent_string(const QString& value) {
 		LStrHandle lStr = newLStr(value);
-		SignalPacket<LStrHandle> packet{(quint64)sender(), senderSignalIndex(), lStr};
+		SignalPacket<LStrHandle> packet{reinterpret_cast<quint64>(sender()), senderSignalIndex(), lStr};
 		PostLVUserEvent(ref_string, &packet);
 		DSDisposeHandle(lStr);
 	}

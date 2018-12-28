@@ -48,7 +48,7 @@ struct LVArray
 	{
 		static_assert(N==1, "This function only supports 1D arrays.");
 
-		int newSize = sizeof(qint32) + count*sizeof(T);
+		size_t newSize = sizeof(qint32) + count*sizeof(T);
 
 		// ASSUMPTION: This call will only fail if the program is already doomed anyway.
 		DSSetHandleSize(handle, newSize);
