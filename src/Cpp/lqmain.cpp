@@ -1,5 +1,5 @@
 /*\
- * Copyright (c) 2016 Sze Howe Koh
+ * Copyright (c) 2018 Sze Howe Koh
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -7,35 +7,31 @@
 \*/
 
 #include "lqmain.h"
-#include "lqbridge.h"
-#include "lqerrors.h"
+#include "lqapplication.h"
 #include <thread>
 #include <QThread>
+#include <QDebug>
 
-// STRATEGY: The Bridge pointer is always NULL before the GUI event loop is running,
-// and NULL after the event loop has stopped
-Bridge* bridge = nullptr;
+// STRATEGY: The flag is always false before the GUI event loop is running,
+// and false after the event loop has stopped
+std::atomic_bool isRunning{false};
 
 static void
 run()
 {
-	// Note: The Bridge needs an active event loop to run slots
-
 	int            argc = 1;
 	QByteArray     argv0("LQWidgets.dll\0");
 	QVector<char*> argv{argv0.data(), nullptr};
 
 	LQApplication app(argc, argv.data());
 	app.setQuitOnLastWindowClosed(false); // Only quit explicitly when commanded from LabVIEW
-
-	// Tie the Bridge's lifetime to the QApplication object
-	bridge = new Bridge(&app);
+	isRunning = true;
 
 	qDebug() << "Starting Qt event loop in" << QThread::currentThread();
 	app.exec();
 
 	// Clean up
-	bridge = nullptr;
+	isRunning = false;
 	qDebug("Qt event loop stopped");
 }
 
@@ -43,18 +39,18 @@ run()
 qint32
 startWidgetEngine(quintptr* _retVal, LStrHandle pluginDir)
 {
-	if (bridge)
+	if (isRunning)
 	{
 		*_retVal = 0;
 		return LQ::EngineAlreadyRunningError;
 	}
 
-	QCoreApplication::addLibraryPath(  QString::fromUtf8( copyFromLStr(pluginDir) )  );
+	QCoreApplication::addLibraryPath( LVString::to<QString>(pluginDir) );
 	std::thread t(&run);
 	t.detach();
 
 	// Block until the engine has been initialized
-	while (!bridge)
+	while (!isRunning)
 		std::this_thread::sleep_for(std::chrono::milliseconds(20));
 
 	*_retVal = (quintptr)qApp;
@@ -64,7 +60,7 @@ startWidgetEngine(quintptr* _retVal, LStrHandle pluginDir)
 qint32
 stopWidgetEngine()
 {
-	if (!bridge)
+	if (!isRunning)
 		return LQ::EngineNotRunningError;
 
 	// LQApplication::killWidgets() sends a QDeferredDeleteEvent to all remaining
@@ -80,7 +76,7 @@ stopWidgetEngine()
 qint32
 registerEventRefs(LVUserEventRef* voidRef, LVUserEventRef* boolRef, LVUserEventRef* i32Ref, LVUserEventRef* dblRef, LVUserEventRef* stringRef)
 {
-	if (!bridge)
+	if (!isRunning)
 		return LQ::EngineNotRunningError;
 	static_cast<LQApplication*>(qApp)->registerEventRefs(voidRef, boolRef, i32Ref, dblRef, stringRef);
 	return LQ::NoError;
@@ -90,7 +86,7 @@ registerEventRefs(LVUserEventRef* voidRef, LVUserEventRef* boolRef, LVUserEventR
 qint32
 connect_void(quintptr _instance, const char* encodedSignal)
 {
-	if (!bridge)
+	if (!isRunning)
 		return LQ::EngineNotRunningError;
 	if (!_instance)
 		return LQ::NullPointerUseError;
@@ -106,7 +102,7 @@ connect_void(quintptr _instance, const char* encodedSignal)
 qint32
 connect_bool(quintptr _instance, const char* encodedSignal)
 {
-	if (!bridge)
+	if (!isRunning)
 		return LQ::EngineNotRunningError;
 	if (!_instance)
 		return LQ::NullPointerUseError;
@@ -122,7 +118,7 @@ connect_bool(quintptr _instance, const char* encodedSignal)
 qint32
 connect_i32(quintptr _instance, const char* encodedSignal)
 {
-	if (!bridge)
+	if (!isRunning)
 		return LQ::EngineNotRunningError;
 	if (!_instance)
 		return LQ::NullPointerUseError;
@@ -138,7 +134,7 @@ connect_i32(quintptr _instance, const char* encodedSignal)
 qint32
 connect_dbl(quintptr _instance, const char* encodedSignal)
 {
-	if (!bridge)
+	if (!isRunning)
 		return LQ::EngineNotRunningError;
 	if (!_instance)
 		return LQ::NullPointerUseError;
@@ -154,7 +150,7 @@ connect_dbl(quintptr _instance, const char* encodedSignal)
 qint32
 connect_string(quintptr _instance, const char* encodedSignal)
 {
-	if (!bridge)
+	if (!isRunning)
 		return LQ::EngineNotRunningError;
 	if (!_instance)
 		return LQ::NullPointerUseError;
@@ -180,7 +176,7 @@ isSignal(const char* encodedMethod)
 qint32
 connect_bySignature(QMetaObject::Connection* _retVal, quintptr sender, const char* encodedSignal, quintptr receiver, const char* encodedMethod)
 {
-	if (!bridge)
+	if (!isRunning)
 		return LQ::EngineNotRunningError;
 	if (!sender || !receiver)
 		return LQ::NullPointerUseError;
@@ -232,7 +228,7 @@ emit_void(quintptr _instance, const char* normalizedSignal)
 {
 	// ASSUMPTION: (All "emit" functions) Signal parameters are compatible
 
-	if (!bridge)
+	if (!isRunning)
 		return LQ::EngineNotRunningError;
 	if (!_instance)
 		return LQ::NullPointerUseError;
@@ -253,7 +249,7 @@ emit_void(quintptr _instance, const char* normalizedSignal)
 qint32
 emit_bool(quintptr _instance, const char* normalizedSignal, bool* data)
 {
-	if (!bridge)
+	if (!isRunning)
 		return LQ::EngineNotRunningError;
 	if (!_instance)
 		return LQ::NullPointerUseError;
@@ -272,7 +268,7 @@ emit_bool(quintptr _instance, const char* normalizedSignal, bool* data)
 qint32
 emit_i32(quintptr _instance, const char* normalizedSignal, qint32* data)
 {
-	if (!bridge)
+	if (!isRunning)
 		return LQ::EngineNotRunningError;
 	if (!_instance)
 		return LQ::NullPointerUseError;
@@ -291,7 +287,7 @@ emit_i32(quintptr _instance, const char* normalizedSignal, qint32* data)
 qint32
 emit_dbl(quintptr _instance, const char* normalizedSignal, double* data)
 {
-	if (!bridge)
+	if (!isRunning)
 		return LQ::EngineNotRunningError;
 	if (!_instance)
 		return LQ::NullPointerUseError;
@@ -310,7 +306,7 @@ emit_dbl(quintptr _instance, const char* normalizedSignal, double* data)
 qint32
 emit_string(quintptr _instance, const char* normalizedSignal, LStrHandle data)
 {
-	if (!bridge)
+	if (!isRunning)
 		return LQ::EngineNotRunningError;
 	if (!_instance)
 		return LQ::NullPointerUseError;
@@ -322,7 +318,7 @@ emit_string(quintptr _instance, const char* normalizedSignal, LStrHandle data)
 		return LQ::InvalidSignalError;
 
 	// NOTE: Wasted operations! Converting from LStr to QString to LStr again
-	QString str = QString::fromUtf8(copyFromLStr(data));
+	auto str = LVString::to<QString>(data);
 	void* argv[]{nullptr, &str};
 	QMetaObject::activate(obj, signalIndex, reinterpret_cast<void**>(argv));
 	return LQ::NoError;
@@ -331,7 +327,7 @@ emit_string(quintptr _instance, const char* normalizedSignal, LStrHandle data)
 qint32
 registerLQObject(quintptr _instance, LVArray<LStrHandle>** signalList, LStrHandle superClassName)
 {
-	if (!bridge)
+	if (!isRunning)
 		return LQ::EngineNotRunningError;
 	if (!_instance)
 		return LQ::NullPointerUseError;
@@ -358,7 +354,7 @@ registerLQObject(quintptr _instance, LVArray<LStrHandle>** signalList, LStrHandl
 qint32
 findSignalIndex(qint64* _retVal, quintptr _instance, const char* normalizedSignal)
 {
-	if (!bridge)
+	if (!isRunning)
 		return LQ::EngineNotRunningError;
 	if (!_instance)
 		return LQ::NullPointerUseError;

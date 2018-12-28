@@ -1,5 +1,5 @@
 /*\
- * Copyright (c) 2016 Sze Howe Koh
+ * Copyright (c) 2018 Sze Howe Koh
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -12,10 +12,23 @@
 #include <QDataStream>
 #include "extcode.h"
 
-void copyIntoLStr(LStrHandle lStr, const QByteArray& bytes);
-QByteArray copyFromLStr(LStrHandle lStr);
+template <typename T>
+using LQTable = QVector<QVector<T>>;
+
+// This header uses operator<< in lieu of operator=. Chaining is not supported.
+void operator<<(LStrHandle dest, const QByteArray& src);
+inline void operator<<(LStrHandle dest, const QString& src) { dest << src.toUtf8(); }
+template <typename T> void operator<<(LStrHandle dest, const T& src) { dest << serialize(src); }
+
 LStrHandle newLStr(const QByteArray& bytes);
 inline LStrHandle newLStr(const QString& string) {return newLStr(string.toUtf8());}
+
+namespace LVString
+{
+template <typename T> T to(LStrHandle lStr);
+template<> QByteArray to<QByteArray>(LStrHandle lStr);
+template<> QString to<QString>(LStrHandle lStr);
+}
 
 // Structs declared between lv_prolog.h and lv_epilog.h get aligned according to LabVIEW's expectations
 #include "lv_prolog.h"
@@ -56,8 +69,8 @@ struct LVArray
 		std::copy( dimensions, dimensions+N, (*handle)->dimSizes );
 	}
 
-	// TODO: Rename the 1D functions to "fromQVector1D()" etc. for consistency with the 2D versions
-
+	// TODO: Rename the 1D functions to "fromQVector1D()" etc. for consistency with the 2D versions, OR
+	// TODO: Merge these fromQ* functions into the stream operators below
 	template <typename U>
 	static void fromQVector(LVArray<T>** destHandle, const QVector<U>& vector)
 	{
@@ -77,18 +90,18 @@ struct LVArray
 	}
 
 	template <typename U>
-	static void fromQVector2D(LVArray<T, 2>** destHandle, const QVector<QVector<U>>& matrix)
+	static void fromLQTable(LVArray<T, 2>** destHandle, const LQTable<U>& table)
 	{
 		static_assert(N==2, "This function only supports 2D arrays.");
 
 		int dimensions[2] = {
-			matrix.size(),
-			matrix.isEmpty() ? 0 : matrix[0].size() // ASSUMPTION: All rows are the same length
+			table.size(),
+			table.isEmpty() ? 0 : table[0].size() // ASSUMPTION: All rows are the same length
 		};
 		resize(destHandle, dimensions);
 
 		for (int r = 0; r < dimensions[0]; ++r)
-			std::copy( matrix[r].constBegin(), matrix[r].constEnd(), (*destHandle)->elt + r*dimensions[1] );
+			std::copy( table[r].constBegin(), table[r].constEnd(), (*destHandle)->elt + r*dimensions[1] );
 	}
 
 	template <typename U>
@@ -114,21 +127,21 @@ struct LVArray
 	}
 
 	template <typename U>
-	QVector<QVector<U>> toQVector2D() const
+	LQTable<U> toLQTable() const
 	{
 		static_assert(N==2, "This function only supports 2D arrays.");
 
 		const int colCount = dimSizes[1];
-		QVector<QVector<U>> matrix( dimSizes[0], QVector<U>(colCount) );
+		LQTable<U> table( dimSizes[0], QVector<U>(colCount) );
 		for (int r = 0; r < dimSizes[0]; ++r)
 		{
 			// TODO: See if writing this another way produces smaller assemblies
 			std::copy(
 					elt + r*colCount,
 					elt + r*colCount + colCount,
-					matrix[r].data());
+					table[r].data());
 		}
-		return matrix;
+		return table;
 	}
 
 	// WARNING: Check padding requirements for each platform
@@ -160,11 +173,11 @@ struct LVArray<LStrHandle, N>
 	}
 
 	template <typename U>
-	static void fromQVector2D(LVArray<LStrHandle, 2>** destHandle, const QVector<QVector<U>>& matrix)
+	static void fromLQTable(LVArray<LStrHandle, 2>** destHandle, const LQTable<U>& table)
 	{
-		const int colCount = matrix.isEmpty() ? 0 : matrix[0].size();
+		const int colCount = table.isEmpty() ? 0 : table[0].size();
 		int dimensions[2] = {
-			matrix.size(),
+			table.size(),
 			colCount
 		};
 		resize(destHandle, dimensions);
@@ -172,7 +185,7 @@ struct LVArray<LStrHandle, N>
 		for (int i = 0, r = 0; r < dimensions[0]; ++r)
 		{
 			for (int c = 0; c < colCount; ++i, ++c)
-				(*destHandle)->elt[i] = newLStr(matrix[r][c]);
+				(*destHandle)->elt[i] = newLStr(table[r][c]);
 		}
 	}
 
@@ -184,24 +197,24 @@ struct LVArray<LStrHandle, N>
 		QList<U> list;
 		list.reserve(dimSizes[0]);
 		for (int i = 0; i < dimSizes[0]; ++i)
-			list << copyFromLStr(elt[i]); // TODO: Avoid intermediate QByteArray
+			list << LVString::to<U>(elt[i]);
 		return list;
 	}
 
 	template <typename U>
-	QVector<QVector<U>> toQVector2D() const
+	LQTable<U> toLQTable() const
 	{
 		static_assert(N==2, "This function only supports 2D arrays.");
 
 		const int colCount = dimSizes[1];
-		QVector<QVector<U>> matrix(dimSizes[0]);
+		LQTable<U> table(dimSizes[0]);
 		for (int i = 0, r = 0; r < dimSizes[0]; ++r)
 		{
-			matrix[r].reserve(colCount);
+			table[r].reserve(colCount);
 			for (int c = 0; c < colCount; ++i, ++c)
-				matrix[r] << copyFromLStr(elt[i]);
+				table[r] << LVString::to<U>(elt[i]);
 		}
-		return matrix;
+		return table;
 	}
 
 	qint32 dimSizes[N];
@@ -245,14 +258,15 @@ struct LVArray<quintptr>
 };
 #include "lv_epilog.h"
 
-template <typename T>
-using LQMatrix = QVector<QVector<T>>;
+template <typename T, typename U> void operator<<(LVArray<T>** destHandle, const QList<U>& src) { LVArray<T>::fromQList(destHandle, src); }
+template <typename T, typename U> void operator<<(LVArray<T>** destHandle, const QVector<U>& src) { LVArray<T>::fromQVector(destHandle, src); }
+template <typename T, typename U> void operator<<(LVArray<T, 2>** destHandle, const LQTable<U>& src) { LVArray<T>::fromLQTable(destHandle, src); }
 
 // ASSUMPTION: T is serializable
 // TODO: Investigate if it's worth overloading the functions below to take rvalue references.
 //       See http://qt-project.org/forums/viewthread/34454
 template <typename T> QByteArray
-serialize(const T& object)
+serialize(const T& object) // TODO: Merge this function into operator<<
 {
 	QByteArray bytes;
 	QDataStream stream(&bytes, QIODevice::WriteOnly);
@@ -261,9 +275,10 @@ serialize(const T& object)
 }
 
 template <typename T> T
-deserialize(const QByteArray& bytes)
+deserialize(LStrHandle bytes)
 {
-	QDataStream stream(bytes);
+	auto ba = LVString::to<QByteArray>(bytes);
+	QDataStream stream(ba);
 	T object;
 	stream >> object;
 	return object;
