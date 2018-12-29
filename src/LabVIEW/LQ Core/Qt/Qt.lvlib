@@ -4,6 +4,7 @@
 	<Property Name="NI.Lib.LocalName" Type="Str">Qt</Property>
 	<Property Name="NI.Lib.SourceVersion" Type="Int">335577088</Property>
 	<Property Name="NI.Lib.Version" Type="Str">1.0.0.0</Property>
+	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
 	<Item Name="AlignmentFlag.ctl" Type="VI" URL="../AlignmentFlag.ctl"/>
 	<Item Name="AnchorPoint.ctl" Type="VI" URL="../AnchorPoint.ctl"/>
 	<Item Name="ApplicationAttribute.ctl" Type="VI" URL="../ApplicationAttribute.ctl"/>

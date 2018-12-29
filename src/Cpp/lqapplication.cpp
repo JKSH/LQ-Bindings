@@ -1,5 +1,5 @@
 /*\
- * Copyright (c) 2016 Sze Howe Koh
+ * Copyright (c) 2018 Sze Howe Koh
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -114,7 +114,7 @@ LQApplication::finalizeBinding(QObject* _instance, LVArray<LStrHandle>** signalL
 	int index = lqIndex(className);
 	QMetaObjectBuilder b(lqMetaObjects[index]);
 
-	int superIndex = lqIndex(copyFromLStr(superClassName));
+	int superIndex = lqIndex( LVString::to<QByteArray>(superClassName) );
 	if (superIndex >= 0)
 		b.setSuperClass(lqMetaObjects[superIndex]);
 
