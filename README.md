@@ -15,17 +15,12 @@ System Requirements
 -------------------
 For using LQ Widgets:
 * Windows 7 or newer
-* LabVIEW 2014 or newer (packages for older versions available upon request)
+* LabVIEW 2014 or newer
 
 For compiling the C++ shared library:
-* A C++11 compliant compiler (tested with Microsoft Visual C++ 2013)^
-* Qt 5.4.2 or newer
+* A C++11 compliant compiler (tested with Microsoft Visual C++ 2017)^
+* Qt 5.10 or newer
 * Qwt 6.1.2 or newer
-
-^ MinGW 4.9.2 is tested and it works, but it is not supported by National
-Instruments. To use MinGW, you need to modify the external header,
-_<LabVIEW>\cintools\platdefines.h_, to make it accept the GCC compiler on
-Windows.
 
 
 Usage
@@ -83,7 +78,7 @@ not optimized, and (iv) you might experience crashes. Other issues include:
 
 Copyright and Licensing
 -----------------------
-Copyright (c) 2016 Sze Howe Koh <<szehowe.koh@gmail.com>>
+Copyright (c) 2018 Sze Howe Koh <<szehowe.koh@gmail.com>>
 
 The LQ Widgets library is published under the Mozilla Public License v2.0 (see
 [LICENSE.MPLv2](LICENSE.MPLv2)), while examples are published under the MIT
