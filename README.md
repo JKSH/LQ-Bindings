@@ -1,19 +1,19 @@
-LQ Widgets
-==========
-This is a set of [LabVIEW](http://www.ni.com/labview/) bindings for the [Qt
-toolkit](https://www.qt.io/). It is currently focussed on the widget classes,
-but other major technologies from Qt are planned for inclusion in future
-releases.
+LQ
+==
+LQ (pronounced "Luke") is a set of [LabVIEW](https://www.ni.com/labview/)
+bindings for the [Qt toolkit](https://www.qt.io/). It is currently focussed on
+the widget classes, but other major technologies from Qt are planned for
+inclusion in future releases.
 
 
 Roadmap
 -------
-Please see http://github.com/JKSH/LQWidgets/wiki/Roadmap
+Please see http://github.com/JKSH/LQ-Bindings/wiki/Roadmap
 
 
 System Requirements
 -------------------
-For using LQ Widgets:
+For using LQ:
 * Windows 7 or newer
 * LabVIEW 2014 or newer
 
@@ -25,26 +25,25 @@ For compiling the C++ shared library:
 
 Usage
 -----
-1. Download the library from https://github.com/JKSH/LQWidgets/releases and
-   extract it to disk (C:\LQWidgets is the recommended root path).
+1. Download the library from https://github.com/JKSH/LQ-Bindings/releases and
+   extract it to disk (C:\LQ\ is the recommended root path).
 
-2. If you extracted the library to a place other than C:\LQWidgets, modify the
-   default output of _src\LabVIEW\LQ Core\_Internal\Library Path.vi_ to point to
-   your custom location for LQWidgets.dll.
+2. If you extracted the library to a place other than C:\LQ\, modify the default
+   output of _src\LabVIEW\LQ Core\_Internal\Library Path.vi_ to point to your
+   custom location for LQ.dll.
 
-3. Create a new LabVIEW VI. Drag the LQ Widgets VIs that you want from Windows
-   Explorer onto your block diagram. Once a class and its dependencies are
-   loaded in LabVIEW's memory, you can use the Quick Drop menu to find VIs you
-   want.
+3. Create a new LabVIEW VI. Drag the LQ VIs that you want from Windows Explorer
+   onto your block diagram. Once a class and its dependencies are loaded in
+   LabVIEW's memory, you can use the Quick Drop menu to find VIs you want.
    
 NOTE 1: LabVIEW palette entries and VIPM packages are planned for future
         releases.
 
 NOTE 2: The LabVIEW code in the Git repo has "Separate compiled code from source
         file" enabled to make them friendlier for source control. However, this
-        can cause significant lag when oopening/closing a project that depends
-        on many LQ Widgets classes. Code separation is disabled in the files at
-        https://github.com/JKSH/LQWidgets/releases
+        can cause significant lag when opening/closing a project that depends
+        on many LQ classes. Code separation is disabled in the files at
+        https://github.com/JKSH/LQ-Bindings/releases
 
 
 Examples
@@ -52,8 +51,7 @@ Examples
 Please see the [examples](examples) folder. Here is a video compilation of some
 of these examples:
 
-[![Video thumbnail](doc/demo_vid_0.1.0_thumb.png)]
-(https://www.youtube.com/watch?v=YChRI1cMfiI)
+[![Video thumbnail](doc/demo_vid_0.1.0_thumb.png)](https://www.youtube.com/watch?v=YChRI1cMfiI)
 
 
 Known Issues
@@ -80,9 +78,9 @@ Copyright and Licensing
 -----------------------
 Copyright (c) 2018 Sze Howe Koh <<szehowe.koh@gmail.com>>
 
-The LQ Widgets library is published under the Mozilla Public License v2.0 (see
-[LICENSE.MPLv2](LICENSE.MPLv2)), while examples are published under the MIT
-License (see [examples/LICENSE.MIT](examples/LICENSE.MIT)).
+The LQ library is published under the [Mozilla Public License v2.0]
+(LICENSE.MPLv2), while examples are published under the [MIT License]
+(examples/LICENSE.MIT).
 
-LQ Widgets also uses third party software that are licensed under different
-terms. Please see the [3rdparty](3rdparty) folder for details.
+LQ also uses third party software that are licensed under different terms.
+Please see the [3rdparty](3rdparty) folder for details.

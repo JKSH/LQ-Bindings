@@ -9,7 +9,7 @@ Prerequisite knowledge/experience
 Description
 -----------
 This example re-implements the official [Dual Mode Thermometer XControl example]
-(http://www.ni.com/tutorial/3198/en/) using LQ Widgets.
+(http://www.ni.com/tutorial/3198/en/) using LQ.
 
 For the best results, study this project alongside _Simple Dual Mode Thermometer
 XControl.lvproj_. Go to "Help" -> "Find Examples..." -> "Search" and enter the
@@ -23,7 +23,7 @@ keywords: "Simple Dual Mode Thermometer".
 
 **Differences from XControls**
 * You can inherit from a Widget.
-* Widgets (and LVOOP) don't support invoke nodes (as of LabVIEW 2015). Call the
+* Widgets (and LVOOP) don't support invoke nodes (as of LabVIEW 2018). Call the
   associated VI directly.
 * While XControls have separate Data and State abilities, Widgets don't make
   this distinction.

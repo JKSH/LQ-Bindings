@@ -5,7 +5,7 @@ QWT_PATH      = "C:/Qwt-6.1.3"
 QT     += core_private # For QMetaObjectBuilder only. Do not use other private API.
 QT     += widgets svg winextras
 
-TARGET = LQWidgets
+TARGET = LQ
 TEMPLATE = lib
 
 SOURCES += \
