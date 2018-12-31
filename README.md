@@ -22,22 +22,28 @@ For compiling the C++ shared library:
 * Qt 5.10 or newer
 * Qwt 6.1.2 or newer
 
+For building NIPM Packages:
+* [NI LabVIEW Command Line Interface 1.0](https://www.ni.com/download/labview-command-line-interface-18.0/7545/en/)
+  or newer
+* Package Building Support for LabVIEW (installable via [NI Package Manager](https://www.ni.com/en-au/support/downloads/software-products/download.package-manager.html))
+
+NOTE: LabVIEW 2018 and newer comes bundled with the components needed to build
+      NI packages. These components must be installed separately for LabVIEW
+      2014-2017.
 
 Usage
 -----
-1. Download the library from https://github.com/JKSH/LQ-Bindings/releases and
-   extract it to disk (C:\LQ\ is the recommended root path).
+1. Download and install the NIPM package from https://github.com/JKSH/LQ-Bindings/releases.
 
-2. If you extracted the library to a place other than C:\LQ\, modify the default
-   output of _src\LabVIEW\LQ Core\_Internal\Library Path.vi_ to point to your
-   custom location for LQ.dll.
-
-3. Create a new LabVIEW VI. Drag the LQ VIs that you want from Windows Explorer
-   onto your block diagram. Once a class and its dependencies are loaded in
-   LabVIEW's memory, you can use the Quick Drop menu to find VIs you want.
+2. Create a new LabVIEW VI. Drag the LQ VIs that you want from Windows Explorer
+   (C:\LQ\src\LabVIEW\) onto your block diagram. Once a class and its
+   dependencies are loaded in LabVIEW's memory, you can use the Quick Drop menu
+   to find other VIs you want.
    
-NOTE 1: LabVIEW palette entries and VIPM packages are planned for future
-        releases.
+NOTE 0: If you don't have NI Package Manager, you can download the .zip package
+        instead of the .nipkg package, and manually extract the files to C:\LQ\.
+
+NOTE 1: LabVIEW palette entries are planned for future releases.
 
 NOTE 2: The LabVIEW code in the Git repo has "Separate compiled code from source
         file" enabled to make them friendlier for source control. However, this
