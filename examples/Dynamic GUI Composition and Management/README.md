@@ -46,4 +46,6 @@ Known Issues
 ------------
 - If you select "Tab Widget", "Tool Box", "Horizontal Splitter", "Vertical
   Splitter, or "MDI Area", LabVIEW will freeze when you transition from Run
-  mode back to Edit mode (i.e. when you stop the VI)
+  mode back to Edit mode (i.e. when you stop the VI).
+    - This is caused by an issue inside LabVIEW; NI is tracking this issue
+      under CAR #690115.
