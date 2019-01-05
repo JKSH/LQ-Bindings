@@ -1,0 +1,6 @@
+*.aliases
+*.autosave
+*.lvlps
+*.pro.user
+*build-*
+builds/*
