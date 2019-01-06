@@ -16,11 +16,7 @@
 			<Item Name="First order RC circuit.png" Type="Document" URL="../Resources/First order RC circuit.png"/>
 			<Item Name="README.txt" Type="Document" URL="../Resources/README.txt"/>
 		</Item>
-		<Item Name="Source" Type="Folder">
-			<Item Name="Derived Params Widget.lvclass" Type="LVClass" URL="../Source/Derived Params Widget/Derived Params Widget.lvclass"/>
-			<Item Name="Main.vi" Type="VI" URL="../Source/Main.vi"/>
-			<Item Name="System Spec Widget.lvclass" Type="LVClass" URL="../Source/System Spec Widget/System Spec Widget.lvclass"/>
-		</Item>
+		<Item Name="Scientific Symbols (UTF-8).lvlib" Type="Library" URL="../Source/Scientific Symbols (UTF-8).lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="Application Directory.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Application Directory.vi"/>

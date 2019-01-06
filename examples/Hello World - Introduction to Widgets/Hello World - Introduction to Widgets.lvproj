@@ -11,36 +11,7 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
-		<Item Name="Source" Type="Folder">
-			<Item Name="1. Constructing and Using a Widget" Type="Folder">
-				<Item Name="1. Main.vi" Type="VI" URL="../Source/1. Constructing and Using a Widget/1. Main.vi"/>
-			</Item>
-			<Item Name="2. Managing a Widget Layout" Type="Folder">
-				<Item Name="2. Main.vi" Type="VI" URL="../Source/2. Managing a Widget Layout/2. Main.vi"/>
-			</Item>
-			<Item Name="3a. Connecting a Signal to a Qt Slot" Type="Folder">
-				<Item Name="3a. Main.vi" Type="VI" URL="../Source/3a. Connecting a Signal to a Qt Slot/3a. Main.vi"/>
-			</Item>
-			<Item Name="3b. Connecting a Signal to a LabVIEW Event" Type="Folder">
-				<Item Name="3b. Main.vi" Type="VI" URL="../Source/3b. Connecting a Signal to a LabVIEW Event/3b. Main.vi"/>
-			</Item>
-			<Item Name="3c. Connecting a Signal to a LabVIEW Callback" Type="Folder">
-				<Item Name="3c. Callback.vi" Type="VI" URL="../Source/3c. Connecting a Signal to a LabVIEW Callback/3c. Callback.vi"/>
-				<Item Name="3c. Main.vi" Type="VI" URL="../Source/3c. Connecting a Signal to a LabVIEW Callback/3c. Main.vi"/>
-			</Item>
-			<Item Name="4. Inheriting from a Widget" Type="Folder">
-				<Item Name="4. Main.vi" Type="VI" URL="../Source/4. Inheriting from a Widget/4. Main.vi"/>
-				<Item Name="4. Number Widget.lvclass" Type="LVClass" URL="../Source/4. Inheriting from a Widget/Number Widget/4. Number Widget.lvclass"/>
-			</Item>
-			<Item Name="5. Creating a User-Defined Signal" Type="Folder">
-				<Item Name="5. Main.vi" Type="VI" URL="../Source/5. Creating a User-Defined Signal/5. Main.vi"/>
-				<Item Name="5. Number Widget.lvclass" Type="LVClass" URL="../Source/5. Creating a User-Defined Signal/Number Widget/5. Number Widget.lvclass"/>
-			</Item>
-			<Item Name="6. Reusing Components Dynamically" Type="Folder">
-				<Item Name="6. Main.vi" Type="VI" URL="../Source/6. Reusing Components Dynamically/6. Main.vi"/>
-				<Item Name="6. Number Widget.lvclass" Type="LVClass" URL="../Source/6. Reusing Components Dynamically/Number Widget/6. Number Widget.lvclass"/>
-			</Item>
-		</Item>
+		<Item Name="Hello World - Introduction to Widgets.lvlib" Type="Library" URL="../Source/Hello World - Introduction to Widgets.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="BuildHelpPath.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/BuildHelpPath.vi"/>
@@ -57,7 +28,7 @@
 				<Item Name="eventvkey.ctl" Type="VI" URL="/&lt;vilib&gt;/event_ctls.llb/eventvkey.ctl"/>
 				<Item Name="Find Tag.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Find Tag.vi"/>
 				<Item Name="Format Message String.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Format Message String.vi"/>
-				<Item Name="General Error Handler CORE.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/General Error Handler CORE.vi"/>
+				<Item Name="General Error Handler Core CORE.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/General Error Handler Core CORE.vi"/>
 				<Item Name="General Error Handler.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/General Error Handler.vi"/>
 				<Item Name="Get LV Class Name.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/LVClass/Get LV Class Name.vi"/>
 				<Item Name="Get String Text Bounds.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Get String Text Bounds.vi"/>
@@ -67,6 +38,7 @@
 				<Item Name="Longest Line Length in Pixels.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Longest Line Length in Pixels.vi"/>
 				<Item Name="LVBoundsTypeDef.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVBoundsTypeDef.ctl"/>
 				<Item Name="LVNumericRepresentation.ctl" Type="VI" URL="/&lt;vilib&gt;/numeric/LVNumericRepresentation.ctl"/>
+				<Item Name="LVRectTypeDef.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVRectTypeDef.ctl"/>
 				<Item Name="Not Found Dialog.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Not Found Dialog.vi"/>
 				<Item Name="Search and Replace Pattern.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Search and Replace Pattern.vi"/>
 				<Item Name="Set Bold Text.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Set Bold Text.vi"/>

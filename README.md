@@ -1,59 +1,96 @@
-LQ Widgets
-==========
-This is a set of [LabVIEW](http://www.ni.com/labview/) bindings for the [Qt
-toolkit](https://www.qt.io/). It is currently focussed on the widget classes,
-but other major technologies from Qt are planned for inclusion in future
-releases.
-
-
-Roadmap
--------
-Please see http://github.com/JKSH/LQWidgets/wiki/Roadmap
+LQ
+==
+LQ (pronounced "Luke") is a set of [LabVIEW](https://www.ni.com/labview/)
+bindings for the [Qt toolkit](https://www.qt.io/). It is currently focussed on
+the widget classes, but other major technologies from Qt are planned for
+inclusion in future releases.
 
 
 System Requirements
 -------------------
-For using LQ Widgets:
-* Windows 7 or newer
-* LabVIEW 2014 or newer
+To use LQ:
+* Microsoft Windows 7 or newer
+* NI LabVIEW 2014 or newer
 
-For compiling the C++ shared library:
-* A C++11 compliant compiler (tested with Microsoft Visual C++ 2017)^
+To compile the C++ shared library:
+* A C++11 compliant compiler (tested with Microsoft Visual C++ 2017)
 * Qt 5.10 or newer
 * Qwt 6.1.2 or newer
+
+To build the [NI Package Manager](https://www.ni.com/en-us/support/downloads/ni-package-manager.html)
+(NIPM) package:
+* [NI LabVIEW Command Line Interface 18.0](https://www.ni.com/download/labview-command-line-interface-18.0/7545/en/)
+  or newer
+* Package Building Support for LabVIEW (installable via NIPM)
+
+NOTE: LabVIEW 2018 and newer comes bundled with the components needed to build
+      NIPM packages. These components must be installed separately for LabVIEW
+      2014-2017.
+
+
+Installation
+------------
+Download and run the *.nipkg file from https://github.com/JKSH/LQ-Bindings/releases
+(recommended).
+
+Alternatively, if you don't have NIPM, download the *.zip package instead and
+manually extract its contents to C:\LQ\.
+
+To uninstall, open the **Installed** tab in NIPM and uncheck _"Products only"_.
+Then, remove the LQ Add-On package and delete C:\LQ\ (the folder persists after
+uninstallation if new files were created in a subfolder after installation).
 
 
 Usage
 -----
-1. Download the library from https://github.com/JKSH/LQWidgets/releases and
-   extract it to disk (C:\LQWidgets is the recommended root path).
+After installing, run the examples (C:\LQ\examples\). Copy the code to your own
+block diagram and modify.
 
-2. If you extracted the library to a place other than C:\LQWidgets, modify the
-   default output of _src\LabVIEW\LQ Core\_Internal\Library Path.vi_ to point to
-   your custom location for LQWidgets.dll.
+To use an LQ class/VI that hasn't yet been loaded into LabVIEW's memory, drag it
+from Windows Explorer (C:\LQ\src\LabVIEW\) and drop it onto your block diagram.
 
-3. Create a new LabVIEW VI. Drag the LQ Widgets VIs that you want from Windows
-   Explorer onto your block diagram. Once a class and its dependencies are
-   loaded in LabVIEW's memory, you can use the Quick Drop menu to find VIs you
-   want.
-   
-NOTE 1: LabVIEW palette entries and VIPM packages are planned for future
-        releases.
+NOTE: LabVIEW palette entries are planned for future releases.
 
-NOTE 2: The LabVIEW code in the Git repo has "Separate compiled code from source
-        file" enabled to make them friendlier for source control. However, this
-        can cause significant lag when oopening/closing a project that depends
-        on many LQ Widgets classes. Code separation is disabled in the files at
-        https://github.com/JKSH/LQWidgets/releases
+Do not use VIs directly from the Git repository. These VIs have "Separate
+compiled code from source file" enabled, which causes significant lag when
+opening/closing a project that uses many LQ classes. Instead, only use the VIs
+that you installed from https://github.com/JKSH/LQ-Bindings/releases or you
+packaged yourself (see the **Building from Source** section below).
 
 
 Examples
 --------
-Please see the [examples](examples) folder. Here is a video compilation of some
-of these examples:
+Here is a video compilation of some of the provided examples:
 
-[![Video thumbnail](doc/demo_vid_0.1.0_thumb.png)]
-(https://www.youtube.com/watch?v=YChRI1cMfiI)
+[![Video thumbnail](doc/demo_vid_0.1.0_thumb.png)](https://www.youtube.com/watch?v=YChRI1cMfiI)
+
+
+Building from Source
+--------------------
+To build the LQ package from scratch:
+1. Install a suitable C++ compiler (e.g. Microsoft Visual C++ 2017)
+2. Install Qt
+3. Build and install Qwt
+4. Install [NI LabVIEW](https://www.ni.com/labview/)
+5. Install [NI LabVIEWCLI](https://www.ni.com/download/labview-command-line-interface-18.0/7545/en/)
+   and Package Building Support for LabVIEW (not needed for LabVIEW 2018 and newer)
+6. Edit the paths at the top of [deployLQ.bat](deployLQ.bat) and [LQ.pro](src/Cpp/LQ.pro)
+   if necessary
+7. Open the Command Prompt, ensuring that your compiler is in the PATH (e.g. by
+   launching _x86 Native Tools Command Prompt for VS 2017_)
+8. From the Command Prompt, run [deployLQ.bat](deployLQ.bat)
+
+
+Hacking
+-------
+Most of the code in this repo is auto-generated and should not be edited
+directly. See https://github.com/JKSH/LQ-CodeGen/ instead.
+
+Also, do not use VIs directly from the Git repository. These VIs have "Separate
+compiled code from source file" enabled, which causes significant lag when
+opening/closing a project that uses many LQ classes. Instead, only use the VIs
+that you installed from https://github.com/JKSH/LQ-Bindings/releases or you
+packaged yourself (see the **Building from Source** section above).
 
 
 Known Issues
@@ -75,14 +112,19 @@ not optimized, and (iv) you might experience crashes. Other issues include:
 * There are a few small memory leaks, which will persist until you close
   LabVIEW.
 
+  
+Roadmap
+-------
+See http://github.com/JKSH/LQ-Bindings/wiki/Roadmap
+
 
 Copyright and Licensing
 -----------------------
-Copyright (c) 2018 Sze Howe Koh <<szehowe.koh@gmail.com>>
+Copyright (c) 2019 Sze Howe Koh <<szehowe.koh@gmail.com>>
 
-The LQ Widgets library is published under the Mozilla Public License v2.0 (see
-[LICENSE.MPLv2](LICENSE.MPLv2)), while examples are published under the MIT
-License (see [examples/LICENSE.MIT](examples/LICENSE.MIT)).
+The LQ library is published under the [Mozilla Public License v2.0]
+(LICENSE.MPLv2), while examples are published under the [MIT License]
+(examples/LICENSE.MIT).
 
-LQ Widgets also uses third party software that are licensed under different
-terms. Please see the [3rdparty](3rdparty) folder for details.
+LQ also uses third party software that are licensed under different terms.
+Please see the [3rdparty](3rdparty) folder for details.

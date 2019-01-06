@@ -5,7 +5,7 @@ QWT_PATH      = "C:/Qwt-6.1.3"
 QT     += core_private # For QMetaObjectBuilder only. Do not use other private API.
 QT     += widgets svg winextras
 
-TARGET = LQWidgets
+TARGET = LQ
 TEMPLATE = lib
 
 SOURCES += \
@@ -25,6 +25,9 @@ HEADERS += \
 INCLUDEPATH +=   $${CINTOOLS_PATH}
 LIBS        += -L$${CINTOOLS_PATH}
 LIBS        += -llabviewv -lUser32
+
+target.path = $${PWD}/../../builds/LQ/bin/
+INSTALLS += target
 
 # TODO: Move LQ Extras to its own external library
 include(lqextras/LQExtras.pri)

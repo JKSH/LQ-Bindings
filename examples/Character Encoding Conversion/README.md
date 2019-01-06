@@ -14,8 +14,8 @@ Description
 -----------
 By default, LabVIEW assumes that all textual data is encoded according to your
 system locale. As a result, for example, a Japanese version of LabVIEW cannot
-properly display Thai text. In contrast, LQ Widgets assumes that all textual
-data is encoded in UTF-8, which supports most of the languages in use today.
+properly display Thai text. In contrast, LQ assumes that all textual data is
+encoded in UTF-8, which supports most of the languages in use today.
 
 You can use a text codec to convert text from a non-local encoding to UTF-8,
 and vice-versa.
