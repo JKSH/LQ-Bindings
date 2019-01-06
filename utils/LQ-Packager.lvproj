@@ -70,7 +70,7 @@
 				<Property Name="PKG_buildNumber" Type="Int">0</Property>
 				<Property Name="PKG_buildSpecName" Type="Str">Package</Property>
 				<Property Name="PKG_dependencies.Count" Type="Int">0</Property>
-				<Property Name="PKG_description" Type="Str">LQ (pronounced "Luke") is a set of LabVIEW bindings for the Qt toolkit.</Property>
+				<Property Name="PKG_description" Type="Str">LabVIEW bindings for the Qt toolkit.</Property>
 				<Property Name="PKG_destinations.Count" Type="Int">1</Property>
 				<Property Name="PKG_destinations[0].ID" Type="Str">{DDAEAC64-811C-4D42-8099-D9700AB7BC38}</Property>
 				<Property Name="PKG_destinations[0].Subdir.Directory" Type="Str">LQ</Property>
