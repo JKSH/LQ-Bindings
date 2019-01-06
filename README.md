@@ -122,9 +122,8 @@ Copyright and Licensing
 -----------------------
 Copyright (c) 2019 Sze Howe Koh <<szehowe.koh@gmail.com>>
 
-The LQ library is published under the [Mozilla Public License v2.0]
-(LICENSE.MPLv2), while examples are published under the [MIT License]
-(examples/LICENSE.MIT).
+The LQ library is published under the [Mozilla Public License v2.0](LICENSE.MPLv2),
+while examples are published under the [MIT License](examples/LICENSE.MIT).
 
 LQ also uses third party software that are licensed under different terms.
 Please see the [3rdparty](3rdparty) folder for details.
