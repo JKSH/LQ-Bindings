@@ -1,5 +1,5 @@
-3rd Party Open Source Software
-==============================
+3rd Party Software
+==================
 LQ uses the following 3rd party libraries:
 
 | Software                              | Website           | Licensed under...               |
