@@ -47,7 +47,7 @@ cd %LQ_DEV_ROOT%
 
 
 REM Copy files
-robocopy %LQ_DEV_ROOT%\examples\     %PKG_DATA_DIR%\examples\LQ\ /E
+robocopy %LQ_DEV_ROOT%\examples\     %PKG_DATA_DIR%\examples\ /E
 robocopy %LQ_DEV_ROOT%\3rdparty\     %VI_LIB_DIR%\3rdparty\ /E
 robocopy %LQ_DEV_ROOT%\src\LabVIEW\  %VI_LIB_DIR%\ /E
 COPY     %LQ_DEV_ROOT%\LICENSE.MPLv2 %VI_LIB_DIR%\
