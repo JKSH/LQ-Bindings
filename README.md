@@ -38,9 +38,9 @@ Alternatively, if you don't have NIPM, download the *.zip package instead and
 manually extract its contents to your LabVIEW installation folder (for example,
 C:\Program Files (x86)\National Instruments\LabVIEW 2014\)
 
-To uninstall, open the **Installed** tab in NIPM and uncheck _"Products only"_.
-Then, remove the LQ Add-On package and delete <LABVIEW>\examples\LQ\ and
-<LabVIEW>\vi.lib\addons\LQ\ (the folders might persist after uninstallation).
+To uninstall, open the **Installed** tab and remove the LQ Add-On package. Delete
+<LABVIEW>\examples\LQ\ and <LabVIEW>\vi.lib\addons\LQ\ if necessary (the folders
+might persist after uninstallation).
 
 
 Usage
