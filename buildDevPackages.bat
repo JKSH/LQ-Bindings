@@ -12,6 +12,7 @@ SET PKG_VERSION=0.2.1
 REM ==================================================================================
 
 REM Set absolute paths according to this project's folder structure
+REM TODO: Just use %BUILD_DIR% and manually write Cpp/LQ
 SET LQ_DEV_ROOT=%cd%
 SET BUILD_DIR=%LQ_DEV_ROOT%\builds
 SET OUTPUT_DIR=%BUILD_DIR%\LQ
