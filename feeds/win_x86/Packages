@@ -1,0 +1,126 @@
+﻿Architecture: windows_x64
+CompatibilityVersion: 185002
+Depends: lq-runtime-x86, 9a433e1c-af33-4cd6-861f-dbd7f14b6ff5 (>=14.0.0) | a514e32c-d66f-42e9-b7df-9510a7088716 (>=14.1.0)
+Description: LabVIEW bindings for the Qt toolkit
+  LabVIEW bindings for the Qt toolkit.
+DisplayName: LQ for LabVIEW 2014 (32-bit)
+DisplayVersion: 0.2.1
+Filename: https://dl.dropboxusercontent.com/s/jqm8f8ixrhnnhug/lq-dev-lv2014-x86_0.2.1_windows_x64.nipkg	
+Homepage: https://github.com/JKSH/LQ-Bindings
+Installed-Size: 25900
+MD5sum: 1fc50fcddaaefa70d2729adeb602fcaa
+Maintainer: Sze Howe Koh <szehowe.koh@gmail.com>
+Package: lq-dev-lv2014-x86
+Plugin: file
+Priority: standard
+Section: Add-Ons
+Size: 9972054
+StoreProduct: yes
+UserVisible: yes
+Version: 0.2.1
+
+Architecture: windows_x64
+CompatibilityVersion: 185002
+Depends: lq-runtime-x86, 3017446a-de3a-45b3-a224-e35e85345203 (>=15.0.0) | 3c465d1e-b158-458b-ac9b-2620c3c61499 (>=15.1.0)
+Description: LabVIEW bindings for the Qt toolkit
+  LabVIEW bindings for the Qt toolkit.
+DisplayName: LQ for LabVIEW 2015 (32-bit)
+DisplayVersion: 0.2.1
+Filename: https://dl.dropboxusercontent.com/s/4b56d9at9p48f52/lq-dev-lv2015-x86_0.2.1_windows_x64.nipkg	
+Homepage: https://github.com/JKSH/LQ-Bindings
+Installed-Size: 25900
+MD5sum: 2191cc7fdee6232aa912ce8dba5fffcb
+Maintainer: Sze Howe Koh <szehowe.koh@gmail.com>
+Package: lq-dev-lv2015-x86
+Plugin: file
+Priority: standard
+Section: Add-Ons
+Size: 9972058
+StoreProduct: yes
+UserVisible: yes
+Version: 0.2.1
+
+Architecture: windows_x64
+CompatibilityVersion: 185002
+Depends: lq-runtime-x86, 5fc788ca-5a80-4865-a4a9-a068473a318a (>=16.0.0)
+Description: LabVIEW bindings for the Qt toolkit
+  LabVIEW bindings for the Qt toolkit.
+DisplayName: LQ for LabVIEW 2016 (32-bit)
+DisplayVersion: 0.2.1
+Filename: https://dl.dropboxusercontent.com/s/o9r5eejtomvc8yy/lq-dev-lv2016-x86_0.2.1_windows_x64.nipkg	
+Homepage: https://github.com/JKSH/LQ-Bindings
+Installed-Size: 25900
+MD5sum: a20fbe2a24891a0231657ebcc00f8ff1
+Maintainer: Sze Howe Koh <szehowe.koh@gmail.com>
+Package: lq-dev-lv2016-x86
+Plugin: file
+Priority: standard
+Section: Add-Ons
+Size: 9972036
+StoreProduct: yes
+UserVisible: yes
+Version: 0.2.1
+
+Architecture: windows_x64
+CompatibilityVersion: 185002
+Depends: lq-runtime-x86, aa4b25c0-a1f6-472e-8f76-32e406b7e44d (>=17.0.0) | 7a80ea72-c69d-4740-afbf-326544b9462c (>=17.1.0)
+Description: LabVIEW bindings for the Qt toolkit
+  LabVIEW bindings for the Qt toolkit.
+DisplayName: LQ for LabVIEW 2017 (32-bit)
+DisplayVersion: 0.2.1
+Filename: https://dl.dropboxusercontent.com/s/ergxhyv34699gwk/lq-dev-lv2017-x86_0.2.1_windows_x64.nipkg	
+Homepage: https://github.com/JKSH/LQ-Bindings
+Installed-Size: 25900
+MD5sum: de350f755300ed9c1364925e64111982
+Maintainer: Sze Howe Koh <szehowe.koh@gmail.com>
+Package: lq-dev-lv2017-x86
+Plugin: file
+Priority: standard
+Section: Add-Ons
+Size: 9972052
+StoreProduct: yes
+UserVisible: yes
+Version: 0.2.1
+
+Architecture: windows_x64
+CompatibilityVersion: 185002
+Depends: lq-runtime-x86, ni-labview-2018-core-x86-en
+Description: LabVIEW bindings for the Qt toolkit
+  LabVIEW bindings for the Qt toolkit.
+DisplayName: LQ for LabVIEW 2018 (32-bit)
+DisplayVersion: 0.2.1
+Filename: https://dl.dropboxusercontent.com/s/tazwsckarxanlf2/lq-dev-lv2018-x86_0.2.1_windows_x64.nipkg	
+Homepage: https://github.com/JKSH/LQ-Bindings
+Installed-Size: 25900
+MD5sum: 74183f041c4a67dd2912caa0d9bc615b
+Maintainer: Sze Howe Koh <szehowe.koh@gmail.com>
+Package: lq-dev-lv2018-x86
+Plugin: file
+Priority: standard
+Section: Add-Ons
+Size: 9972010
+StoreProduct: yes
+UserVisible: yes
+Version: 0.2.1
+
+Architecture: windows_x64
+CompatibilityVersion: 185002
+Depends: ni-msvcrt-2015
+Description: Shared libraries for LQ bindings
+  Shared libraries for LQ bindings.
+DisplayName: LQ Shared Runtime (32-bit)
+DisplayVersion: 0.2.1
+Filename: https://dl.dropboxusercontent.com/s/it3e2r3ubx0zit9/lq-runtime-x86_0.2.1_windows_x64.nipkg
+Homepage: https://github.com/JKSH/LQ-Bindings
+Installed-Size: 20046
+MD5sum: acf62e2668444e2e941f4f0103a7c7fb
+Maintainer: Sze Howe Koh <szehowe.koh@gmail.com>
+Package: lq-runtime-x86
+Plugin: file
+Priority: standard
+Section: Runtime
+Size: 8510224
+StoreProduct: yes
+UserVisible: yes
+Version: 0.2.1
+
