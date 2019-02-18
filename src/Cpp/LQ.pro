@@ -26,9 +26,6 @@ INCLUDEPATH +=   $${CINTOOLS_PATH}
 LIBS        += -L$${CINTOOLS_PATH}
 LIBS        += -llabviewv -lUser32
 
-target.path = $${PWD}/../../builds/LQ/bin/
-INSTALLS += target
-
 # TODO: Move LQ Extras to its own external library
 include(lqextras/LQExtras.pri)
 include($${QWT_PATH}/features/qwt.prf)

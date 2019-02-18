@@ -17,9 +17,10 @@ To compile the C++ shared library:
 * Qt 5.10 or newer
 * Qwt 6.1.2 or newer
 
-To build the [NI Package Manager](https://www.ni.com/en-us/support/downloads/ni-package-manager.html)
-(NIPM) package:
+To build the full package:
 * [NI LabVIEW Command Line Interface 18.0](https://www.ni.com/download/labview-command-line-interface-18.0/7545/en/)
+  or newer
+* [NI Package Manager 18.5](http://www.ni.com/en-us/support/downloads/ni-package-manager.html)
   or newer
 * Package Building Support for LabVIEW (installable via NIPM)
 
@@ -34,11 +35,12 @@ Download and run the *.nipkg file from https://github.com/JKSH/LQ-Bindings/relea
 (recommended).
 
 Alternatively, if you don't have NIPM, download the *.zip package instead and
-manually extract its contents to C:\LQ\.
+manually extract its contents to your LabVIEW installation folder (for example,
+C:\Program Files (x86)\National Instruments\LabVIEW 2014\)
 
-To uninstall, open the **Installed** tab in NIPM and uncheck _"Products only"_.
-Then, remove the LQ Add-On package and delete C:\LQ\ (the folder persists after
-uninstallation if new files were created in a subfolder after installation).
+To uninstall, open the **Installed** tab and remove the LQ Add-On package. Delete
+<LABVIEW>\examples\LQ\ and <LabVIEW>\vi.lib\addons\LQ\ if necessary (the folders
+might persist after uninstallation).
 
 
 Usage
@@ -72,7 +74,8 @@ To build the LQ package from scratch:
 2. Install Qt
 3. Build and install Qwt
 4. Install [NI LabVIEW](https://www.ni.com/labview/)
-5. Install [NI LabVIEWCLI](https://www.ni.com/download/labview-command-line-interface-18.0/7545/en/)
+5. Install [NI LabVIEWCLI](https://www.ni.com/download/labview-command-line-interface-18.0/7545/en/),
+   [NIPM](http://www.ni.com/en-us/support/downloads/ni-package-manager.html),
    and Package Building Support for LabVIEW (not needed for LabVIEW 2018 and newer)
 6. Edit the paths at the top of [deployLQ.bat](deployLQ.bat) and [LQ.pro](src/Cpp/LQ.pro)
    if necessary
