@@ -1,6 +1,9 @@
 ---
 layout: page
 title: Quickstart
+redirect_from:
+  - /feeds/
+  - /feeds/win_x86/
 ---
 
 LQ lets LabVIEW programmers create dynamic, flexible, and powerful GUIs by harnessing the Qt

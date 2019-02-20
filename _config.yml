@@ -7,5 +7,7 @@ header_pages:
   - docs/development.md
 theme: minima
 plugins:
+  - jekyll-redirect-from
+  - jekyll-seo-tag
   - jekyll-sitemap
 google_analytics: UA-131500055-3
