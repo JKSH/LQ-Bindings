@@ -1,0 +1,16 @@
+Architecture: windows_x64
+CompatibilityVersion: 185002
+Depends: %PKG_DEPENDENCIES%
+Description: %PKG_DESCRIPTION%
+DisplayName: %PKG_DISPLAY_NAME% (%BITNESS%-bit)
+DisplayVersion: %LQ_VERSION%
+Homepage: https://github.com/JKSH/LQ-Bindings
+Installed-Size: %PKG_SIZE%
+Maintainer: Sze Howe Koh <szehowe.koh@gmail.com>
+Package: %PKG_NAME%
+Plugin: file
+Priority: standard
+Section: %PKG_SECTION%
+StoreProduct: yes
+UserVisible: yes
+Version: %LQ_VERSION%
