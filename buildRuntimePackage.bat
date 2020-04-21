@@ -1,11 +1,12 @@
 REM Ensure that your compiler is found in the PATH (e.g. by calling this script via
-REM the Developer Command Prompt for VS 2017)
+REM the x86 Native Tools Command Prompt for VS 2017)
 
 @ECHO off
 
 REM ==================================================================================
 REM (Edit these parameters before running this script, if necessary)
 REM ----------------------------------------------------------------------------------
+SET BITNESS=32
 SET QT_ROOT=C:\Qt\5.12.0\msvc2017
 SET QWT_ROOT=C:\Qwt-6.1.3
 SET MAKE=nmake
@@ -22,7 +23,13 @@ SET BUILD_DIR=%LQ_DEV_ROOT%\builds
 SET OUTPUT_DIR=%BUILD_DIR%\Runtime
 SET CPP_DIR=%BUILD_DIR%\Cpp
 SET PKG_DIR=%OUTPUT_DIR%\Package
-SET PKG_DATA_DIR=%PKG_DIR%\data\ProgramFiles_32\LQ
+IF %BITNESS%==64 (
+	SET PKG_DATA_DIR=%PKG_DIR%\data\ProgramFiles_64\LQ
+	SET PKG_ARCH=x64
+) else (
+	SET PKG_DATA_DIR=%PKG_DIR%\data\ProgramFiles_32\LQ
+	SET PKG_ARCH=x86
+)
 
 
 REM Reset ERRORLEVEL to 0 before starting
@@ -60,7 +67,7 @@ IF NOT %ERRORLEVEL%==0 GOTO :eof
 
 
 REM Write the package metadata (modelled after the Debian/Opkg format)
-LabVIEWCLI.exe -LabVIEWPath %LV_EXE% -PortNumber %LV_PORT% -OperationName RunVI -VIPath "%LQ_DEV_ROOT%\utils\CLI_Write Nipkg Metadata.vi" --rootdir %PKG_DIR%\ --type runtime --version %PKG_VERSION% --arch x86
+LabVIEWCLI.exe -LabVIEWPath %LV_EXE% -PortNumber %LV_PORT% -OperationName RunVI -VIPath "%LQ_DEV_ROOT%\utils\CLI_Write Nipkg Metadata.vi" --rootdir %PKG_DIR%\ --type runtime --version %PKG_VERSION% --arch %PKG_ARCH%
 IF NOT %ERRORLEVEL%==0 GOTO :eof
 
 REM Build package

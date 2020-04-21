@@ -3,6 +3,7 @@
 REM ==================================================================================
 REM (Edit these parameters before running this script, if necessary)
 REM ----------------------------------------------------------------------------------
+SET BITNESS=32
 SET NIPKG_EXE="C:\Program Files\National Instruments\NI Package Manager\nipkg.exe"
 SET LV_EXE="C:\Program Files (x86)\National Instruments\LabVIEW 2014\LabVIEW.exe"
 SET LV_PORT=3363
@@ -13,11 +14,18 @@ REM ============================================================================
 
 REM Set absolute paths according to this project's folder structure
 REM TODO: Just use %BUILD_DIR% and manually write Cpp/LQ
+IF %BITNESS%==64 (
+	SET PKG_ARCH=x64
+	SET NI_DIR_SUFFIX=DIR64
+) else (
+	SET PKG_ARCH=x86
+	SET NI_DIR_SUFFIX=DIR
+)
 SET LQ_DEV_ROOT=%cd%
 SET BUILD_DIR=%LQ_DEV_ROOT%\builds
 SET OUTPUT_DIR=%BUILD_DIR%\LQ
 SET PKG_DIR=%OUTPUT_DIR%\Package
-SET PKG_DATA_DIR=%PKG_DIR%\data\ni-paths-LV%LV_YEAR_START%DIR
+SET PKG_DATA_DIR=%PKG_DIR%\data\ni-paths-LV%LV_YEAR_START%%NI_DIR_SUFFIX%
 SET VI_LIB_DIR=%PKG_DATA_DIR%\vi.lib\addons\LQ
 
 
@@ -67,7 +75,7 @@ REM ============================================================================
 :packOneVersion
 
 REM Write the package metadata (modelled after the Debian/Opkg format)
-LabVIEWCLI.exe -LabVIEWPath %LV_EXE% -PortNumber %LV_PORT% -OperationName RunVI -VIPath "%LQ_DEV_ROOT%\utils\CLI_Write Nipkg Metadata.vi" --rootdir %PKG_DIR%\ --type dev --year %1 --version %PKG_VERSION% --arch x86
+LabVIEWCLI.exe -LabVIEWPath %LV_EXE% -PortNumber %LV_PORT% -OperationName RunVI -VIPath "%LQ_DEV_ROOT%\utils\CLI_Write Nipkg Metadata.vi" --rootdir %PKG_DIR%\ --type dev --year %1 --version %PKG_VERSION% --arch %PKG_ARCH%
 IF NOT %ERRORLEVEL%==0 GOTO :eof
 
 
@@ -77,9 +85,10 @@ IF NOT %ERRORLEVEL%==0 GOTO :eof
 
 
 REM Prepare for next year
-SET OLD=%PKG_DIR%\data\ni-paths-LV%1DIR
+SET THIS_YEAR=%1
+SET OLD=%PKG_DIR%\data\ni-paths-LV%THIS_YEAR%%NI_DIR_SUFFIX%
 SET /A NEXT_YEAR=%1+1
-SET NEW=%PKG_DIR%\data\ni-paths-LV%NEXT_YEAR%DIR
+SET NEW=%PKG_DIR%\data\ni-paths-LV%NEXT_YEAR%%NI_DIR_SUFFIX%
 MOVE %OLD% %NEW%
 
 EXIT /B
