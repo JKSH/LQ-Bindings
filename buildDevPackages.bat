@@ -1,3 +1,10 @@
+REM Ensure that you have updated the "examples" submodule to the latest version before
+REM running this script.
+REM 
+REM From the command line, run:
+REM     git submodule init
+REM     git submodule update
+
 @ECHO off
 
 REM ==================================================================================
@@ -39,7 +46,7 @@ IF NOT %ERRORLEVEL%==0 GOTO :eof
 
 
 REM Copy files
-robocopy %LQ_DEV_ROOT%\examples\     %PKG_DATA_DIR%\examples\ /E
+robocopy %LQ_DEV_ROOT%\examples\     %PKG_DATA_DIR%\examples\ /E /XD .git /XF .git* README.md *.aliases *.lvlps
 robocopy %LQ_DEV_ROOT%\3rdparty\     %VI_LIB_DIR%\3rdparty\ /E
 robocopy %LQ_DEV_ROOT%\src\LabVIEW\  %VI_LIB_DIR%\ /E
 COPY     %LQ_DEV_ROOT%\LICENSE.MPLv2 %VI_LIB_DIR%\
@@ -47,10 +54,9 @@ COPY     %LQ_DEV_ROOT%\README.md     %VI_LIB_DIR%\
 IF NOT %ERRORLEVEL%==0 GOTO :eof
 
 
-REM Discard unnecessary files (local temporary files, example README files)
+REM Discard local temporary files
 DEL /S %PKG_DIR%\*.aliases
 DEL /S %PKG_DIR%\*.lvlps
-DEL /S %PKG_DATA_DIR%\examples\*README.md
 
 
 REM Un-separate compiled code from source to greatly boost performance for library users
