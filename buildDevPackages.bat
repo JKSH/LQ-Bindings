@@ -1,3 +1,10 @@
+REM Ensure that you have updated the "examples" submodule to the latest version before
+REM running this script.
+REM 
+REM From the command line, run:
+REM     git submodule init
+REM     git submodule update
+
 @ECHO off
 
 REM ==================================================================================
