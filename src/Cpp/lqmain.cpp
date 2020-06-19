@@ -1,5 +1,5 @@
 /*\
- * Copyright (c) 2018 Sze Howe Koh
+ * Copyright (c) 2020 Sze Howe Koh
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -12,56 +12,174 @@
 #include <QThread>
 #include <QDebug>
 
-// STRATEGY: The flag is always false before the GUI event loop is running,
-// and false after the event loop has stopped
+// This mutex prevents simultaneous instances of engine management functions
+// (startWidgetEngine()/stopWidgetEngine())
+static std::mutex mutex_engineApi;
+static std::atomic_bool isThreadAllocated{false};
+
+
+// This flag is write-protected by mutex_engineApi and Synchronizer::mutex_threadSync,
+// but it can be read globally without protection. When true, LabVIEW access is enabled.
 std::atomic_bool isRunning{false};
 
-static void
-run()
+// TODO: Replace std::lock_guard with std::scoped_lock (C++17)?
+class Synchronizer
 {
-	int            argc = 1;
-	QByteArray     argv0("LQWidgets.dll\0");
-	QVector<char*> argv{argv0.data(), nullptr};
+	enum class ThreadState
+	{
+		Idle,
+		Starting,
+		Running,
+		Stopping
+	};
 
-	LQApplication app(argc, argv.data());
-	app.setQuitOnLastWindowClosed(false); // Only quit explicitly when commanded from LabVIEW
-	isRunning = true;
+	ThreadState threadState = ThreadState::Idle;
+	std::condition_variable condition_threadSync;
+	std::mutex mutex_threadSync;
+	std::unique_lock<std::mutex> threadLock{mutex_threadSync, std::defer_lock};
 
-	qDebug() << "Starting Qt event loop in" << QThread::currentThread();
-	app.exec();
+	// The Qt thread needs threadLock to act on condition_threadSync. It must be:
+	//   * locked in fromThread_waitForStart()
+	//   * Remain locked until fromThread_notifyLVAccessEnabled() is called
+	//   * unlocked in fromThread_notifyLVAccessEnabled()
 
-	// Clean up
-	isRunning = false;
-	qDebug("Qt event loop stopped");
+public:
+	void fromApi_notifyStart()
+	{
+		{
+			std::lock_guard<std::mutex> lock(mutex_threadSync);
+			threadState = ThreadState::Starting;
+		}
+		condition_threadSync.notify_one();
+	}
+
+	void fromApi_waitForLVAccessEnabled()
+	{
+		std::unique_lock<std::mutex> lock(mutex_threadSync);
+		condition_threadSync.wait( lock, [this]{return threadState == ThreadState::Running;} );
+	}
+
+	void fromThread_waitForStart()
+	{
+		threadLock.lock();
+		condition_threadSync.wait( threadLock, [this]{return threadState == ThreadState::Starting;} );
+	}
+
+	void fromThread_notifyLVAccessEnabled()
+	{
+		threadState = ThreadState::Running;
+		isRunning = true;
+		threadLock.unlock();
+		condition_threadSync.notify_one();
+	}
+
+	void fromAnywhere_disableLVAccess()
+	{
+		std::lock_guard<std::mutex> lock(mutex_threadSync);
+		isRunning = false;
+		threadState = ThreadState::Stopping;
+	}
+
+	void fromApi_cleanup()
+	{
+		std::lock_guard<std::mutex> lock(mutex_threadSync);
+		threadState = ThreadState::Idle;
+	}
+};
+
+static Synchronizer sync;
+static QByteArray commandLineArgs;
+
+static void
+run(QString pluginDir)
+{
+	QByteArray argv0("LQ");
+	QCoreApplication::addLibraryPath(pluginDir);
+	do
+	{
+		sync.fromThread_waitForStart();
+
+		qDebug() << "Initializing Qt engine. Command line arguments:";
+		qDebug() << "\t" << commandLineArgs;
+
+		// TODO: Handle escaped spaces
+		QByteArrayList tokens;
+		if (!commandLineArgs.isEmpty())
+			tokens = commandLineArgs.split(' ');
+
+		QVector<char*> argv{argv0.data()};
+		for (int i = 0; i < tokens.count(); ++i)
+			argv << tokens[i].data();
+		argv << nullptr;
+
+		int argc = argv.count() - 1;
+
+		LQApplication app(argc, argv.data());
+
+		// NOTE: QCoreApplication consumes the supported args.
+		//       Whatever is left can't be used.
+		if (argc > 1)
+		{
+			qWarning() << "Unsupported arguments:";
+			for (int i = 1; i < argc; ++i)
+				qWarning() << '\t' << argv[i];
+		}
+
+		// Only quit when explicitly commanded from LabVIEW
+		app.setQuitOnLastWindowClosed(false);
+
+		sync.fromThread_notifyLVAccessEnabled();
+
+		// Run the blocking event loop.
+		qDebug() << "Starting Qt event loop in" << QThread::currentThread();
+		app.exec();
+		qDebug("Qt event loop stopped");
+
+		// It is unlikely but not impossible for LabVIEW to trigger a quit without
+		// going through stopEngine(). This line handles the unlikely case.
+		sync.fromAnywhere_disableLVAccess();
+
+	} while (isThreadAllocated);
+	qDebug() << QThread::currentThread() << "stopped";
 }
 
 // TODO: Return version info to protect against mismatched VI-DLL combos
 qint32
-startWidgetEngine(quintptr* _retVal, LStrHandle pluginDir)
+startEngine(quintptr* _retVal, LStrHandle pluginDir, LStrHandle cliArgs)
 {
+	std::lock_guard<std::mutex> outerLock(mutex_engineApi);
+
 	if (isRunning)
 	{
 		*_retVal = 0;
 		return LQ::EngineAlreadyRunningError;
 	}
 
-	QCoreApplication::addLibraryPath( LVString::to<QString>(pluginDir) );
-	std::thread t(&run);
-	t.detach();
+	if (!isThreadAllocated)
+	{
+		std::thread t(&run, LVString::to<QString>(pluginDir));
+		t.detach();
+		isThreadAllocated = true;
+	}
 
-	// Block until the engine has been initialized
-	while (!isRunning)
-		std::this_thread::sleep_for(std::chrono::milliseconds(20));
+	commandLineArgs = LVString::to<QByteArray>(cliArgs).simplified();
+	sync.fromApi_notifyStart();
+	sync.fromApi_waitForLVAccessEnabled();
 
 	*_retVal = (quintptr)qApp;
 	return LQ::NoError;
 }
 
 qint32
-stopWidgetEngine()
+stopEngine(bool* preserveThread)
 {
+	std::lock_guard<std::mutex> outerLock(mutex_engineApi);
+
 	if (!isRunning)
 		return LQ::EngineNotRunningError;
+
+	isThreadAllocated = *preserveThread;
+	sync.fromAnywhere_disableLVAccess();
 
 	// LQApplication::killWidgets() sends a QDeferredDeleteEvent to all remaining
 	// widgets. These events can only be processed while the event loop is running.
@@ -70,6 +188,8 @@ stopWidgetEngine()
 
 	// Wait for QCoreApplication::quit() to finish before returning control to LabVIEW
 	QMetaObject::invokeMethod(qApp, "quit", Qt::BlockingQueuedConnection);
+
+	sync.fromApi_cleanup();
 	return LQ::NoError;
 }
 

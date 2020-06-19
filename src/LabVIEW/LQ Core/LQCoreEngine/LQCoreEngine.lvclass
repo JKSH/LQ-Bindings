@@ -341,8 +341,17 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1082929680</Property>
 	</Item>
+	<Item Name="Resource Retention Policy.ctl" Type="VI" URL="../Resource Retention Policy.ctl">
+		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">&amp;!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!!-!!!!!1!%!!!!!1!!!!!!!!</Property>
+		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
+		<Property Name="NI.ClassItem.Flags" Type="Int">4194304</Property>
+		<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
+		<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
+		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
+		<Property Name="NI.ClassItem.State" Type="Int">1074541056</Property>
+	</Item>
 	<Item Name="Start Engine.vi" Type="VI" URL="../Start Engine.vi">
-		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">&amp;!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!%U!!!!#1!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AF&amp;=H*P=C"0&gt;81!"!!!!$J!=!!?!!!E$5R2)%.P=G5O&lt;(:M;7)54&amp;&amp;$&lt;X*F27ZH;7ZF,GRW9WRB=X-!!!J/:8=A27ZH;7ZF!!![1(!!(A!!*!V-53"$&lt;X*F,GRW&lt;'FC&amp;%R21W^S:56O:WFO:3ZM&gt;G.M98.T!!!,27ZH;7ZF)&amp;2Z='5!&amp;E"1!!-!!!!"!!))28*S&lt;X)A37Y!!'%!]!!-!!-!"!!%!!5!"!!%!!1!"A!(!!1!"!!%!Q!!?!!!#1!!!!!!!!!!!!!!$1=!!!!!!!!!!!!!!!!!!!I!!!!+!!!!!!!!!!!!!!!!!!!.!!!!#!!!!!!!!!!!!!!"!!A!!!!!</Property>
+		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">&amp;!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!&amp;5!!!!#A!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AF&amp;=H*P=C"0&gt;81!"!!!!$J!=!!?!!!E$5R2)%.P=G5O&lt;(:M;7)54&amp;&amp;$&lt;X*F27ZH;7ZF,GRW9WRB=X-!!!J/:8=A27ZH;7ZF!!![1(!!(A!!*!V-53"$&lt;X*F,GRW&lt;'FC&amp;%R21W^S:56O:WFO:3ZM&gt;G.M98.T!!!,27ZH;7ZF)&amp;2Z='5!&amp;E"1!!-!!!!"!!))28*S&lt;X)A37Y!!#"!-0````]71W^N&lt;7&amp;O:#"-;7ZF)%&amp;S:X-A+#)C+1!!91$Q!!Q!!Q!%!!1!"1!%!!1!"!!'!!=!"!!)!!1$!!"Y!!!*!!!!!!!!!!!!!!!."Q!!!!!!!!!!!!!!!!!!#A!!!!I!!!!!!!!"#A!!!!!!!!U!!!!)!!!!!!!!!!!!!!%!#1!!!!!</Property>
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 		<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
 		<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
@@ -351,12 +360,12 @@
 		<Property Name="NI.ClassItem.State" Type="Int">1350574608</Property>
 	</Item>
 	<Item Name="Stop Engine.vi" Type="VI" URL="../Stop Engine.vi">
-		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">&amp;!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!$P!!!!#!!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AF&amp;=H*P=C"0&gt;81!"!!!!":!5!!$!!!!!1!##%6S=G^S)%FO!!!]1(!!(A!!*!V-53"$&lt;X*F,GRW&lt;'FC&amp;%R21W^S:56O:WFO:3ZM&gt;G.M98.T!!!-4&amp;&amp;$&lt;X*F27ZH;7ZF!!"5!0!!$!!$!!1!"!!%!!1!"!!%!!1!"1!%!!1!"A-!!(A!!!U)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#A!!!!!!!!!!!!!!%!!!!!!"!!=!!!!!</Property>
+		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">&amp;!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!':!!!!#1!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AF&amp;=H*P=C"0&gt;81!"!!!!":!5!!$!!!!!1!##%6S=G^S)%FO!!#K!0%!!!!!!!!!!QV-53"$&lt;X*F,GRW&lt;'FC&amp;%R21W^S:56O:WFO:3ZM&gt;G.M98.T(6*F=W^V=G.F)&amp;*F&gt;'6O&gt;'FP&lt;C"1&lt;WRJ9XEO9X2M!'&amp;!&amp;A!$#5&amp;V&gt;'^N982J9R*1=G6T:8*W:3"3:8.P&gt;8*D:8-25G6M:7&amp;T:3"3:8.P&gt;8*D:8-!!#63:8.P&gt;8*D:3"3:82F&lt;H2J&lt;WYA5'^M;7.Z)#B"&gt;82P&lt;7&amp;U;7-J!$R!=!!?!!!E$5R2)%.P=G5O&lt;(:M;7)54&amp;&amp;$&lt;X*F27ZH;7ZF,GRW9WRB=X-!!!R-55.P=G6&amp;&lt;G&gt;J&lt;G5!!&amp;1!]!!-!!-!"!!%!!1!"!!%!!1!"!!&amp;!!1!"A!(!Q!!?!!!$1A!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!+!!!!!!!!!!A!!!!1!!!!!!%!#!!!!!!</Property>
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 		<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
 		<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
 		<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
-		<Property Name="NI.ClassItem.State" Type="Int">1082139152</Property>
+		<Property Name="NI.ClassItem.State" Type="Int">1350574608</Property>
 	</Item>
 </LVClass>
