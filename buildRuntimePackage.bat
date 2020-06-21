@@ -7,31 +7,49 @@ REM ============================================================================
 REM (Edit these parameters before running this script, if necessary)
 REM ----------------------------------------------------------------------------------
 SET BITNESS=32
-SET QT_ROOT=C:\Qt\5.12.0\msvc2017
-SET QWT_ROOT=C:\Qwt-6.1.3
+SET QT_ROOT_32=C:\Qt\5.12.9\msvc2017
+SET QWT_ROOT_32=C:\Qwt\Qwt-6.1.4_x86
+SET QT_ROOT_64=C:\Qt\5.12.9\msvc2017_64
+SET QWT_ROOT_64=C:\Qwt\Qwt-6.1.4_x64
 SET MAKE=nmake
 SET NIPKG_EXE="C:\Program Files\National Instruments\NI Package Manager\nipkg.exe"
 SET LV_EXE="C:\Program Files (x86)\National Instruments\LabVIEW 2014\LabVIEW.exe"
 SET LV_PORT=3363
-SET PKG_VERSION=0.2.1
+SET PKG_VERSION=0.2.2
 REM ==================================================================================
 
 REM Set absolute paths according to this project's folder structure
-REM TODO: Just use %BUILD_DIR% and manually write Cpp/LQ
 SET LQ_DEV_ROOT=%cd%
 SET BUILD_DIR=%LQ_DEV_ROOT%\builds
 SET OUTPUT_DIR=%BUILD_DIR%\Runtime
-SET CPP_DIR=%BUILD_DIR%\Cpp
 SET PKG_DIR=%OUTPUT_DIR%\Package
-IF %BITNESS%==64 (
+IF "%~1"=="64" (
+	SET QT_ROOT=%QT_ROOT_64%
+	SET QWT_ROOT=%QWT_ROOT_64%
+	SET CPP_DIR=%BUILD_DIR%\Cpp_x64
 	SET PKG_DATA_DIR=%PKG_DIR%\data\ProgramFiles_64\LQ
 	SET PKG_ARCH=x64
-) else (
+
+	GOTO :startBuild
+)
+IF "%~1"=="32" (
+	SET QT_ROOT=%QT_ROOT_32%
+	SET QWT_ROOT=%QWT_ROOT_32%
+	SET CPP_DIR=%BUILD_DIR%\Cpp_x86
 	SET PKG_DATA_DIR=%PKG_DIR%\data\ProgramFiles_32\LQ
 	SET PKG_ARCH=x86
+
+	GOTO :startBuild
 )
 
+REM Print instructions and terminate
+ECHO Usage: %0 bitness
+ECHO   where bitness is "32" or "64"
 
+GOTO :eof
+
+
+:startBuild
 REM Reset ERRORLEVEL to 0 before starting
 ver > nul
 
