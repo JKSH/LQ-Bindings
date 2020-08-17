@@ -10,9 +10,10 @@ SET QT_ROOT_32=C:\Qt\5.12.9\msvc2017
 SET QWT_ROOT_32=C:\Qwt\Qwt-6.1.4_x86
 SET QT_ROOT_64=C:\Qt\5.12.9\msvc2017_64
 SET QWT_ROOT_64=C:\Qwt\Qwt-6.1.4_x64
+SET LV_DIR_32=C:\Program Files (x86)\National Instruments\LabVIEW 2014
+SET LV_DIR_64=C:\Program Files\National Instruments\LabVIEW 2014
 SET MAKE=nmake
 SET NIPKG_EXE="C:\Program Files\National Instruments\NI Package Manager\nipkg.exe"
-SET LV_EXE="C:\Program Files (x86)\National Instruments\LabVIEW 2014\LabVIEW.exe"
 SET LV_PORT=3363
 SET PKG_VERSION=0.2.2
 REM ==================================================================================
@@ -25,6 +26,7 @@ SET PKG_DIR=%OUTPUT_DIR%\Package
 SET PKG_ARCH=%~1
 SET CPP_DIR=%BUILD_DIR%\Cpp_%PKG_ARCH%
 IF %PKG_ARCH%==x64 (
+	SET "LV_DIR=%LV_DIR_64%"
 	SET QT_ROOT=%QT_ROOT_64%
 	SET QWT_ROOT=%QWT_ROOT_64%
 	SET PKG_DATA_DIR=%PKG_DIR%\data\ProgramFiles_64\LQ
@@ -32,6 +34,7 @@ IF %PKG_ARCH%==x64 (
 	GOTO :startBuild
 )
 IF %PKG_ARCH%==x86 (
+	SET "LV_DIR=%LV_DIR_32%"
 	SET QT_ROOT=%QT_ROOT_32%
 	SET QWT_ROOT=%QWT_ROOT_32%
 	SET PKG_DATA_DIR=%PKG_DIR%\data\ProgramFiles_32\LQ
@@ -82,7 +85,7 @@ IF NOT %ERRORLEVEL%==0 GOTO :eof
 
 
 REM Write the package metadata (modelled after the Debian/Opkg format)
-LabVIEWCLI.exe -LabVIEWPath %LV_EXE% -PortNumber %LV_PORT% -OperationName RunVI -VIPath "%LQ_DEV_ROOT%\utils\CLI_Write Nipkg Metadata.vi" --rootdir %PKG_DIR%\ --type runtime --version %PKG_VERSION% --arch %PKG_ARCH%
+LabVIEWCLI.exe -LabVIEWPath "%LV_DIR%\LabVIEW.exe" -PortNumber %LV_PORT% -OperationName RunVI -VIPath "%LQ_DEV_ROOT%\utils\CLI_Write Nipkg Metadata.vi" --rootdir "%PKG_DIR%" --type runtime --version %PKG_VERSION% --arch %PKG_ARCH%
 IF NOT %ERRORLEVEL%==0 GOTO :eof
 
 REM Build package
