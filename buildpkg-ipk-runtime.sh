@@ -3,9 +3,9 @@
 # ==================================================================================
 # (Edit these parameters before running this script, if necessary)
 # ----------------------------------------------------------------------------------
+LV_ROOT="/usr/local/natinst/LabVIEW-2014"
 QT_ROOT="/home/lvuser/Qt5.12.9/5.12.9/gcc_64"
 QWT_ROOT="/usr/local/qwt-6.1.4"
-LV_DIR="/usr/local/natinst/LabVIEW-2014"
 PKG_VERSION="0.2.2"
 # ==================================================================================
 
@@ -33,7 +33,7 @@ test $? -eq 0 || exit $?
 
 
 # Build the LQ shared library
-"$QT_ROOT"/bin/qmake "$LQ_DEV_ROOT"/src/Cpp/ CINTOOLS_PATH="$LV_DIR"/cintools/ QWT_PATH="$QWT_ROOT" && make
+"$QT_ROOT"/bin/qmake "$LQ_DEV_ROOT"/src/Cpp/ CINTOOLS_PATH="$LV_ROOT"/cintools/ QWT_PATH="$QWT_ROOT" VERSION="$PKG_VERSION" && make
 test $? -eq 0 || exit $?
 
 

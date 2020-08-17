@@ -6,14 +6,14 @@ REM the x86 Native Tools Command Prompt for VS 2017)
 REM ==================================================================================
 REM (Edit these parameters before running this script, if necessary)
 REM ----------------------------------------------------------------------------------
-SET BITNESS=32
 SET QT_ROOT_32=C:\Qt\5.12.9\msvc2017
 SET QWT_ROOT_32=C:\Qwt\Qwt-6.1.4_x86
 SET QT_ROOT_64=C:\Qt\5.12.9\msvc2017_64
 SET QWT_ROOT_64=C:\Qwt\Qwt-6.1.4_x64
+SET LV_ROOT_32=C:\Program Files (x86)\National Instruments\LabVIEW 2014
+SET LV_ROOT_64=C:\Program Files\National Instruments\LabVIEW 2014
 SET MAKE=nmake
 SET NIPKG_EXE="C:\Program Files\National Instruments\NI Package Manager\nipkg.exe"
-SET LV_EXE="C:\Program Files (x86)\National Instruments\LabVIEW 2014\LabVIEW.exe"
 SET LV_PORT=3363
 SET PKG_VERSION=0.2.2
 REM ==================================================================================
@@ -23,28 +23,28 @@ SET LQ_DEV_ROOT=%cd%
 SET BUILD_DIR=%LQ_DEV_ROOT%\builds
 SET OUTPUT_DIR=%BUILD_DIR%\Runtime
 SET PKG_DIR=%OUTPUT_DIR%\Package
-IF "%~1"=="64" (
+SET PKG_ARCH=%~1
+SET CPP_DIR=%BUILD_DIR%\Cpp_%PKG_ARCH%
+IF %PKG_ARCH%==x64 (
+	SET "LV_ROOT=%LV_ROOT_64%"
 	SET QT_ROOT=%QT_ROOT_64%
 	SET QWT_ROOT=%QWT_ROOT_64%
-	SET CPP_DIR=%BUILD_DIR%\Cpp_x64
 	SET PKG_DATA_DIR=%PKG_DIR%\data\ProgramFiles_64\LQ
-	SET PKG_ARCH=x64
 
 	GOTO :startBuild
 )
-IF "%~1"=="32" (
+IF %PKG_ARCH%==x86 (
+	SET "LV_ROOT=%LV_ROOT_32%"
 	SET QT_ROOT=%QT_ROOT_32%
 	SET QWT_ROOT=%QWT_ROOT_32%
-	SET CPP_DIR=%BUILD_DIR%\Cpp_x86
 	SET PKG_DATA_DIR=%PKG_DIR%\data\ProgramFiles_32\LQ
-	SET PKG_ARCH=x86
 
 	GOTO :startBuild
 )
 
 REM Print instructions and terminate
-ECHO Usage: %0 bitness
-ECHO   where bitness is "32" or "64"
+ECHO Usage: %0 arch
+ECHO   where arch is "x86" or "x64"
 
 GOTO :eof
 
@@ -66,8 +66,7 @@ IF NOT %ERRORLEVEL%==0 GOTO :eof
 
 
 REM Build LQ shared library
-%QT_ROOT%\bin\qmake.exe %LQ_DEV_ROOT%\src\Cpp\
-%MAKE%
+%QT_ROOT%\bin\qmake.exe %LQ_DEV_ROOT%\src\Cpp\ "CINTOOLS_PATH=%LV_ROOT%\cintools" "QWT_PATH=%QWT_ROOT%" && %MAKE%
 IF NOT %ERRORLEVEL%==0 ( cd %LQ_DEV_ROOT% && EXIT /B -1 )
 cd %LQ_DEV_ROOT%
 
@@ -85,7 +84,7 @@ IF NOT %ERRORLEVEL%==0 GOTO :eof
 
 
 REM Write the package metadata (modelled after the Debian/Opkg format)
-LabVIEWCLI.exe -LabVIEWPath %LV_EXE% -PortNumber %LV_PORT% -OperationName RunVI -VIPath "%LQ_DEV_ROOT%\utils\CLI_Write Nipkg Metadata.vi" --rootdir %PKG_DIR%\ --type runtime --version %PKG_VERSION% --arch %PKG_ARCH%
+LabVIEWCLI.exe -LabVIEWPath "%LV_ROOT%\LabVIEW.exe" -PortNumber %LV_PORT% -OperationName RunVI -VIPath "%LQ_DEV_ROOT%\utils\CLI_Write Nipkg Metadata.vi" --rootdir "%PKG_DIR%" --type runtime --version %PKG_VERSION% --arch %PKG_ARCH%
 IF NOT %ERRORLEVEL%==0 GOTO :eof
 
 REM Build package
