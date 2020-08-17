@@ -23,28 +23,26 @@ SET LQ_DEV_ROOT=%cd%
 SET BUILD_DIR=%LQ_DEV_ROOT%\builds
 SET OUTPUT_DIR=%BUILD_DIR%\Runtime
 SET PKG_DIR=%OUTPUT_DIR%\Package
-IF "%~1"=="64" (
+SET PKG_ARCH=%~1
+SET CPP_DIR=%BUILD_DIR%\Cpp_%PKG_ARCH%
+IF %PKG_ARCH%==x64 (
 	SET QT_ROOT=%QT_ROOT_64%
 	SET QWT_ROOT=%QWT_ROOT_64%
-	SET CPP_DIR=%BUILD_DIR%\Cpp_x64
 	SET PKG_DATA_DIR=%PKG_DIR%\data\ProgramFiles_64\LQ
-	SET PKG_ARCH=x64
 
 	GOTO :startBuild
 )
-IF "%~1"=="32" (
+IF %PKG_ARCH%==x86 (
 	SET QT_ROOT=%QT_ROOT_32%
 	SET QWT_ROOT=%QWT_ROOT_32%
-	SET CPP_DIR=%BUILD_DIR%\Cpp_x86
 	SET PKG_DATA_DIR=%PKG_DIR%\data\ProgramFiles_32\LQ
-	SET PKG_ARCH=x86
 
 	GOTO :startBuild
 )
 
 REM Print instructions and terminate
-ECHO Usage: %0 bitness
-ECHO   where bitness is "32" or "64"
+ECHO Usage: %0 arch
+ECHO   where arch is "x86" or "x64"
 
 GOTO :eof
 
