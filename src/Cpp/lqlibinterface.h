@@ -1,5 +1,5 @@
 /*\
- * Copyright (c) 2016 Sze Howe Koh
+ * Copyright (c) 2020 Sze Howe Koh
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -765,6 +765,7 @@ extern qint32 Q_DECL_EXPORT QDoubleSpinBox_textFromValue(LStrHandle _retVal, qui
 extern qint32 Q_DECL_EXPORT QDoubleSpinBox_setValue(quintptr _instance, double val);
 extern qint32 Q_DECL_EXPORT QSvgWidget_QSvgWidget(quintptr* _retVal, const char* _className, LStrHandle file);
 extern qint32 Q_DECL_EXPORT QSvgWidget_load(quintptr _instance, LStrHandle contents);
+#ifdef Q_OS_WIN
 extern qint32 Q_DECL_EXPORT QWinJumpListCategory_QWinJumpListCategory(quintptr* _retVal, LStrHandle title);
 extern qint32 Q_DECL_EXPORT QWinJumpListCategory_type(int32* _retVal, quintptr _instance);
 extern qint32 Q_DECL_EXPORT QWinJumpListCategory_isVisible(bool* _retVal, quintptr _instance);
@@ -857,6 +858,7 @@ extern qint32 Q_DECL_EXPORT QWinThumbnailToolButton_dismissOnClick(bool* _retVal
 extern qint32 Q_DECL_EXPORT QWinThumbnailToolButton_setFlat(quintptr _instance, bool* flat);
 extern qint32 Q_DECL_EXPORT QWinThumbnailToolButton_isFlat(bool* _retVal, quintptr _instance);
 extern qint32 Q_DECL_EXPORT QWinThumbnailToolButton_click(quintptr _instance);
+#endif // Q_OS_WIN
 extern qint32 Q_DECL_EXPORT QwtAbstractScale_setScale(quintptr _instance, double lowerBound, double upperBound);
 extern qint32 Q_DECL_EXPORT QwtAbstractScale_setLowerBound(quintptr _instance, double value);
 extern qint32 Q_DECL_EXPORT QwtAbstractScale_lowerBound(double* _retVal, quintptr _instance);

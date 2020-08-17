@@ -6,11 +6,11 @@ REM     git submodule init
 REM     git submodule update
 
 @ECHO off
+SETLOCAL EnableDelayedExpansion
 
 REM ==================================================================================
 REM (Edit these parameters before running this script, if necessary)
 REM ----------------------------------------------------------------------------------
-SET BITNESS=32
 SET NIPKG_EXE="C:\Program Files\National Instruments\NI Package Manager\nipkg.exe"
 SET LV_EXE="C:\Program Files (x86)\National Instruments\LabVIEW 2014\LabVIEW.exe"
 SET LV_PORT=3363
@@ -20,20 +20,13 @@ SET PKG_VERSION=0.2.1
 REM ==================================================================================
 
 REM Set absolute paths according to this project's folder structure
-REM TODO: Just use %BUILD_DIR% and manually write Cpp/LQ
-IF %BITNESS%==64 (
-	SET PKG_ARCH=x64
-	SET NI_DIR_SUFFIX=DIR64
-) else (
-	SET PKG_ARCH=x86
-	SET NI_DIR_SUFFIX=DIR
-)
 SET LQ_DEV_ROOT=%cd%
 SET BUILD_DIR=%LQ_DEV_ROOT%\builds
 SET OUTPUT_DIR=%BUILD_DIR%\LQ
 SET PKG_DIR=%OUTPUT_DIR%\Package
-SET PKG_DATA_DIR=%PKG_DIR%\data\ni-paths-LV%LV_YEAR_START%%NI_DIR_SUFFIX%
-SET VI_LIB_DIR=%PKG_DATA_DIR%\vi.lib\addons\LQ
+
+REM Start with 32-bit specific paths
+CALL :setBitness 32
 
 
 REM Reset ERRORLEVEL to 0 before starting
@@ -64,15 +57,45 @@ LabVIEWCLI.exe -LabVIEWPath %LV_EXE% -PortNumber %LV_PORT% -OperationName RunVI 
 IF NOT %ERRORLEVEL%==0 GOTO :eof
 
 
-REM Build a package for each LabVIEW version
+REM Build a package for each LabVIEW version for one particular bitness
+:createBitnessPackages
 FOR /L %%Y IN (%LV_YEAR_START%,1,%LV_YEAR_END%) DO (
 	CALL :packOneVersion %%Y
 	IF NOT %ERRORLEVEL%==0 GOTO :eof
 )
 
 
+REM When 32-bit packages are done, repeat for 64-bit packages
+IF %BITNESS%==32 (
+	CALL :setBitness 64
+	MOVE !NEW! !PKG_DATA_DIR!
+	IF NOT !ERRORLEVEL!==0 GOTO :eof
+	
+	GOTO :createBitnessPackages
+)
+
 ECHO Done. The output files are in %OUTPUT_DIR%.
 GOTO :eof
+
+
+REM ==================================================================================
+REM Subroutine for setting bitness-specific variables
+REM ==================================================================================
+:setBitness
+
+IF %1==64 (
+	SET BITNESS=64
+	SET PKG_ARCH=x64
+	SET NI_DIR_SUFFIX=DIR64
+) else (
+	SET BITNESS=32
+	SET PKG_ARCH=x86
+	SET NI_DIR_SUFFIX=DIR
+)
+SET PKG_DATA_DIR=%PKG_DIR%\data\ni-paths-LV%LV_YEAR_START%%NI_DIR_SUFFIX%
+SET VI_LIB_DIR=%PKG_DATA_DIR%\vi.lib\addons\LQ
+
+EXIT /B
 
 
 REM ==================================================================================

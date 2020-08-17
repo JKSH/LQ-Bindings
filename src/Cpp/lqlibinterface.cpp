@@ -1,5 +1,5 @@
 /*\
- * Copyright (c) 2018 Sze Howe Koh
+ * Copyright (c) 2020 Sze Howe Koh
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -13,7 +13,9 @@
 #include <qwt_slider.h>
 #include <QtWidgets>
 #include <QtSvg>
-#include <QtWinExtras>
+#ifdef Q_OS_WIN
+#  include <QtWinExtras>
+#endif
 
 static qint32
 lqInvoke(std::function<void()> func)
@@ -7522,6 +7524,7 @@ QSvgWidget_load(quintptr _instance, LStrHandle contents)
 	});
 }
 
+#ifdef Q_OS_WIN
 qint32
 QWinJumpListCategory_QWinJumpListCategory(quintptr* _retVal, LStrHandle title)
 {
@@ -8450,6 +8453,7 @@ QWinThumbnailToolButton_click(quintptr _instance)
 		instance->click();
 	});
 }
+#endif // Q_OS_WIN
 
 qint32
 QwtAbstractScale_setScale(quintptr _instance, double lowerBound, double upperBound)
