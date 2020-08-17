@@ -6,7 +6,6 @@ REM the x86 Native Tools Command Prompt for VS 2017)
 REM ==================================================================================
 REM (Edit these parameters before running this script, if necessary)
 REM ----------------------------------------------------------------------------------
-SET BITNESS=32
 SET QT_ROOT_32=C:\Qt\5.12.9\msvc2017
 SET QWT_ROOT_32=C:\Qwt\Qwt-6.1.4_x86
 SET QT_ROOT_64=C:\Qt\5.12.9\msvc2017_64
