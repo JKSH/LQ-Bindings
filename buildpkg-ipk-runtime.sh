@@ -33,7 +33,7 @@ test $? -eq 0 || exit $?
 
 
 # Build the LQ shared library
-"$QT_ROOT"/bin/qmake "$LQ_DEV_ROOT"/src/Cpp/ CINTOOLS_PATH="$LV_ROOT"/cintools/ QWT_PATH="$QWT_ROOT" && make
+"$QT_ROOT"/bin/qmake "$LQ_DEV_ROOT"/src/Cpp/ CINTOOLS_PATH="$LV_ROOT"/cintools/ QWT_PATH="$QWT_ROOT" VERSION="$PKG_VERSION" && make
 test $? -eq 0 || exit $?
 
 

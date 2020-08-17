@@ -66,8 +66,7 @@ IF NOT %ERRORLEVEL%==0 GOTO :eof
 
 
 REM Build LQ shared library
-%QT_ROOT%\bin\qmake.exe %LQ_DEV_ROOT%\src\Cpp\
-%MAKE%
+%QT_ROOT%\bin\qmake.exe %LQ_DEV_ROOT%\src\Cpp\ "CINTOOLS_PATH=%LV_ROOT%\cintools" "QWT_PATH=%QWT_ROOT%" && %MAKE%
 IF NOT %ERRORLEVEL%==0 ( cd %LQ_DEV_ROOT% && EXIT /B -1 )
 cd %LQ_DEV_ROOT%
 
