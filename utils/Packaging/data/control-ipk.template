@@ -1,0 +1,14 @@
+Package: %PKG_NAME%
+Version: %LQ_VERSION%
+Description: %PKG_DESCRIPTION%
+Section: %PKG_SECTION%
+Priority: optional
+Maintainer: Sze Howe Koh <szehowe.koh@gmail.com>
+License: MPL-2.0 & LGPL-3.0 & QWTv1.0
+Architecture: %PKG_ARCH%
+Installed-Size: %PKG_SIZE%
+Homepage: https://jksh.github.io/LQ-Bindings/
+Depends: %PKG_DEPENDENCIES%
+DisplayName: %PKG_DISPLAY_NAME%
+DisplayVersion: %LQ_VERSION%
+UserVisible: yes
