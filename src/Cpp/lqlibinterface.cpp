@@ -176,6 +176,77 @@ QGuiApplication_windowIcon(LStrHandle _retVal, quintptr _instance)
 }
 
 qint32
+QGuiApplication_primaryScreen(quintptr* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QGuiApplication*>(_instance);
+		auto retVal = instance->primaryScreen();
+		*_retVal = reinterpret_cast<quintptr>(retVal);
+	});
+}
+
+qint32
+QGuiApplication_screens(LVArray<quintptr>** _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QGuiApplication*>(_instance);
+		_retVal << instance->screens();
+	});
+}
+
+qint32
+QGuiApplication_font(LStrHandle _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QGuiApplication*>(_instance);
+		_retVal << instance->font();
+	});
+}
+
+qint32
+QGuiApplication_setFont(quintptr _instance, LStrHandle font)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QGuiApplication*>(_instance);
+		instance->setFont(deserialize<QFont>(font));
+	});
+}
+
+qint32
+QGuiApplication_setLayoutDirection(quintptr _instance, int32 direction)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QGuiApplication*>(_instance);
+		instance->setLayoutDirection(static_cast<Qt::LayoutDirection>(direction));
+	});
+}
+
+qint32
+QGuiApplication_layoutDirection(int32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QGuiApplication*>(_instance);
+		*_retVal = instance->layoutDirection();
+	});
+}
+
+qint32
+QGuiApplication_applicationState(int32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QGuiApplication*>(_instance);
+		*_retVal = instance->applicationState();
+	});
+}
+
+qint32
 QScreen_name(LStrHandle _retVal, quintptr _instance)
 {
 	return lqInvoke(_instance, [=]
@@ -563,6 +634,16 @@ QWindow_frameGeometry(QRect* _retVal, quintptr _instance)
 	{
 		auto instance = reinterpret_cast<QWindow*>(_instance);
 		*_retVal = instance->frameGeometry();
+	});
+}
+
+qint32
+QWindow_size(QSize* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QWindow*>(_instance);
+		*_retVal = instance->size();
 	});
 }
 

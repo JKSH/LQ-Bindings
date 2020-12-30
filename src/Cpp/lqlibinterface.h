@@ -32,6 +32,13 @@ extern qint32 Q_DECL_EXPORT QCoreApplication_setApplicationName(quintptr _instan
 extern qint32 Q_DECL_EXPORT QCoreApplication_applicationName(LStrHandle _retVal, quintptr _instance);
 extern qint32 Q_DECL_EXPORT QGuiApplication_setWindowIcon(quintptr _instance, LStrHandle icon);
 extern qint32 Q_DECL_EXPORT QGuiApplication_windowIcon(LStrHandle _retVal, quintptr _instance);
+extern qint32 Q_DECL_EXPORT QGuiApplication_primaryScreen(quintptr* _retVal, quintptr _instance);
+extern qint32 Q_DECL_EXPORT QGuiApplication_screens(LVArray<quintptr>** _retVal, quintptr _instance);
+extern qint32 Q_DECL_EXPORT QGuiApplication_font(LStrHandle _retVal, quintptr _instance);
+extern qint32 Q_DECL_EXPORT QGuiApplication_setFont(quintptr _instance, LStrHandle font);
+extern qint32 Q_DECL_EXPORT QGuiApplication_setLayoutDirection(quintptr _instance, int32 direction);
+extern qint32 Q_DECL_EXPORT QGuiApplication_layoutDirection(int32* _retVal, quintptr _instance);
+extern qint32 Q_DECL_EXPORT QGuiApplication_applicationState(int32* _retVal, quintptr _instance);
 extern qint32 Q_DECL_EXPORT QScreen_name(LStrHandle _retVal, quintptr _instance);
 extern qint32 Q_DECL_EXPORT QScreen_depth(qint32* _retVal, quintptr _instance);
 extern qint32 Q_DECL_EXPORT QScreen_geometry(QRect* _retVal, quintptr _instance);
@@ -71,6 +78,7 @@ extern qint32 Q_DECL_EXPORT QWindow_setSizeIncrement(quintptr _instance, QSize* 
 extern qint32 Q_DECL_EXPORT QWindow_setGeometry(quintptr _instance, QRect* rect);
 extern qint32 Q_DECL_EXPORT QWindow_geometry(QRect* _retVal, quintptr _instance);
 extern qint32 Q_DECL_EXPORT QWindow_frameGeometry(QRect* _retVal, quintptr _instance);
+extern qint32 Q_DECL_EXPORT QWindow_size(QSize* _retVal, quintptr _instance);
 extern qint32 Q_DECL_EXPORT QWindow_resize(quintptr _instance, QSize* newSize);
 extern qint32 Q_DECL_EXPORT QWindow_setIcon(quintptr _instance, LStrHandle icon);
 extern qint32 Q_DECL_EXPORT QWindow_icon(LStrHandle _retVal, quintptr _instance);
