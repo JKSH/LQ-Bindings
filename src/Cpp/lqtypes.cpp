@@ -1,5 +1,5 @@
 /*\
- * Copyright (c) 2018 Sze Howe Koh
+ * Copyright (c) 2021 Sze Howe Koh
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -7,8 +7,6 @@
 \*/
 
 #include "lqtypes.h"
-
-static const size_t lStrHeaderSize = 4;
 
 void
 operator<<(LStrHandle dest, const QByteArray& src)
@@ -19,14 +17,6 @@ operator<<(LStrHandle dest, const QByteArray& src)
 		(*dest)->cnt = src.length();
 		std::copy(src.constBegin(), src.constEnd(), (*dest)->str);
 	}
-}
-
-LStrHandle
-newLStr(const QByteArray& bytes)
-{
-	auto lStr = (LStrHandle)DSNewHandle(bytes.length() + lStrHeaderSize);
-	lStr << bytes;
-	return lStr;
 }
 
 template<> QByteArray

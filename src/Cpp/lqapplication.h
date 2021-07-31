@@ -1,5 +1,5 @@
 /*\
- * Copyright (c) 2018 Sze Howe Koh
+ * Copyright (c) 2021 Sze Howe Koh
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -61,7 +61,8 @@ public slots:
 		PostLVUserEvent(ref_dbl, &packet);
 	}
 	void postLVEvent_string(const QString& value) {
-		LStrHandle lStr = newLStr(value);
+		LStrHandle lStr = newLStr();
+		lStr << value;
 		SignalPacket<LStrHandle> packet{reinterpret_cast<quint64>(sender()), senderSignalIndex(), lStr};
 		PostLVUserEvent(ref_string, &packet);
 		DSDisposeHandle(lStr);

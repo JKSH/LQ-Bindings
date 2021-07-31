@@ -1,5 +1,5 @@
 /*\
- * Copyright (c) 2020 Sze Howe Koh
+ * Copyright (c) 2021 Sze Howe Koh
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -30,8 +30,30 @@ extern qint32 Q_DECL_EXPORT QObject_setObjectName(quintptr _instance, LStrHandle
 extern qint32 Q_DECL_EXPORT QObject_objectName(LStrHandle _retVal, quintptr _instance);
 extern qint32 Q_DECL_EXPORT QCoreApplication_setApplicationName(quintptr _instance, LStrHandle application);
 extern qint32 Q_DECL_EXPORT QCoreApplication_applicationName(LStrHandle _retVal, quintptr _instance);
+extern qint32 Q_DECL_EXPORT QLocale_QLocale(LStrHandle _retVal, int32 language, int32 script, int32 country);
+extern qint32 Q_DECL_EXPORT QLocale_language(int32* _retVal, LStrHandle _instance);
+extern qint32 Q_DECL_EXPORT QLocale_script(int32* _retVal, LStrHandle _instance);
+extern qint32 Q_DECL_EXPORT QLocale_country(int32* _retVal, LStrHandle _instance);
+extern qint32 Q_DECL_EXPORT QLocale_name(LStrHandle _retVal, LStrHandle _instance);
+extern qint32 Q_DECL_EXPORT QLocale_bcp47Name(LStrHandle _retVal, LStrHandle _instance);
+extern qint32 Q_DECL_EXPORT QLocale_nativeLanguageName(LStrHandle _retVal, LStrHandle _instance);
+extern qint32 Q_DECL_EXPORT QLocale_nativeCountryName(LStrHandle _retVal, LStrHandle _instance);
+extern qint32 Q_DECL_EXPORT QLocale_measurementSystem(int32* _retVal, LStrHandle _instance);
+extern qint32 Q_DECL_EXPORT QLocale_textDirection(int32* _retVal, LStrHandle _instance);
+extern qint32 Q_DECL_EXPORT QLocale_setDefault(LStrHandle locale);
+extern qint32 Q_DECL_EXPORT QLocale_system(LStrHandle _retVal);
+extern qint32 Q_DECL_EXPORT QLocale_matchingLocales(LVArray<LStrHandle>** _retVal, int32 language, int32 script, int32 country);
+extern qint32 Q_DECL_EXPORT QLocale_setNumberOptions(LStrHandle _instance, int32 options);
+extern qint32 Q_DECL_EXPORT QLocale_numberOptions(int32* _retVal, LStrHandle _instance);
 extern qint32 Q_DECL_EXPORT QGuiApplication_setWindowIcon(quintptr _instance, LStrHandle icon);
 extern qint32 Q_DECL_EXPORT QGuiApplication_windowIcon(LStrHandle _retVal, quintptr _instance);
+extern qint32 Q_DECL_EXPORT QGuiApplication_primaryScreen(quintptr* _retVal, quintptr _instance);
+extern qint32 Q_DECL_EXPORT QGuiApplication_screens(LVArray<quintptr>** _retVal, quintptr _instance);
+extern qint32 Q_DECL_EXPORT QGuiApplication_font(LStrHandle _retVal, quintptr _instance);
+extern qint32 Q_DECL_EXPORT QGuiApplication_setFont(quintptr _instance, LStrHandle font);
+extern qint32 Q_DECL_EXPORT QGuiApplication_setLayoutDirection(quintptr _instance, int32 direction);
+extern qint32 Q_DECL_EXPORT QGuiApplication_layoutDirection(int32* _retVal, quintptr _instance);
+extern qint32 Q_DECL_EXPORT QGuiApplication_applicationState(int32* _retVal, quintptr _instance);
 extern qint32 Q_DECL_EXPORT QScreen_name(LStrHandle _retVal, quintptr _instance);
 extern qint32 Q_DECL_EXPORT QScreen_depth(qint32* _retVal, quintptr _instance);
 extern qint32 Q_DECL_EXPORT QScreen_geometry(QRect* _retVal, quintptr _instance);
@@ -71,6 +93,7 @@ extern qint32 Q_DECL_EXPORT QWindow_setSizeIncrement(quintptr _instance, QSize* 
 extern qint32 Q_DECL_EXPORT QWindow_setGeometry(quintptr _instance, QRect* rect);
 extern qint32 Q_DECL_EXPORT QWindow_geometry(QRect* _retVal, quintptr _instance);
 extern qint32 Q_DECL_EXPORT QWindow_frameGeometry(QRect* _retVal, quintptr _instance);
+extern qint32 Q_DECL_EXPORT QWindow_size(QSize* _retVal, quintptr _instance);
 extern qint32 Q_DECL_EXPORT QWindow_resize(quintptr _instance, QSize* newSize);
 extern qint32 Q_DECL_EXPORT QWindow_setIcon(quintptr _instance, LStrHandle icon);
 extern qint32 Q_DECL_EXPORT QWindow_icon(LStrHandle _retVal, quintptr _instance);
@@ -156,6 +179,7 @@ extern qint32 Q_DECL_EXPORT QWidget_geometry(QRect* _retVal, quintptr _instance)
 extern qint32 Q_DECL_EXPORT QWidget_layout(quintptr* _retVal, quintptr _instance);
 extern qint32 Q_DECL_EXPORT QWidget_isEnabled(bool* _retVal, quintptr _instance);
 extern qint32 Q_DECL_EXPORT QWidget_isVisible(bool* _retVal, quintptr _instance);
+extern qint32 Q_DECL_EXPORT QWidget_locale(LStrHandle _retVal, quintptr _instance);
 extern qint32 Q_DECL_EXPORT QWidget_minimumSize(QSize* _retVal, quintptr _instance);
 extern qint32 Q_DECL_EXPORT QWidget_resize(quintptr _instance, QSize* size);
 extern qint32 Q_DECL_EXPORT QWidget_setContextMenuPolicy(quintptr _instance, int32 policy);
@@ -164,6 +188,7 @@ extern qint32 Q_DECL_EXPORT QWidget_setFocusPolicy(quintptr _instance, int32 pol
 extern qint32 Q_DECL_EXPORT QWidget_setFont(quintptr _instance, LStrHandle font);
 extern qint32 Q_DECL_EXPORT QWidget_setGeometry(quintptr _instance, QRect* geometry);
 extern qint32 Q_DECL_EXPORT QWidget_setLayout(quintptr _instance, quintptr layout);
+extern qint32 Q_DECL_EXPORT QWidget_setLocale(quintptr _instance, LStrHandle locale);
 extern qint32 Q_DECL_EXPORT QWidget_setMinimumSize(quintptr _instance, QSize* size);
 extern qint32 Q_DECL_EXPORT QWidget_setStyleSheet(quintptr _instance, LStrHandle styleSheet);
 extern qint32 Q_DECL_EXPORT QWidget_setTabOrder(quintptr first, quintptr second);

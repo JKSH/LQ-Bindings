@@ -1,5 +1,5 @@
 /*\
- * Copyright (c) 2020 Sze Howe Koh
+ * Copyright (c) 2021 Sze Howe Koh
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -156,6 +156,153 @@ QCoreApplication_applicationName(LStrHandle _retVal, quintptr _instance)
 }
 
 qint32
+QLocale_QLocale(LStrHandle _retVal, int32 language, int32 script, int32 country)
+{
+	return lqInvoke([=]
+	{
+		_retVal << QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Script>(script), static_cast<QLocale::Country>(country));
+	});
+}
+
+qint32
+QLocale_language(int32* _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QLocale>(_instance);
+		*_retVal = instance.language();
+	});
+}
+
+qint32
+QLocale_script(int32* _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QLocale>(_instance);
+		*_retVal = instance.script();
+	});
+}
+
+qint32
+QLocale_country(int32* _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QLocale>(_instance);
+		*_retVal = instance.country();
+	});
+}
+
+qint32
+QLocale_name(LStrHandle _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QLocale>(_instance);
+		_retVal << instance.name();
+	});
+}
+
+qint32
+QLocale_bcp47Name(LStrHandle _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QLocale>(_instance);
+		_retVal << instance.bcp47Name();
+	});
+}
+
+qint32
+QLocale_nativeLanguageName(LStrHandle _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QLocale>(_instance);
+		_retVal << instance.nativeLanguageName();
+	});
+}
+
+qint32
+QLocale_nativeCountryName(LStrHandle _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QLocale>(_instance);
+		_retVal << instance.nativeCountryName();
+	});
+}
+
+qint32
+QLocale_measurementSystem(int32* _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QLocale>(_instance);
+		*_retVal = instance.measurementSystem();
+	});
+}
+
+qint32
+QLocale_textDirection(int32* _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QLocale>(_instance);
+		*_retVal = instance.textDirection();
+	});
+}
+
+qint32
+QLocale_setDefault(LStrHandle locale)
+{
+	return lqInvoke([=]
+	{
+		QLocale::setDefault(deserialize<QLocale>(locale));
+	});
+}
+
+qint32
+QLocale_system(LStrHandle _retVal)
+{
+	return lqInvoke([=]
+	{
+		_retVal << QLocale::system();
+	});
+}
+
+qint32
+QLocale_matchingLocales(LVArray<LStrHandle>** _retVal, int32 language, int32 script, int32 country)
+{
+	return lqInvoke([=]
+	{
+		_retVal << QLocale::matchingLocales(static_cast<QLocale::Language>(language), static_cast<QLocale::Script>(script), static_cast<QLocale::Country>(country));
+	});
+}
+
+qint32
+QLocale_setNumberOptions(LStrHandle _instance, int32 options)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QLocale>(_instance);
+		instance.setNumberOptions(static_cast<QLocale::NumberOption>(options));
+		_instance << instance;
+	});
+}
+
+qint32
+QLocale_numberOptions(int32* _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QLocale>(_instance);
+		*_retVal = instance.numberOptions();
+	});
+}
+
+qint32
 QGuiApplication_setWindowIcon(quintptr _instance, LStrHandle icon)
 {
 	return lqInvoke(_instance, [=]
@@ -172,6 +319,77 @@ QGuiApplication_windowIcon(LStrHandle _retVal, quintptr _instance)
 	{
 		auto instance = reinterpret_cast<QGuiApplication*>(_instance);
 		_retVal << instance->windowIcon();
+	});
+}
+
+qint32
+QGuiApplication_primaryScreen(quintptr* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QGuiApplication*>(_instance);
+		auto retVal = instance->primaryScreen();
+		*_retVal = reinterpret_cast<quintptr>(retVal);
+	});
+}
+
+qint32
+QGuiApplication_screens(LVArray<quintptr>** _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QGuiApplication*>(_instance);
+		_retVal << instance->screens();
+	});
+}
+
+qint32
+QGuiApplication_font(LStrHandle _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QGuiApplication*>(_instance);
+		_retVal << instance->font();
+	});
+}
+
+qint32
+QGuiApplication_setFont(quintptr _instance, LStrHandle font)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QGuiApplication*>(_instance);
+		instance->setFont(deserialize<QFont>(font));
+	});
+}
+
+qint32
+QGuiApplication_setLayoutDirection(quintptr _instance, int32 direction)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QGuiApplication*>(_instance);
+		instance->setLayoutDirection(static_cast<Qt::LayoutDirection>(direction));
+	});
+}
+
+qint32
+QGuiApplication_layoutDirection(int32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QGuiApplication*>(_instance);
+		*_retVal = instance->layoutDirection();
+	});
+}
+
+qint32
+QGuiApplication_applicationState(int32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QGuiApplication*>(_instance);
+		*_retVal = instance->applicationState();
 	});
 }
 
@@ -563,6 +781,16 @@ QWindow_frameGeometry(QRect* _retVal, quintptr _instance)
 	{
 		auto instance = reinterpret_cast<QWindow*>(_instance);
 		*_retVal = instance->frameGeometry();
+	});
+}
+
+qint32
+QWindow_size(QSize* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QWindow*>(_instance);
+		*_retVal = instance->size();
 	});
 }
 
@@ -1429,6 +1657,16 @@ QWidget_isVisible(bool* _retVal, quintptr _instance)
 }
 
 qint32
+QWidget_locale(LStrHandle _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QWidget*>(_instance);
+		_retVal << instance->locale();
+	});
+}
+
+qint32
 QWidget_minimumSize(QSize* _retVal, quintptr _instance)
 {
 	return lqInvoke(_instance, [=]
@@ -1505,6 +1743,16 @@ QWidget_setLayout(quintptr _instance, quintptr layout)
 	{
 		auto instance = reinterpret_cast<QWidget*>(_instance);
 		instance->setLayout(reinterpret_cast<QLayout*>(layout));
+	});
+}
+
+qint32
+QWidget_setLocale(quintptr _instance, LStrHandle locale)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QWidget*>(_instance);
+		instance->setLocale(deserialize<QLocale>(locale));
 	});
 }
 

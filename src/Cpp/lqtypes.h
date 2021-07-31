@@ -1,5 +1,5 @@
 /*\
- * Copyright (c) 2018 Sze Howe Koh
+ * Copyright (c) 2021 Sze Howe Koh
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -20,8 +20,8 @@ void operator<<(LStrHandle dest, const QByteArray& src);
 inline void operator<<(LStrHandle dest, const QString& src) { dest << src.toUtf8(); }
 template <typename T> void operator<<(LStrHandle dest, const T& src) { dest << serialize(src); }
 
-LStrHandle newLStr(const QByteArray& bytes);
-inline LStrHandle newLStr(const QString& string) {return newLStr(string.toUtf8());}
+const size_t lStrHeaderSize = 4;
+inline LStrHandle newLStr() { return (LStrHandle)DSNewHandle(lStrHeaderSize); }
 
 namespace LVString
 {
@@ -169,7 +169,10 @@ struct LVArray<LStrHandle, N>
 	{
 		resize(destHandle, list.size());
 		for (int i = 0; i < list.size(); ++i)
-			(*destHandle)->elt[i] = newLStr(list[i]);
+		{
+			(*destHandle)->elt[i] = newLStr();
+			(*destHandle)->elt[i] << list[i];
+		}
 	}
 
 	template <typename U>
@@ -185,7 +188,10 @@ struct LVArray<LStrHandle, N>
 		for (int i = 0, r = 0; r < dimensions[0]; ++r)
 		{
 			for (int c = 0; c < colCount; ++i, ++c)
-				(*destHandle)->elt[i] = newLStr(table[r][c]);
+			{
+				(*destHandle)->elt[i] = newLStr();
+				(*destHandle)->elt[i] << table[r][c];
+			}
 		}
 	}
 
