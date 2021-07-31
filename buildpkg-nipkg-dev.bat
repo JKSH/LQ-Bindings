@@ -14,8 +14,8 @@ REM ----------------------------------------------------------------------------
 SET NIPKG_EXE="C:\Program Files\National Instruments\NI Package Manager\nipkg.exe"
 SET LV_EXE="C:\Program Files (x86)\National Instruments\LabVIEW 2014\LabVIEW.exe"
 SET LV_PORT=3363
-SET LV_YEAR_START=2014
-SET LV_YEAR_END=2018
+SET LV_YEAR_START=2016
+SET LV_YEAR_END=2021
 SET PKG_VERSION=0.2.1
 REM ==================================================================================
 
