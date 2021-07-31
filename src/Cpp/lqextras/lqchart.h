@@ -13,6 +13,7 @@
 #include <QAction>
 
 #include <qwt_plot.h>
+#include <qwt_text.h>
 #include <QVector>
 
 class QwtPlotCurve;
