@@ -64,10 +64,6 @@ not optimized, and (iv) you might experience crashes. Other issues include:
 * QWinThumbnailToolButton cannot be applied to non-Qt windows, such as LabVIEW
   front panels.
 
-* After you start and stop the engine, QWinThumbnailToolButton no longer emits
-  any signals when you click on it.
-    * Workaround: Restart LabVIEW.
-
 * There are a few small memory leaks, which will persist until you close
   LabVIEW.
 
@@ -84,5 +80,5 @@ Copyright (c) 2021 Sze Howe Koh <<szehowe.koh@gmail.com>>
 The LQ library is published under the [Mozilla Public License v2.0](LICENSE.MPLv2),
 while examples are published under the [MIT License](examples/LICENSE.MIT).
 
-LQ also uses third party software that are licensed under different terms.
+LQ provides bindings to third party libraries that are licensed under different terms.
 Please see the [3rdparty](3rdparty) folder for details.
