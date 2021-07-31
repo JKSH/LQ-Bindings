@@ -4,8 +4,8 @@
 # (Edit these parameters before running this script, if necessary)
 # ----------------------------------------------------------------------------------
 LV_ROOT="/usr/local/natinst/LabVIEW-2014"
-QT_ROOT="/home/lvuser/Qt5.12.9/5.12.9/gcc_64"
-QWT_ROOT="/usr/local/qwt-6.1.4"
+QT_ROOT="/home/lvuser/Qt5.12.11/5.12.11/gcc_64"
+QWT_ROOT="/usr/local/qwt-6.2.0"
 PKG_VERSION="0.2.2"
 # ==================================================================================
 

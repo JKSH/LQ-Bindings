@@ -6,10 +6,10 @@ REM the x86 Native Tools Command Prompt for VS 2017)
 REM ==================================================================================
 REM (Edit these parameters before running this script, if necessary)
 REM ----------------------------------------------------------------------------------
-SET QT_ROOT_32=C:\Qt\5.12.9\msvc2017
-SET QWT_ROOT_32=C:\Qwt\Qwt-6.1.4_x86
-SET QT_ROOT_64=C:\Qt\5.12.9\msvc2017_64
-SET QWT_ROOT_64=C:\Qwt\Qwt-6.1.4_x64
+SET QT_ROOT_32=C:\Qt\5.12.11\msvc2017
+SET QT_ROOT_64=C:\Qt\5.12.11\msvc2017_64
+SET QWT_ROOT_32=C:\Qwt\Qwt-6.2.0_x86
+SET QWT_ROOT_64=C:\Qwt\Qwt-6.2.0_x64
 SET LV_ROOT_32=C:\Program Files (x86)\National Instruments\LabVIEW 2014
 SET LV_ROOT_64=C:\Program Files\National Instruments\LabVIEW 2014
 SET MAKE=nmake
