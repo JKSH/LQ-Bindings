@@ -101,7 +101,7 @@ done
 
 
 # Write the package metadata
-python "$LQ_DEV_ROOT"/utils/Packaging/write_pkg_metadata.py --template "$LQ_DEV_ROOT"/utils/Packaging/data/control-ipk.template --arch "$PKG_ARCH" --pkgformat ipk --rootdir "$PKG_DIR" --type runtime --version "$PKG_VERSION"
+python3 "$LQ_DEV_ROOT"/utils/Packaging/write_pkg_metadata.py --template "$LQ_DEV_ROOT"/utils/Packaging/data/control-ipk.template --arch "$PKG_ARCH" --pkgformat ipk --rootdir "$PKG_DIR" --type runtime --version "$PKG_VERSION"
 test $? -eq 0 || exit $?
 
 
