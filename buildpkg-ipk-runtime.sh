@@ -6,7 +6,7 @@
 LV_ROOT="/usr/local/natinst/LabVIEW-2014"
 QT_ROOT="/home/lvuser/Qt5.12.11/5.12.11/gcc_64"
 QWT_ROOT="/usr/local/qwt-6.2.0"
-PKG_VERSION="0.2.2"
+PKG_VERSION="0.3.0"
 # ==================================================================================
 
 LQ_DEV_ROOT="$PWD"

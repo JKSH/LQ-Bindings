@@ -17,7 +17,7 @@ unix {
     # NOTE: VERSION is needed to set the binaries' soname.
     !defined(CINTOOLS_PATH, var): CINTOOLS_PATH = /usr/local/natinst/LabVIEW-2014/cintools
     !defined(QWT_PATH,      var): QWT_PATH      = /usr/local/qwt-6.2.0
-    !defined(VERSION,       var): VERSION       = 0.2.2
+    !defined(VERSION,       var): VERSION       = 0.3.0
 }
 
 TEMPLATE = lib
