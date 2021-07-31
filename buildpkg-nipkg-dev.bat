@@ -39,7 +39,9 @@ IF NOT %ERRORLEVEL%==0 GOTO :eof
 
 
 REM Copy files
-robocopy %LQ_DEV_ROOT%\examples\     %PKG_DATA_DIR%\examples\ /E /XD .git /XF .git* README.md *.aliases *.lvlps
+robocopy %LQ_DEV_ROOT%\examples\exbins\ %PKG_DATA_DIR%\examples\exbins\
+robocopy %LQ_DEV_ROOT%\examples\LQ\  %PKG_DATA_DIR%\examples\LQ\ /E /XF README.md *.aliases *.lvlps
+COPY     %LQ_DEV_ROOT%\examples\LICENSE.MIT %PKG_DATA_DIR%\examples\LQ\
 robocopy %LQ_DEV_ROOT%\3rdparty\     %VI_LIB_DIR%\3rdparty\ /E
 robocopy %LQ_DEV_ROOT%\src\LabVIEW\  %VI_LIB_DIR%\ /E
 COPY     %LQ_DEV_ROOT%\LICENSE.MPLv2 %VI_LIB_DIR%\
