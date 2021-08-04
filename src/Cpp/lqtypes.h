@@ -46,6 +46,7 @@ struct LVArray
 
 	static void resize(LVArray<T>** handle, qint32 count)
 	{
+		// TODO: Merge with the generic N-D version
 		static_assert(N==1, "This function only supports 1D arrays.");
 
 		constexpr size_t headerSize = sizeof(LVArray<T>) - sizeof(T);

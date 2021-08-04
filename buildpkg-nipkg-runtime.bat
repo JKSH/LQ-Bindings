@@ -25,6 +25,9 @@ SET OUTPUT_DIR=%BUILD_DIR%\Runtime
 SET PKG_DIR=%OUTPUT_DIR%\Package
 SET PKG_ARCH=%~1
 SET CPP_DIR=%BUILD_DIR%\Cpp_%PKG_ARCH%
+
+REM The following line errors if %PKG_ARCH% is empty
+REM TODO: Check for missing arg and print usage instructions if missing
 IF %PKG_ARCH%==x64 (
 	SET "LV_ROOT=%LV_ROOT_64%"
 	SET QT_ROOT=%QT_ROOT_64%
