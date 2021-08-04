@@ -1,0 +1,147 @@
+﻿Architecture: windows_x64
+CompatibilityVersion: 190006
+Depends: lq-runtime-x64, 09390fa4-36d6-477d-85eb-bf74af24af1c (>=16.0.0)
+Description: LabVIEW bindings for the Qt toolkit
+  LabVIEW bindings for the Qt toolkit.
+DisplayName: LQ for LabVIEW 2016 (64-bit)
+DisplayVersion: 0.3.0
+Filename: https://dl.dropboxusercontent.com/s/n1bnico7c4ycjye/lq-dev-lv2016-x64_0.3.0_windows_x64.nipkg
+Homepage: https://github.com/JKSH/LQ-Bindings
+Installed-Size: 26576
+MD5sum: bdac8b86cd77d9860dea1fed763d9e6c
+Maintainer: Sze Howe Koh <szehowe.koh@gmail.com>
+Package: lq-dev-lv2016-x64
+Plugin: file
+Priority: optional
+Section: Add-Ons
+Size: 10293984
+StoreProduct: yes
+UserVisible: yes
+Version: 0.3.0
+
+Architecture: windows_x64
+CompatibilityVersion: 190006
+Depends: lq-runtime-x64, 77a907d8-6d34-42ac-be29-e623b120e25f (>=17.0.0) | 3368b8cb-7a66-429a-b3f9-726fa133271b (>=17.1.0)
+Description: LabVIEW bindings for the Qt toolkit
+  LabVIEW bindings for the Qt toolkit.
+DisplayName: LQ for LabVIEW 2017 (64-bit)
+DisplayVersion: 0.3.0
+Filename: https://dl.dropboxusercontent.com/s/vhyhp2kxp6dxpjj/lq-dev-lv2017-x64_0.3.0_windows_x64.nipkg
+Homepage: https://github.com/JKSH/LQ-Bindings
+Installed-Size: 26576
+MD5sum: c624b4283165c5ec7d7424439de0f5c4
+Maintainer: Sze Howe Koh <szehowe.koh@gmail.com>
+Package: lq-dev-lv2017-x64
+Plugin: file
+Priority: optional
+Section: Add-Ons
+Size: 10294024
+StoreProduct: yes
+UserVisible: yes
+Version: 0.3.0
+
+Architecture: windows_x64
+CompatibilityVersion: 190006
+Depends: lq-runtime-x64, ni-labview-2018 (>=18.0.0)
+Description: LabVIEW bindings for the Qt toolkit
+  LabVIEW bindings for the Qt toolkit.
+DisplayName: LQ for LabVIEW 2018 (64-bit)
+DisplayVersion: 0.3.0
+Filename: https://dl.dropboxusercontent.com/s/fy2cl5gmqu0s1bx/lq-dev-lv2018-x64_0.3.0_windows_x64.nipkg
+Homepage: https://github.com/JKSH/LQ-Bindings
+Installed-Size: 26576
+MD5sum: 895d406c269294c0aae26af9bfc6427d
+Maintainer: Sze Howe Koh <szehowe.koh@gmail.com>
+Package: lq-dev-lv2018-x64
+Plugin: file
+Priority: optional
+Section: Add-Ons
+Size: 10293970
+StoreProduct: yes
+UserVisible: yes
+Version: 0.3.0
+
+Architecture: windows_x64
+CompatibilityVersion: 190006
+Depends: lq-runtime-x64, ni-labview-2019 (>=19.0.0)
+Description: LabVIEW bindings for the Qt toolkit
+  LabVIEW bindings for the Qt toolkit.
+DisplayName: LQ for LabVIEW 2019 (64-bit)
+DisplayVersion: 0.3.0
+Filename: https://dl.dropboxusercontent.com/s/8x9zvl1v88zvvot/lq-dev-lv2019-x64_0.3.0_windows_x64.nipkg
+Homepage: https://github.com/JKSH/LQ-Bindings
+Installed-Size: 26576
+MD5sum: b5986fc7056f16e37e85e39f30d44966
+Maintainer: Sze Howe Koh <szehowe.koh@gmail.com>
+Package: lq-dev-lv2019-x64
+Plugin: file
+Priority: optional
+Section: Add-Ons
+Size: 10293994
+StoreProduct: yes
+UserVisible: yes
+Version: 0.3.0
+
+Architecture: windows_x64
+CompatibilityVersion: 190006
+Depends: lq-runtime-x64, ni-labview-2020 (>=20.0.0)
+Description: LabVIEW bindings for the Qt toolkit
+  LabVIEW bindings for the Qt toolkit.
+DisplayName: LQ for LabVIEW 2020 (64-bit)
+DisplayVersion: 0.3.0
+Filename: https://dl.dropboxusercontent.com/s/hnb3ua7gk0xxdlj/lq-dev-lv2020-x64_0.3.0_windows_x64.nipkg
+Homepage: https://github.com/JKSH/LQ-Bindings
+Installed-Size: 26576
+MD5sum: 3958c95ff6d2c28883d6e32ed0a13797
+Maintainer: Sze Howe Koh <szehowe.koh@gmail.com>
+Package: lq-dev-lv2020-x64
+Plugin: file
+Priority: optional
+Section: Add-Ons
+Size: 10293986
+StoreProduct: yes
+UserVisible: yes
+Version: 0.3.0
+
+Architecture: windows_x64
+CompatibilityVersion: 190006
+Depends: lq-runtime-x64, ni-labview-2021 (>=21.0.0)
+Description: LabVIEW bindings for the Qt toolkit
+  LabVIEW bindings for the Qt toolkit.
+DisplayName: LQ for LabVIEW 2021 (64-bit)
+DisplayVersion: 0.3.0
+Filename: https://dl.dropboxusercontent.com/s/3jfrtez501of23q/lq-dev-lv2021-x64_0.3.0_windows_x64.nipkg
+Homepage: https://github.com/JKSH/LQ-Bindings
+Installed-Size: 26576
+MD5sum: 7093eb5261e1eae6c3ba7bb1b2401e23
+Maintainer: Sze Howe Koh <szehowe.koh@gmail.com>
+Package: lq-dev-lv2021-x64
+Plugin: file
+Priority: optional
+Section: Add-Ons
+Size: 10293978
+StoreProduct: yes
+UserVisible: yes
+Version: 0.3.0
+
+Architecture: windows_x64
+CompatibilityVersion: 190006
+Depends: ni-msvcrt-2015
+Description: Shared libraries for LQ bindings
+  Shared libraries for LQ bindings.
+DisplayName: LQ Shared Runtime (64-bit)
+DisplayVersion: 0.3.0
+Filename: https://dl.dropboxusercontent.com/s/bo1o3dlvisk0drf/lq-runtime-x64_0.3.0_windows_x64.nipkg
+Homepage: https://github.com/JKSH/LQ-Bindings
+Installed-Size: 24118
+MD5sum: 3d2cc4ba0b8a85810cdb18a5ebcb915e
+Maintainer: Sze Howe Koh <szehowe.koh@gmail.com>
+Package: lq-runtime-x64
+Plugin: file
+Priority: optional
+Section: Runtime
+Size: 10204710
+StoreProduct: yes
+UserVisible: yes
+Version: 0.3.0
+
