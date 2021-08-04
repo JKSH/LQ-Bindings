@@ -20,7 +20,7 @@ void operator<<(LStrHandle dest, const QByteArray& src);
 inline void operator<<(LStrHandle dest, const QString& src) { dest << src.toUtf8(); }
 template <typename T> void operator<<(LStrHandle dest, const T& src) { dest << serialize(src); }
 
-const size_t lStrHeaderSize = 4;
+constexpr size_t lStrHeaderSize = 4;
 inline LStrHandle newLStr() { return (LStrHandle)DSNewHandle(lStrHeaderSize); }
 
 namespace LVString
@@ -46,12 +46,14 @@ struct LVArray
 
 	static void resize(LVArray<T>** handle, qint32 count)
 	{
+		// TODO: Merge with the generic N-D version
 		static_assert(N==1, "This function only supports 1D arrays.");
 
-		size_t newSize = sizeof(qint32) + count*sizeof(T);
+		constexpr size_t headerSize = sizeof(LVArray<T>) - sizeof(T);
+		size_t dataSize = count*sizeof(T);
 
 		// ASSUMPTION: This call will only fail if the program is already doomed anyway.
-		DSSetHandleSize(handle, newSize);
+		DSSetHandleSize(handle, headerSize + dataSize);
 		(*handle)->dimSizes[0] = count;
 	}
 
@@ -60,12 +62,15 @@ struct LVArray
 		// Data format described at
 		// http://zone.ni.com/reference/en-XX/help/371361M-01/lvconcepts/how_labview_stores_data_in_memory/
 
-		int newSize = sizeof(T);
-		for (size_t i = 0; i < N; ++i)
-			newSize *= dimensions[i]; // Array data
-		newSize += N*sizeof(qint32);  // Array header (size of each dimension)
+		// Header is padded in 64-bit but not in 32-bit:
+		// https://knowledge.ni.com/KnowledgeArticleDetails?id=kA00Z0000019YsYSAU
 
-		DSSetHandleSize(handle, newSize);
+		constexpr size_t headerSize = sizeof(LVArray<T, N>) - sizeof(T); // incl. x64 padding, using C Struct Hack
+		int dataSize = sizeof(T);
+		for (size_t i = 0; i < N; ++i)
+			dataSize *= dimensions[i];
+
+		DSSetHandleSize(handle, headerSize + dataSize);
 		std::copy( dimensions, dimensions+N, (*handle)->dimSizes );
 	}
 

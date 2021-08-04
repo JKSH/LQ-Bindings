@@ -8,6 +8,16 @@ LQ is currently focussed on the widget classes, but other major technologies
 from Qt are planned for inclusion in future releases.
 
 
+Supported Platforms
+-------------------
+Development Platforms
+* LabVIEW 2016 or newer (32-bit and 64-bit)
+
+Deployment Platforms
+* Windows (as supported by LabVIEW)
+* NI Linux RT 19.0 or newer
+
+
 Installation
 ------------
 First, add the LQ feed (_**https://jksh.github.io/LQ-Bindings/feeds/win_x86/**_)
@@ -54,10 +64,6 @@ not optimized, and (iv) you might experience crashes. Other issues include:
 * QWinThumbnailToolButton cannot be applied to non-Qt windows, such as LabVIEW
   front panels.
 
-* After you start and stop the engine, QWinThumbnailToolButton no longer emits
-  any signals when you click on it.
-    * Workaround: Restart LabVIEW.
-
 * There are a few small memory leaks, which will persist until you close
   LabVIEW.
 
@@ -69,10 +75,10 @@ See http://github.com/JKSH/LQ-Bindings/wiki/Roadmap
 
 License
 -------
-Copyright (c) 2019 Sze Howe Koh <<szehowe.koh@gmail.com>>
+Copyright (c) 2021 Sze Howe Koh <<szehowe.koh@gmail.com>>
 
 The LQ library is published under the [Mozilla Public License v2.0](LICENSE.MPLv2),
 while examples are published under the [MIT License](examples/LICENSE.MIT).
 
-LQ also uses third party software that are licensed under different terms.
+LQ provides bindings to third party libraries that are licensed under different terms.
 Please see the [3rdparty](3rdparty) folder for details.

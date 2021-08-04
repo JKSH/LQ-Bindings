@@ -14,9 +14,9 @@ REM ----------------------------------------------------------------------------
 SET NIPKG_EXE="C:\Program Files\National Instruments\NI Package Manager\nipkg.exe"
 SET LV_EXE="C:\Program Files (x86)\National Instruments\LabVIEW 2014\LabVIEW.exe"
 SET LV_PORT=3363
-SET LV_YEAR_START=2014
-SET LV_YEAR_END=2018
-SET PKG_VERSION=0.2.1
+SET LV_YEAR_START=2016
+SET LV_YEAR_END=2021
+SET PKG_VERSION=0.3.0
 REM ==================================================================================
 
 REM Set absolute paths according to this project's folder structure
@@ -39,7 +39,9 @@ IF NOT %ERRORLEVEL%==0 GOTO :eof
 
 
 REM Copy files
-robocopy %LQ_DEV_ROOT%\examples\     %PKG_DATA_DIR%\examples\ /E /XD .git /XF .git* README.md *.aliases *.lvlps
+robocopy %LQ_DEV_ROOT%\examples\exbins\ %PKG_DATA_DIR%\examples\exbins\
+robocopy %LQ_DEV_ROOT%\examples\LQ\  %PKG_DATA_DIR%\examples\LQ\ /E /XF README.md *.aliases *.lvlps
+COPY     %LQ_DEV_ROOT%\examples\LICENSE.MIT %PKG_DATA_DIR%\examples\LQ\
 robocopy %LQ_DEV_ROOT%\3rdparty\     %VI_LIB_DIR%\3rdparty\ /E
 robocopy %LQ_DEV_ROOT%\src\LabVIEW\  %VI_LIB_DIR%\ /E
 COPY     %LQ_DEV_ROOT%\LICENSE.MPLv2 %VI_LIB_DIR%\

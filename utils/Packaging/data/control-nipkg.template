@@ -1,5 +1,5 @@
-Architecture: windows_x64
-CompatibilityVersion: 185002
+Architecture: windows_%PKG_INSTALLABLE_PLATFORMS%
+CompatibilityVersion: 190006
 Depends: %PKG_DEPENDENCIES%
 Description: %PKG_DESCRIPTION%
 DisplayName: %PKG_DISPLAY_NAME% (%BITNESS%-bit)
@@ -9,7 +9,7 @@ Installed-Size: %PKG_SIZE%
 Maintainer: Sze Howe Koh <szehowe.koh@gmail.com>
 Package: %PKG_NAME%
 Plugin: file
-Priority: standard
+Priority: optional
 Section: %PKG_SECTION%
 StoreProduct: yes
 UserVisible: yes

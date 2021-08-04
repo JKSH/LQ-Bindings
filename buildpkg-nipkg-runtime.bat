@@ -6,16 +6,16 @@ REM the x86 Native Tools Command Prompt for VS 2017)
 REM ==================================================================================
 REM (Edit these parameters before running this script, if necessary)
 REM ----------------------------------------------------------------------------------
-SET QT_ROOT_32=C:\Qt\5.12.9\msvc2017
-SET QWT_ROOT_32=C:\Qwt\Qwt-6.1.4_x86
-SET QT_ROOT_64=C:\Qt\5.12.9\msvc2017_64
-SET QWT_ROOT_64=C:\Qwt\Qwt-6.1.4_x64
+SET QT_ROOT_32=C:\Qt\5.12.11\msvc2017
+SET QT_ROOT_64=C:\Qt\5.12.11\msvc2017_64
+SET QWT_ROOT_32=C:\Qwt\Qwt-6.2.0_x86
+SET QWT_ROOT_64=C:\Qwt\Qwt-6.2.0_x64
 SET LV_ROOT_32=C:\Program Files (x86)\National Instruments\LabVIEW 2014
 SET LV_ROOT_64=C:\Program Files\National Instruments\LabVIEW 2014
 SET MAKE=nmake
 SET NIPKG_EXE="C:\Program Files\National Instruments\NI Package Manager\nipkg.exe"
 SET LV_PORT=3363
-SET PKG_VERSION=0.2.2
+SET PKG_VERSION=0.3.0
 REM ==================================================================================
 
 REM Set absolute paths according to this project's folder structure
@@ -25,6 +25,9 @@ SET OUTPUT_DIR=%BUILD_DIR%\Runtime
 SET PKG_DIR=%OUTPUT_DIR%\Package
 SET PKG_ARCH=%~1
 SET CPP_DIR=%BUILD_DIR%\Cpp_%PKG_ARCH%
+
+REM The following line errors if %PKG_ARCH% is empty
+REM TODO: Check for missing arg and print usage instructions if missing
 IF %PKG_ARCH%==x64 (
 	SET "LV_ROOT=%LV_ROOT_64%"
 	SET QT_ROOT=%QT_ROOT_64%

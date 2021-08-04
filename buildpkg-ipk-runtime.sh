@@ -4,9 +4,9 @@
 # (Edit these parameters before running this script, if necessary)
 # ----------------------------------------------------------------------------------
 LV_ROOT="/usr/local/natinst/LabVIEW-2014"
-QT_ROOT="/home/lvuser/Qt5.12.9/5.12.9/gcc_64"
-QWT_ROOT="/usr/local/qwt-6.1.4"
-PKG_VERSION="0.2.2"
+QT_ROOT="/home/lvuser/Qt5.12.11/5.12.11/gcc_64"
+QWT_ROOT="/usr/local/qwt-6.2.0"
+PKG_VERSION="0.3.0"
 # ==================================================================================
 
 LQ_DEV_ROOT="$PWD"
@@ -101,7 +101,7 @@ done
 
 
 # Write the package metadata
-python "$LQ_DEV_ROOT"/utils/Packaging/write_pkg_metadata.py --template "$LQ_DEV_ROOT"/utils/Packaging/data/control-ipk.template --arch "$PKG_ARCH" --pkgformat ipk --rootdir "$PKG_DIR" --type runtime --version "$PKG_VERSION"
+python3 "$LQ_DEV_ROOT"/utils/Packaging/write_pkg_metadata.py --template "$LQ_DEV_ROOT"/utils/Packaging/data/control-ipk.template --arch "$PKG_ARCH" --pkgformat ipk --rootdir "$PKG_DIR" --type runtime --version "$PKG_VERSION"
 test $? -eq 0 || exit $?
 
 
