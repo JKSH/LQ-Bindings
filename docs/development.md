@@ -16,33 +16,34 @@ from Source** section below).
 
 System Requirements
 -------------------
-To compile the C++ shared library, you need:
-* A C++11 compliant compiler (tested with Microsoft Visual C++ 2017)
-* [Qt](https://www.qt.io/) 5.10 or newer
+To build the C++ shared library (runtime):
+* MSVC 2015 or newer (Windows), GCC 5.3.1 or newer (Linux)
+* [Qt](https://www.qt.io/) 5.12 or newer
 * [Qwt](https://qwt.sourceforge.io/) 6.1.2 or newer
 
-To build the NIPM packages, you need a number of National Instruments tools. These come bundled with
-LabVIEW 2018 or newer, or they can be installed separately for LabVIEW 2014-2017:
-* [NI Package Manager 18.0](http://www.ni.com/en-us/support/downloads/ni-package-manager.html)
+To build the NIPM packages (dev and runtime):
+* [NI Package Manager 19.0](http://www.ni.com/en-us/support/downloads/ni-package-manager.html)
   or newer
+* [NI LabVIEW 2014](https://www.ni.com/labview/) or newer
 * [NI LabVIEW Command Line Interface 1.0](http://www.ni.com/en-us/support/downloads/software-products/download.ni-labview-command-line-interface.html)
   or newer
-* Package Building Support for LabVIEW (installable via NIPM)
 
+To build the .ipk packages (runtime):
+* Python 3.5 or newer
+* `opkg-utils` 0.4.0 or newer
 
 Building from Source
 --------------------
 To build the LQ packages from scratch:
-1. Install a suitable C++ compiler (e.g. Microsoft Visual C++ 2017)
+1. Install a suitable C++ compiler
 2. Install Qt
 3. Build and install Qwt
 4. Install [NI LabVIEW](https://www.ni.com/labview/)
 5. (If using LabVIEW 2014-2017) Install the additional National Instruments tools listed under the
    **System Requirements** section above.
 6. Clone the repo from [https://github.com/JKSH/LQ-Bindings/](https://github.com/JKSH/LQ-Bindings/).
-7. Open _/buildRuntimePackages.bat_, _/buildDevPackages.bat_, and _/src/Cpp/LQ.pro_ with a text
+7. Open _/buildpkg-nipkg-runtime.bat_ and _/buildpkg-nipkg-dev.bat_ with a text
    editor. Check the file paths at the top of each file and and edit them if necessary.
-8. Open the Command Prompt.
-     * If you want to build the C++ shared library, ensure that your compiler is in the PATH (e.g.
-       by launching _x86 Native Tools Command Prompt for VS 2017_)
+8. Open the Command Prompt and ensure that your compiler is in the PATH (e.g. by launching _x86 Native
+   Tools Command Prompt for VS 2019_)
 9. From the Command Prompt, run the _*.bat_ files.

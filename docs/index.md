@@ -25,8 +25,9 @@ Instructions
 3. Switch to **Settings > Feeds** and click **Add**.  
    ![Feed management panel](../assets/images/nipm-settings-manage-feeds.png)
 
-4. Enter _**https://jksh.github.io/LQ-Bindings/feeds/win_x86/**_ as the feed URI. Enter "LQ" as the
-   feed name.  
+4. Enter "LQ" as the feed name. Enter the feed URI that corresponds to your LabVIEW installation's bitness:
+    * _**https://jksh.github.io/LQ-Bindings/feeds/win_x86/**_ or
+    * _**https://jksh.github.io/LQ-Bindings/feeds/win_x64/**_
    ![Adding the LQ feed](../assets/images/nipm-add-feed-lq.png)
 
 5. Switch to the **Packages** tab and install LQ for your version(s) of LabVIEW.  
