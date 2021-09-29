@@ -22,10 +22,10 @@ Installation
 ------------
 First, add the LQ feed (_**https://jksh.github.io/LQ-Bindings/feeds/win_x86/**_)
 to NI Package Manager (NIPM):  
-![Adding the LQ feed](doc/nipm-add-feed-lq.png)
+![Adding the LQ feed](docs/assets/images/nipm-add-feed-lq.png)
 
 Then, install the LQ package:  
-![Installing LQ packages](doc/nipm-packages-install-lq.png)
+![Installing LQ packages](docs/assets/images/nipm-packages-install-lq.png)
 
 For step-by-step instructions, read the [Quickstart guide](https://jksh.github.io/LQ-Bindings/docs/).
 The guide also links to alternative installation methods that don't require NIPM.
@@ -35,10 +35,10 @@ Examples
 --------
 Open LabVIEW, then open the NI Example Finder (**Help > Find Examples...**) and
 search for the keywords "_LQ_" or "_Qt_".  
-![Searching for examples](doc/ni-example-finder-lq.png)
+![Searching for examples](docs/assets/images/ni-example-finder-lq.png)
 
 Here is a video compilation of some of the examples:  
-[![Video thumbnail](doc/demo_vid_0.1.0_thumb.png)](https://www.youtube.com/watch?v=YChRI1cMfiI)
+[![Video thumbnail](docs/assets/images/demo_vid_0.1.0_thumb.png)](https://www.youtube.com/watch?v=YChRI1cMfiI)
 
 
 Usage
