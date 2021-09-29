@@ -25,5 +25,3 @@ and manually extract their contents into their destinations:
 * _lq-dev*.zip_ goes into your LabVIEW installation folder (for example,
   _C:\Program Files (x86)\National Instruments\LabVIEW 2016\\_)
 * _lq-runtime*.zip_ goes into the Program Files folder (for example, _C:\Program Files (x86)\\_)
-
-A proper MSI installer is planned for future releases.
