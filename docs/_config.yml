@@ -1,0 +1,13 @@
+title: LQ • LabVIEW bindings for Qt
+description: LQ lets LabVIEW programmers create dynamic, flexible, and powerful GUIs by harnessing the Qt toolkit.
+author: Sze Howe Koh
+email: szehowe.koh@gmail.com
+header_pages:
+  - docs/index.md
+  - docs/development.md
+theme: minima
+plugins:
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-sitemap
+google_analytics: UA-131500055-3

@@ -1,6 +1,12 @@
+# IDE
 *.aliases
 *.autosave
 *.lvlps
 *.pro.user
 *build-*
 builds/*
+
+# Jekyll (GitHub Pages)
+*/.sass-cache/*
+*/_site/*
+*/vendor/*
