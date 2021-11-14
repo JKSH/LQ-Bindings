@@ -1,3 +1,5 @@
+[![Hosted By: Cloudsmith](https://img.shields.io/badge/OSS%20hosting%20by-cloudsmith-blue?logo=cloudsmith&style=flat-square)](https://cloudsmith.com)
+
 LQ
 ==
 LQ (pronounced "Luke") is a set of [LabVIEW](https://www.ni.com/labview/)
@@ -82,3 +84,11 @@ while examples are published under the [MIT License](examples/LICENSE.MIT).
 
 LQ provides bindings to third party libraries that are licensed under different terms.
 Please see the [3rdparty](3rdparty) folder for details.
+
+
+Acknowledgements
+----------------
+Package repository hosting is graciously provided by  [Cloudsmith](https://cloudsmith.com).
+Cloudsmith is the only fully hosted, cloud-native, universal package management solution, that
+enables your organization to create, store and share packages in any format, to any place, with total
+confidence.
