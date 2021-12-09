@@ -344,26 +344,6 @@ QGuiApplication_screens(LVArray<quintptr>** _retVal, quintptr _instance)
 }
 
 qint32
-QGuiApplication_font(LStrHandle _retVal, quintptr _instance)
-{
-	return lqInvoke(_instance, [=]
-	{
-		auto instance = reinterpret_cast<QGuiApplication*>(_instance);
-		_retVal << instance->font();
-	});
-}
-
-qint32
-QGuiApplication_setFont(quintptr _instance, LStrHandle font)
-{
-	return lqInvoke(_instance, [=]
-	{
-		auto instance = reinterpret_cast<QGuiApplication*>(_instance);
-		instance->setFont(deserialize<QFont>(font));
-	});
-}
-
-qint32
 QGuiApplication_setLayoutDirection(quintptr _instance, int32 direction)
 {
 	return lqInvoke(_instance, [=]
@@ -1017,11 +997,11 @@ QWindow_alert(quintptr _instance, qint32 msec)
 }
 
 qint32
-QBrush_QBrush(LStrHandle _retVal)
+QBrush_QBrush(LStrHandle _retVal, quint32 color, int32 brushStyle)
 {
 	return lqInvoke([=]
 	{
-		_retVal << QBrush();
+		_retVal << QBrush(color | 0xff000000, static_cast<Qt::BrushStyle>(brushStyle));
 	});
 }
 
@@ -1032,7 +1012,6 @@ QBrush_color(LStrHandle _retVal, LStrHandle _instance)
 	{
 		auto instance = deserialize<QBrush>(_instance);
 		_retVal << instance.color();
-		_instance << instance;
 	});
 }
 
@@ -1069,11 +1048,64 @@ QBrush_style(int32* _retVal, LStrHandle _instance)
 }
 
 qint32
-QColor_QColor(LStrHandle _retVal, qint32 r, qint32 g, qint32 b, qint32 a)
+QBrush_texture(LStrHandle _retVal, LStrHandle _instance)
 {
 	return lqInvoke([=]
 	{
-		_retVal << QColor(r, g, b, a);
+		auto instance = deserialize<QBrush>(_instance);
+		_retVal << instance.texture();
+	});
+}
+
+qint32
+QBrush_setTexture(LStrHandle _instance, LStrHandle pixmap)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QBrush>(_instance);
+		instance.setTexture(deserialize<QPixmap>(pixmap));
+		_instance << instance;
+	});
+}
+
+qint32
+QColor_QColor(LStrHandle _retVal, quint32 rgb)
+{
+	return lqInvoke([=]
+	{
+		_retVal << QColor(rgb | 0xff000000);
+	});
+}
+
+qint32
+QColor_alpha(quint8* _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QColor>(_instance);
+		*_retVal = instance.alpha();
+	});
+}
+
+qint32
+QColor_setAlpha(LStrHandle _instance, quint8 alpha)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QColor>(_instance);
+		instance.setAlpha(alpha);
+		_instance << instance;
+	});
+}
+
+qint32
+QColor_rgb(quint32* _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QColor>(_instance);
+		auto retVal = instance.rgb();
+		*_retVal = retVal & RGB_MASK;
 	});
 }
 
@@ -1442,44 +1474,83 @@ QIcon_QIcon(LStrHandle _retVal, LStrHandle fileName)
 }
 
 qint32
-QIcon_addFile(LStrHandle _instance, LStrHandle file)
+QIcon_addFile(LStrHandle _instance, LStrHandle file, QSize* size, int32 mode, int32 state)
 {
 	return lqInvoke([=]
 	{
 		auto instance = deserialize<QIcon>(_instance);
-		instance.addFile(LVString::to<QString>(file));
+		instance.addFile(LVString::to<QString>(file), *size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 		_instance << instance;
 	});
 }
 
 qint32
-QIcon_addPixmap(LStrHandle _instance, LStrHandle pixmap)
+QIcon_addPixmap(LStrHandle _instance, LStrHandle pixmap, int32 mode, int32 state)
 {
 	return lqInvoke([=]
 	{
 		auto instance = deserialize<QIcon>(_instance);
-		instance.addPixmap(deserialize<QPixmap>(pixmap));
+		instance.addPixmap(deserialize<QPixmap>(pixmap), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 		_instance << instance;
 	});
 }
 
 qint32
-QIcon_pixmap(LStrHandle _retVal, LStrHandle _instance, QSize* size)
+QIcon_pixmap(LStrHandle _retVal, LStrHandle _instance, QSize* size, int32 mode, int32 state)
 {
 	return lqInvoke([=]
 	{
 		auto instance = deserialize<QIcon>(_instance);
-		_retVal << instance.pixmap(*size);
+		_retVal << instance.pixmap(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
+	});
+}
+
+qint32
+QPalette_QPalette(LStrHandle _retVal, quint32 button)
+{
+	return lqInvoke([=]
+	{
+		_retVal << QPalette(button | 0xff000000);
+	});
+}
+
+qint32
+QPalette_brush(LStrHandle _retVal, LStrHandle _instance, int32 colorGroup, int32 colorRole)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPalette>(_instance);
+		_retVal << instance.brush(static_cast<QPalette::ColorGroup>(colorGroup), static_cast<QPalette::ColorRole>(colorRole));
+	});
+}
+
+qint32
+QPalette_setBrush(LStrHandle _instance, int32 colorGroup, int32 colorRole, LStrHandle brush)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPalette>(_instance);
+		instance.setBrush(static_cast<QPalette::ColorGroup>(colorGroup), static_cast<QPalette::ColorRole>(colorRole), deserialize<QBrush>(brush));
 		_instance << instance;
 	});
 }
 
 qint32
-QPen_QPen(LStrHandle _retVal)
+QPalette_isBrushSet(bool* _retVal, LStrHandle _instance, int32 colorGroup, int32 colorRole)
 {
 	return lqInvoke([=]
 	{
-		_retVal << QPen();
+		auto instance = deserialize<QPalette>(_instance);
+		*_retVal = instance.isBrushSet(static_cast<QPalette::ColorGroup>(colorGroup), static_cast<QPalette::ColorRole>(colorRole));
+	});
+}
+
+qint32
+QPen_QPen(LStrHandle _retVal, quint32 brush, double width, int32 style, int32 capStyle, int32 joinStyle)
+{
+	return lqInvoke([=]
+	{
+		_retVal << QPen(QBrush(brush | 0xff000000), width, static_cast<Qt::PenStyle>(style), static_cast<Qt::PenCapStyle>(capStyle), static_cast<Qt::PenJoinStyle>(joinStyle));
 	});
 }
 
@@ -1490,6 +1561,26 @@ QPen_dashOffset(double* _retVal, LStrHandle _instance)
 	{
 		auto instance = deserialize<QPen>(_instance);
 		*_retVal = instance.dashOffset();
+	});
+}
+
+qint32
+QPen_style(int32* _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPen>(_instance);
+		*_retVal = instance.style();
+	});
+}
+
+qint32
+QPen_setStyle(LStrHandle _instance, int32 style)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPen>(_instance);
+		instance.setStyle(static_cast<Qt::PenStyle>(style));
 		_instance << instance;
 	});
 }
@@ -1501,7 +1592,6 @@ QPen_dashPattern(LVArray<double>** _retVal, LStrHandle _instance)
 	{
 		auto instance = deserialize<QPen>(_instance);
 		_retVal << instance.dashPattern();
-		_instance << instance;
 	});
 }
 
@@ -1512,6 +1602,164 @@ QPen_setDashPattern(LStrHandle _instance, LVArray<double>** pattern)
 	{
 		auto instance = deserialize<QPen>(_instance);
 		instance.setDashPattern((*pattern)->toQVector<qreal>());
+		_instance << instance;
+	});
+}
+
+qint32
+QPen_setDashOffset(LStrHandle _instance, double offset)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPen>(_instance);
+		instance.setDashOffset(offset);
+		_instance << instance;
+	});
+}
+
+qint32
+QPen_miterLimit(double* _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPen>(_instance);
+		*_retVal = instance.miterLimit();
+	});
+}
+
+qint32
+QPen_setMiterLimit(LStrHandle _instance, double limit)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPen>(_instance);
+		instance.setMiterLimit(limit);
+		_instance << instance;
+	});
+}
+
+qint32
+QPen_widthF(double* _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPen>(_instance);
+		*_retVal = instance.widthF();
+	});
+}
+
+qint32
+QPen_setWidthF(LStrHandle _instance, double width)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPen>(_instance);
+		instance.setWidthF(width);
+		_instance << instance;
+	});
+}
+
+qint32
+QPen_color(LStrHandle _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPen>(_instance);
+		_retVal << instance.color();
+	});
+}
+
+qint32
+QPen_setColor(LStrHandle _instance, LStrHandle color)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPen>(_instance);
+		instance.setColor(deserialize<QColor>(color));
+		_instance << instance;
+	});
+}
+
+qint32
+QPen_brush(LStrHandle _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPen>(_instance);
+		_retVal << instance.brush();
+	});
+}
+
+qint32
+QPen_setBrush(LStrHandle _instance, LStrHandle brush)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPen>(_instance);
+		instance.setBrush(deserialize<QBrush>(brush));
+		_instance << instance;
+	});
+}
+
+qint32
+QPen_capStyle(int32* _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPen>(_instance);
+		*_retVal = instance.capStyle();
+	});
+}
+
+qint32
+QPen_setCapStyle(LStrHandle _instance, int32 capStyle)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPen>(_instance);
+		instance.setCapStyle(static_cast<Qt::PenCapStyle>(capStyle));
+		_instance << instance;
+	});
+}
+
+qint32
+QPen_joinStyle(int32* _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPen>(_instance);
+		*_retVal = instance.joinStyle();
+	});
+}
+
+qint32
+QPen_setJoinStyle(LStrHandle _instance, int32 joinStyle)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPen>(_instance);
+		instance.setJoinStyle(static_cast<Qt::PenJoinStyle>(joinStyle));
+		_instance << instance;
+	});
+}
+
+qint32
+QPen_isCosmetic(bool* _retVal, LStrHandle _instance)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPen>(_instance);
+		*_retVal = instance.isCosmetic();
+	});
+}
+
+qint32
+QPen_setCosmetic(LStrHandle _instance, bool* cosmetic)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPen>(_instance);
+		instance.setCosmetic(*cosmetic);
 		_instance << instance;
 	});
 }
@@ -1536,6 +1784,46 @@ QPixmap_size(QSize* _retVal, LStrHandle _instance)
 }
 
 qint32
+QApplication_font(LStrHandle _retVal, quintptr _instance, const char* className)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QApplication*>(_instance);
+		_retVal << instance->font(className);
+	});
+}
+
+qint32
+QApplication_setFont(quintptr _instance, LStrHandle font, const char* className)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QApplication*>(_instance);
+		instance->setFont(deserialize<QFont>(font), className);
+	});
+}
+
+qint32
+QApplication_palette(LStrHandle _retVal, quintptr _instance, const char* className)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QApplication*>(_instance);
+		_retVal << instance->palette(className);
+	});
+}
+
+qint32
+QApplication_setPalette(quintptr _instance, LStrHandle palette, const char* className)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QApplication*>(_instance);
+		instance->setPalette(deserialize<QPalette>(palette), className);
+	});
+}
+
+qint32
 QApplication_setStyleSheet(quintptr _instance, LStrHandle sheet)
 {
 	return lqInvoke(_instance, [=]
@@ -1556,11 +1844,11 @@ QApplication_styleSheet(LStrHandle _retVal, quintptr _instance)
 }
 
 qint32
-QWidget_QWidget(quintptr* _retVal, const char* _className)
+QWidget_QWidget(quintptr* _retVal, const char* _className, quintptr parent)
 {
 	return lqInvoke([=]
 	{
-		auto retVal = newLQObject<QWidget>(_className);
+		auto retVal = newLQObject<QWidget>(_className, reinterpret_cast<QWidget*>(parent));
 		*_retVal = reinterpret_cast<quintptr>(retVal);
 	});
 }
@@ -1582,6 +1870,16 @@ QWidget_addActions(quintptr _instance, LVArray<quintptr>** actions)
 	{
 		auto instance = reinterpret_cast<QWidget*>(_instance);
 		instance->addActions((*actions)->toQList<QAction*>());
+	});
+}
+
+qint32
+QWidget_autoFillBackground(bool* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QWidget*>(_instance);
+		*_retVal = instance->autoFillBackground();
 	});
 }
 
@@ -1637,6 +1935,16 @@ QWidget_layout(quintptr* _retVal, quintptr _instance)
 }
 
 qint32
+QWidget_insertActions(quintptr _instance, quintptr before, LVArray<quintptr>** actions)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QWidget*>(_instance);
+		instance->insertActions(reinterpret_cast<QAction*>(before), (*actions)->toQList<QAction*>());
+	});
+}
+
+qint32
 QWidget_isEnabled(bool* _retVal, quintptr _instance)
 {
 	return lqInvoke(_instance, [=]
@@ -1677,12 +1985,32 @@ QWidget_minimumSize(QSize* _retVal, quintptr _instance)
 }
 
 qint32
+QWidget_palette(LStrHandle _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QWidget*>(_instance);
+		_retVal << instance->palette();
+	});
+}
+
+qint32
 QWidget_resize(quintptr _instance, QSize* size)
 {
 	return lqInvoke(_instance, [=]
 	{
 		auto instance = reinterpret_cast<QWidget*>(_instance);
 		instance->resize(*size);
+	});
+}
+
+qint32
+QWidget_setAutoFillBackground(quintptr _instance, bool* enabled)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QWidget*>(_instance);
+		instance->setAutoFillBackground(*enabled);
 	});
 }
 
@@ -1767,6 +2095,16 @@ QWidget_setMinimumSize(quintptr _instance, QSize* size)
 }
 
 qint32
+QWidget_setPalette(quintptr _instance, LStrHandle palette)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QWidget*>(_instance);
+		instance->setPalette(deserialize<QPalette>(palette));
+	});
+}
+
+qint32
 QWidget_setStyleSheet(quintptr _instance, LStrHandle styleSheet)
 {
 	return lqInvoke(_instance, [=]
@@ -1822,6 +2160,16 @@ QWidget_setWindowIcon(quintptr _instance, LStrHandle icon)
 	{
 		auto instance = reinterpret_cast<QWidget*>(_instance);
 		instance->setWindowIcon(deserialize<QIcon>(icon));
+	});
+}
+
+qint32
+QWidget_setWindowState(quintptr _instance, int32 windowState)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QWidget*>(_instance);
+		instance->setWindowState(static_cast<Qt::WindowState>(windowState));
 	});
 }
 
@@ -1923,6 +2271,16 @@ QWidget_windowOpacity(double* _retVal, quintptr _instance)
 	{
 		auto instance = reinterpret_cast<QWidget*>(_instance);
 		*_retVal = instance->windowOpacity();
+	});
+}
+
+qint32
+QWidget_windowState(int32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QWidget*>(_instance);
+		*_retVal = instance->windowState();
 	});
 }
 
@@ -2487,11 +2845,11 @@ QFrame_setFrameRect(quintptr _instance, QRect* rectangle)
 }
 
 qint32
-QLabel_QLabel(quintptr* _retVal, const char* _className, LStrHandle text)
+QLabel_QLabel(quintptr* _retVal, const char* _className, LStrHandle text, quintptr parent)
 {
 	return lqInvoke([=]
 	{
-		auto retVal = newLQObject<QLabel>(_className, LVString::to<QString>(text));
+		auto retVal = newLQObject<QLabel>(_className, LVString::to<QString>(text), reinterpret_cast<QWidget*>(parent));
 		*_retVal = reinterpret_cast<quintptr>(retVal);
 	});
 }
@@ -2577,6 +2935,46 @@ QAbstractButton_icon(LStrHandle _retVal, quintptr _instance)
 }
 
 qint32
+QAbstractButton_iconSize(QSize* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QAbstractButton*>(_instance);
+		*_retVal = instance->iconSize();
+	});
+}
+
+qint32
+QAbstractButton_setCheckable(quintptr _instance, bool* checkable)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QAbstractButton*>(_instance);
+		instance->setCheckable(*checkable);
+	});
+}
+
+qint32
+QAbstractButton_isCheckable(bool* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QAbstractButton*>(_instance);
+		*_retVal = instance->isCheckable();
+	});
+}
+
+qint32
+QAbstractButton_isChecked(bool* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QAbstractButton*>(_instance);
+		*_retVal = instance->isChecked();
+	});
+}
+
+qint32
 QAbstractButton_isDown(bool* _retVal, quintptr _instance)
 {
 	return lqInvoke(_instance, [=]
@@ -2593,6 +2991,46 @@ QAbstractButton_setDown(quintptr _instance, bool* down)
 	{
 		auto instance = reinterpret_cast<QAbstractButton*>(_instance);
 		instance->setDown(*down);
+	});
+}
+
+qint32
+QAbstractButton_setAutoExclusive(quintptr _instance, bool* autoExclusive)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QAbstractButton*>(_instance);
+		instance->setAutoExclusive(*autoExclusive);
+	});
+}
+
+qint32
+QAbstractButton_autoExclusive(bool* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QAbstractButton*>(_instance);
+		*_retVal = instance->autoExclusive();
+	});
+}
+
+qint32
+QAbstractButton_setIconSize(quintptr _instance, QSize* size)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QAbstractButton*>(_instance);
+		instance->setIconSize(*size);
+	});
+}
+
+qint32
+QAbstractButton_setChecked(quintptr _instance, bool* checked)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QAbstractButton*>(_instance);
+		instance->setChecked(*checked);
 	});
 }
 
@@ -2627,11 +3065,11 @@ QAbstractButton_text(LStrHandle _retVal, quintptr _instance)
 }
 
 qint32
-QPushButton_QPushButton(quintptr* _retVal, const char* _className, LStrHandle text)
+QPushButton_QPushButton(quintptr* _retVal, const char* _className, LStrHandle text, quintptr parent)
 {
 	return lqInvoke([=]
 	{
-		auto retVal = newLQObject<QPushButton>(_className, LVString::to<QString>(text));
+		auto retVal = newLQObject<QPushButton>(_className, LVString::to<QString>(text), reinterpret_cast<QWidget*>(parent));
 		*_retVal = reinterpret_cast<quintptr>(retVal);
 	});
 }
@@ -5358,11 +5796,11 @@ QToolBox_setCurrentWidget(quintptr _instance, quintptr widget)
 }
 
 qint32
-QGridLayout_QGridLayout(quintptr* _retVal, const char* _className)
+QGridLayout_QGridLayout(quintptr* _retVal, const char* _className, quintptr parent)
 {
 	return lqInvoke([=]
 	{
-		auto retVal = newLQObject<QGridLayout>(_className);
+		auto retVal = newLQObject<QGridLayout>(_className, reinterpret_cast<QWidget*>(parent));
 		*_retVal = reinterpret_cast<quintptr>(retVal);
 	});
 }
@@ -7749,6 +8187,108 @@ QDoubleSpinBox_setValue(quintptr _instance, double val)
 	{
 		auto instance = reinterpret_cast<QDoubleSpinBox*>(_instance);
 		instance->setValue(val);
+	});
+}
+
+qint32
+QStackedWidget_QStackedWidget(quintptr* _retVal, const char* _className, quintptr parent)
+{
+	return lqInvoke([=]
+	{
+		auto retVal = newLQObject<QStackedWidget>(_className, reinterpret_cast<QWidget*>(parent));
+		*_retVal = reinterpret_cast<quintptr>(retVal);
+	});
+}
+
+qint32
+QStackedWidget_insertWidget(qint32* _retVal, quintptr _instance, qint32 index, quintptr widget)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QStackedWidget*>(_instance);
+		*_retVal = instance->insertWidget(index, reinterpret_cast<QWidget*>(widget));
+	});
+}
+
+qint32
+QStackedWidget_removeWidget(quintptr _instance, quintptr widget)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QStackedWidget*>(_instance);
+		instance->removeWidget(reinterpret_cast<QWidget*>(widget));
+	});
+}
+
+qint32
+QStackedWidget_currentWidget(quintptr* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QStackedWidget*>(_instance);
+		auto retVal = instance->currentWidget();
+		*_retVal = reinterpret_cast<quintptr>(retVal);
+	});
+}
+
+qint32
+QStackedWidget_currentIndex(qint32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QStackedWidget*>(_instance);
+		*_retVal = instance->currentIndex();
+	});
+}
+
+qint32
+QStackedWidget_indexOf(qint32* _retVal, quintptr _instance, quintptr widget)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QStackedWidget*>(_instance);
+		*_retVal = instance->indexOf(reinterpret_cast<QWidget*>(widget));
+	});
+}
+
+qint32
+QStackedWidget_widget(quintptr* _retVal, quintptr _instance, qint32 index)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QStackedWidget*>(_instance);
+		auto retVal = instance->widget(index);
+		*_retVal = reinterpret_cast<quintptr>(retVal);
+	});
+}
+
+qint32
+QStackedWidget_count(qint32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QStackedWidget*>(_instance);
+		*_retVal = instance->count();
+	});
+}
+
+qint32
+QStackedWidget_setCurrentIndex(quintptr _instance, qint32 index)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QStackedWidget*>(_instance);
+		instance->setCurrentIndex(index);
+	});
+}
+
+qint32
+QStackedWidget_setCurrentWidget(quintptr _instance, quintptr widget)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QStackedWidget*>(_instance);
+		instance->setCurrentWidget(reinterpret_cast<QWidget*>(widget));
 	});
 }
 
