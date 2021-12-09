@@ -174,7 +174,7 @@ LQChart::append(const QVector<QVector<double>>& values)
 }
 
 bool
-LQChart::isAxisAutoScaling(QwtPlot::Axis axisId) const
+LQChart::isAxisAutoScaling(QwtAxis::Position axisId) const
 {
 	switch (axisId)
 	{
@@ -185,7 +185,7 @@ LQChart::isAxisAutoScaling(QwtPlot::Axis axisId) const
 }
 
 void
-LQChart::setAxisAutoScaling(QwtPlot::Axis axisId, bool autoScaling)
+LQChart::setAxisAutoScaling(QwtAxis::Position axisId, bool autoScaling)
 {
 	switch (axisId)
 	{
