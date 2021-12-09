@@ -17,7 +17,7 @@ Development Platforms
 
 Deployment Platforms
 * Windows (as supported by LabVIEW)
-* NI Linux RT 19.0 or newer
+* NI Linux RT 19.0 or newer (x64)
 
 
 Installation
