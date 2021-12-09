@@ -9242,6 +9242,637 @@ QWinThumbnailToolButton_click(quintptr _instance)
 #endif // Q_OS_WIN
 
 qint32
+QwtPlotItem_attach(quintptr _instance, quintptr plot)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotItem*>(_instance);
+		instance->attach(reinterpret_cast<QwtPlot*>(plot));
+	});
+}
+
+qint32
+QwtPlotItem_detach(quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotItem*>(_instance);
+		instance->detach();
+	});
+}
+
+qint32
+QwtPlotItem_plot(quintptr* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotItem*>(_instance);
+		auto retVal = instance->plot();
+		*_retVal = reinterpret_cast<quintptr>(retVal);
+	});
+}
+
+qint32
+QwtPlotItem_setTitle(quintptr _instance, LStrHandle title)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotItem*>(_instance);
+		instance->setTitle(LVString::to<QString>(title));
+	});
+}
+
+qint32
+QwtPlotItem_title(LStrHandle _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotItem*>(_instance);
+		_retVal << instance->title();
+	});
+}
+
+qint32
+QwtPlotItem_setLegendIconSize(quintptr _instance, QSize* size)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotItem*>(_instance);
+		instance->setLegendIconSize(*size);
+	});
+}
+
+qint32
+QwtPlotItem_legendIconSize(QSize* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotItem*>(_instance);
+		*_retVal = instance->legendIconSize();
+	});
+}
+
+qint32
+QwtPlotItem_z(double* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotItem*>(_instance);
+		*_retVal = instance->z();
+	});
+}
+
+qint32
+QwtPlotItem_setZ(quintptr _instance, double z)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotItem*>(_instance);
+		instance->setZ(z);
+	});
+}
+
+qint32
+QwtPlotItem_setVisible(quintptr _instance, bool* visible)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotItem*>(_instance);
+		instance->setVisible(*visible);
+	});
+}
+
+qint32
+QwtPlotItem_isVisible(bool* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotItem*>(_instance);
+		*_retVal = instance->isVisible();
+	});
+}
+
+qint32
+QwtPlotItem_setXAxis(quintptr _instance, int32 axis)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotItem*>(_instance);
+		instance->setXAxis(static_cast<QwtAxis::Position>(axis));
+	});
+}
+
+qint32
+QwtPlotItem_xAxis(int32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotItem*>(_instance);
+		*_retVal = instance->xAxis();
+	});
+}
+
+qint32
+QwtPlotItem_setYAxis(quintptr _instance, int32 axis)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotItem*>(_instance);
+		instance->setYAxis(static_cast<QwtAxis::Position>(axis));
+	});
+}
+
+qint32
+QwtPlotItem_yAxis(int32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotItem*>(_instance);
+		*_retVal = instance->yAxis();
+	});
+}
+
+qint32
+QwtPlotSeriesItem_setOrientation(quintptr _instance, int32 orientation)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotSeriesItem*>(_instance);
+		instance->setOrientation(static_cast<Qt::Orientation>(orientation));
+	});
+}
+
+qint32
+QwtPlotSeriesItem_orientation(int32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotSeriesItem*>(_instance);
+		*_retVal = instance->orientation();
+	});
+}
+
+qint32
+QwtPlotCurve_QwtPlotCurve(quintptr* _retVal, LStrHandle title)
+{
+	return lqInvoke([=]
+	{
+		auto retVal = new QwtPlotCurve(LVString::to<QString>(title));
+		*_retVal = reinterpret_cast<quintptr>(retVal);
+	});
+}
+
+qint32
+QwtPlotCurve_setPaintAttribute(quintptr _instance, int32 attribute, bool* on)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotCurve*>(_instance);
+		instance->setPaintAttribute(static_cast<QwtPlotCurve::PaintAttribute>(attribute), *on);
+	});
+}
+
+qint32
+QwtPlotCurve_testPaintAttribute(bool* _retVal, quintptr _instance, int32 attribute)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotCurve*>(_instance);
+		*_retVal = instance->testPaintAttribute(static_cast<QwtPlotCurve::PaintAttribute>(attribute));
+	});
+}
+
+qint32
+QwtPlotCurve_setLegendAttribute(quintptr _instance, int32 attribute, bool* on)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotCurve*>(_instance);
+		instance->setLegendAttribute(static_cast<QwtPlotCurve::LegendAttribute>(attribute), *on);
+	});
+}
+
+qint32
+QwtPlotCurve_testLegendAttribute(bool* _retVal, quintptr _instance, int32 attribute)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotCurve*>(_instance);
+		*_retVal = instance->testLegendAttribute(static_cast<QwtPlotCurve::LegendAttribute>(attribute));
+	});
+}
+
+qint32
+QwtPlotCurve_setSamples(quintptr _instance, LVArray<double>** xData, LVArray<double>** yData)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotCurve*>(_instance);
+		instance->setSamples((*xData)->toQVector<double>(), (*yData)->toQVector<double>());
+	});
+}
+
+qint32
+QwtPlotCurve_setCurveAttribute(quintptr _instance, int32 attribute, bool* on)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotCurve*>(_instance);
+		instance->setCurveAttribute(static_cast<QwtPlotCurve::CurveAttribute>(attribute), *on);
+	});
+}
+
+qint32
+QwtPlotCurve_testCurveAttribute(bool* _retVal, quintptr _instance, int32 attribute)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotCurve*>(_instance);
+		*_retVal = instance->testCurveAttribute(static_cast<QwtPlotCurve::CurveAttribute>(attribute));
+	});
+}
+
+qint32
+QwtPlotCurve_setPen(quintptr _instance, LStrHandle pen)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotCurve*>(_instance);
+		instance->setPen(deserialize<QPen>(pen));
+	});
+}
+
+qint32
+QwtPlotCurve_pen(LStrHandle _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotCurve*>(_instance);
+		_retVal << instance->pen();
+	});
+}
+
+qint32
+QwtPlotCurve_setBaseline(quintptr _instance, double baseline)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotCurve*>(_instance);
+		instance->setBaseline(baseline);
+	});
+}
+
+qint32
+QwtPlotCurve_baseline(double* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotCurve*>(_instance);
+		*_retVal = instance->baseline();
+	});
+}
+
+qint32
+QwtPlotCurve_setStyle(quintptr _instance, int32 style)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotCurve*>(_instance);
+		instance->setStyle(static_cast<QwtPlotCurve::CurveStyle>(style));
+	});
+}
+
+qint32
+QwtPlotCurve_style(int32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotCurve*>(_instance);
+		*_retVal = instance->style();
+	});
+}
+
+qint32
+QwtPlotAbstractBarChart_setLayoutPolicy(quintptr _instance, int32 policy)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotAbstractBarChart*>(_instance);
+		instance->setLayoutPolicy(static_cast<QwtPlotAbstractBarChart::LayoutPolicy>(policy));
+	});
+}
+
+qint32
+QwtPlotAbstractBarChart_layoutPolicy(int32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotAbstractBarChart*>(_instance);
+		*_retVal = instance->layoutPolicy();
+	});
+}
+
+qint32
+QwtPlotAbstractBarChart_setLayoutHint(quintptr _instance, double hint)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotAbstractBarChart*>(_instance);
+		instance->setLayoutHint(hint);
+	});
+}
+
+qint32
+QwtPlotAbstractBarChart_layoutHint(double* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotAbstractBarChart*>(_instance);
+		*_retVal = instance->layoutHint();
+	});
+}
+
+qint32
+QwtPlotAbstractBarChart_setSpacing(quintptr _instance, qint32 spacing)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotAbstractBarChart*>(_instance);
+		instance->setSpacing(spacing);
+	});
+}
+
+qint32
+QwtPlotAbstractBarChart_spacing(qint32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotAbstractBarChart*>(_instance);
+		*_retVal = instance->spacing();
+	});
+}
+
+qint32
+QwtPlotAbstractBarChart_setMargin(quintptr _instance, qint32 margin)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotAbstractBarChart*>(_instance);
+		instance->setMargin(margin);
+	});
+}
+
+qint32
+QwtPlotAbstractBarChart_margin(qint32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotAbstractBarChart*>(_instance);
+		*_retVal = instance->margin();
+	});
+}
+
+qint32
+QwtPlotAbstractBarChart_setBaseline(quintptr _instance, double baseline)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotAbstractBarChart*>(_instance);
+		instance->setBaseline(baseline);
+	});
+}
+
+qint32
+QwtPlotAbstractBarChart_baseline(double* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotAbstractBarChart*>(_instance);
+		*_retVal = instance->baseline();
+	});
+}
+
+qint32
+QwtPlotBarChart_setSamples(quintptr _instance, LVArray<double>** samples)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotBarChart*>(_instance);
+		instance->setSamples((*samples)->toQVector<double>());
+	});
+}
+
+qint32
+QwtPlotBarChart_setLegendMode(quintptr _instance, int32 mode)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotBarChart*>(_instance);
+		instance->setLegendMode(static_cast<QwtPlotBarChart::LegendMode>(mode));
+	});
+}
+
+qint32
+QwtPlotBarChart_legendMode(int32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotBarChart*>(_instance);
+		*_retVal = instance->legendMode();
+	});
+}
+
+qint32
+QwtAbstractScaleDraw_enableComponent(quintptr _instance, int32 component, bool* enable)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtAbstractScaleDraw*>(_instance);
+		instance->enableComponent(static_cast<QwtAbstractScaleDraw::ScaleComponent>(component), *enable);
+	});
+}
+
+qint32
+QwtAbstractScaleDraw_hasComponent(bool* _retVal, quintptr _instance, int32 component)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtAbstractScaleDraw*>(_instance);
+		*_retVal = instance->hasComponent(static_cast<QwtAbstractScaleDraw::ScaleComponent>(component));
+	});
+}
+
+qint32
+QwtAbstractScaleDraw_setSpacing(quintptr _instance, double spacing)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtAbstractScaleDraw*>(_instance);
+		instance->setSpacing(spacing);
+	});
+}
+
+qint32
+QwtAbstractScaleDraw_spacing(double* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtAbstractScaleDraw*>(_instance);
+		*_retVal = instance->spacing();
+	});
+}
+
+qint32
+QwtAbstractScaleDraw_setPenWidthF(quintptr _instance, double width)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtAbstractScaleDraw*>(_instance);
+		instance->setPenWidthF(width);
+	});
+}
+
+qint32
+QwtAbstractScaleDraw_penWidthF(double* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtAbstractScaleDraw*>(_instance);
+		*_retVal = instance->penWidthF();
+	});
+}
+
+qint32
+QwtScaleDraw_alignment(int32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtScaleDraw*>(_instance);
+		*_retVal = instance->alignment();
+	});
+}
+
+qint32
+QwtScaleDraw_setAlignment(quintptr _instance, int32 alignment)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtScaleDraw*>(_instance);
+		instance->setAlignment(static_cast<QwtScaleDraw::Alignment>(alignment));
+	});
+}
+
+qint32
+QwtScaleDraw_orientation(int32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtScaleDraw*>(_instance);
+		*_retVal = instance->orientation();
+	});
+}
+
+qint32
+QwtScaleDraw_setLabelAlignment(quintptr _instance, int32 alignment)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtScaleDraw*>(_instance);
+		instance->setLabelAlignment(static_cast<Qt::AlignmentFlag>(alignment));
+	});
+}
+
+qint32
+QwtScaleDraw_labelAlignment(int32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtScaleDraw*>(_instance);
+		*_retVal = instance->labelAlignment();
+	});
+}
+
+qint32
+QwtScaleDraw_setLabelRotation(quintptr _instance, double rotation)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtScaleDraw*>(_instance);
+		instance->setLabelRotation(rotation);
+	});
+}
+
+qint32
+QwtScaleDraw_labelRotation(double* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtScaleDraw*>(_instance);
+		*_retVal = instance->labelRotation();
+	});
+}
+
+qint32
+QwtScaleEngine_setAttribute(quintptr _instance, int32 attribute, bool* on)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtScaleEngine*>(_instance);
+		instance->setAttribute(static_cast<QwtScaleEngine::Attribute>(attribute), *on);
+	});
+}
+
+qint32
+QwtScaleEngine_testAttribute(bool* _retVal, quintptr _instance, int32 attribute)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtScaleEngine*>(_instance);
+		*_retVal = instance->testAttribute(static_cast<QwtScaleEngine::Attribute>(attribute));
+	});
+}
+
+qint32
+QwtScaleEngine_setReference(quintptr _instance, double reference)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtScaleEngine*>(_instance);
+		instance->setReference(reference);
+	});
+}
+
+qint32
+QwtScaleEngine_reference(double* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtScaleEngine*>(_instance);
+		*_retVal = instance->reference();
+	});
+}
+
+qint32
+QwtLinearScaleEngine_QwtLinearScaleEngine(quintptr* _retVal, quint32 base)
+{
+	return lqInvoke([=]
+	{
+		auto retVal = new QwtLinearScaleEngine(base);
+		*_retVal = reinterpret_cast<quintptr>(retVal);
+	});
+}
+
+qint32
+QwtLogScaleEngine_QwtLogScaleEngine(quintptr* _retVal, quint32 base)
+{
+	return lqInvoke([=]
+	{
+		auto retVal = new QwtLogScaleEngine(base);
+		*_retVal = reinterpret_cast<quintptr>(retVal);
+	});
+}
+
+qint32
 QwtAbstractScale_setScale(quintptr _instance, double lowerBound, double upperBound)
 {
 	return lqInvoke(_instance, [=]
@@ -9842,12 +10473,12 @@ QwtAbstractSlider_invertedControls(bool* _retVal, quintptr _instance)
 }
 
 qint32
-QwtAbstractSlider_setValue(quintptr _instance, double val)
+QwtAbstractSlider_setValue(quintptr _instance, double value)
 {
 	return lqInvoke(_instance, [=]
 	{
 		auto instance = reinterpret_cast<QwtAbstractSlider*>(_instance);
-		instance->setValue(val);
+		instance->setValue(value);
 	});
 }
 
@@ -9962,12 +10593,12 @@ QwtSlider_handleSize(QSize* _retVal, quintptr _instance)
 }
 
 qint32
-QwtSlider_setBorderWidth(quintptr _instance, qint32 bw)
+QwtSlider_setBorderWidth(quintptr _instance, qint32 width)
 {
 	return lqInvoke(_instance, [=]
 	{
 		auto instance = reinterpret_cast<QwtSlider*>(_instance);
-		instance->setBorderWidth(bw);
+		instance->setBorderWidth(width);
 	});
 }
 
@@ -10022,6 +10653,348 @@ QwtSlider_updateInterval(qint32* _retVal, quintptr _instance)
 }
 
 qint32
+QwtPlot_QwtPlot(quintptr* _retVal, const char* _className, LStrHandle title, quintptr parent)
+{
+	return lqInvoke([=]
+	{
+		auto retVal = newLQObject<QwtPlot>(_className, LVString::to<QwtText>(title), reinterpret_cast<QWidget*>(parent));
+		*_retVal = reinterpret_cast<quintptr>(retVal);
+	});
+}
+
+qint32
+QwtPlot_setTitle(quintptr _instance, LStrHandle title)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		instance->setTitle(LVString::to<QString>(title));
+	});
+}
+
+qint32
+QwtPlot_title(LStrHandle _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		_retVal << instance->title();
+	});
+}
+
+qint32
+QwtPlot_setCanvasBackground(quintptr _instance, LStrHandle brush)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		instance->setCanvasBackground(deserialize<QBrush>(brush));
+	});
+}
+
+qint32
+QwtPlot_canvasBackground(LStrHandle _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		_retVal << instance->canvasBackground();
+	});
+}
+
+qint32
+QwtPlot_axisScaleEngine(quintptr* _retVal, quintptr _instance, int32 axisId)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		auto retVal = instance->axisScaleEngine(static_cast<QwtAxis::Position>(axisId));
+		*_retVal = reinterpret_cast<quintptr>(retVal);
+	});
+}
+
+qint32
+QwtPlot_setAxisScaleEngine(quintptr _instance, int32 axisId, quintptr engine)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		instance->setAxisScaleEngine(static_cast<QwtAxis::Position>(axisId), reinterpret_cast<QwtScaleEngine*>(engine));
+	});
+}
+
+qint32
+QwtPlot_setAxisAutoScale(quintptr _instance, int32 axisId, bool* on)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		instance->setAxisAutoScale(static_cast<QwtAxis::Position>(axisId), *on);
+	});
+}
+
+qint32
+QwtPlot_axisAutoScale(bool* _retVal, quintptr _instance, int32 axisId)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		*_retVal = instance->axisAutoScale(static_cast<QwtAxis::Position>(axisId));
+	});
+}
+
+qint32
+QwtPlot_setAxisFont(quintptr _instance, int32 axisId, LStrHandle font)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		instance->setAxisFont(static_cast<QwtAxis::Position>(axisId), deserialize<QFont>(font));
+	});
+}
+
+qint32
+QwtPlot_axisFont(LStrHandle _retVal, quintptr _instance, int32 axisId)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		_retVal << instance->axisFont(static_cast<QwtAxis::Position>(axisId));
+	});
+}
+
+qint32
+QwtPlot_setAxisScale(quintptr _instance, int32 axisId, double min, double max, double stepSize)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		instance->setAxisScale(static_cast<QwtAxis::Position>(axisId), min, max, stepSize);
+	});
+}
+
+qint32
+QwtPlot_setAxisScaleDraw(quintptr _instance, int32 axisId, quintptr scaleDraw)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		instance->setAxisScaleDraw(static_cast<QwtAxis::Position>(axisId), reinterpret_cast<QwtScaleDraw*>(scaleDraw));
+	});
+}
+
+qint32
+QwtPlot_axisStepSize(double* _retVal, quintptr _instance, int32 axisId)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		*_retVal = instance->axisStepSize(static_cast<QwtAxis::Position>(axisId));
+	});
+}
+
+qint32
+QwtPlot_axisScaleDraw(quintptr* _retVal, quintptr _instance, int32 axisId)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		auto retVal = instance->axisScaleDraw(static_cast<QwtAxis::Position>(axisId));
+		*_retVal = reinterpret_cast<quintptr>(retVal);
+	});
+}
+
+qint32
+QwtPlot_setAxisLabelAlignment(quintptr _instance, int32 axisId, int32 alignment)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		instance->setAxisLabelAlignment(static_cast<QwtAxis::Position>(axisId), static_cast<Qt::AlignmentFlag>(alignment));
+	});
+}
+
+qint32
+QwtPlot_setAxisLabelRotation(quintptr _instance, int32 axisId, double rotation)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		instance->setAxisLabelRotation(static_cast<QwtAxis::Position>(axisId), rotation);
+	});
+}
+
+qint32
+QwtPlot_setAxisTitle(quintptr _instance, int32 axisId, LStrHandle title)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		instance->setAxisTitle(static_cast<QwtAxis::Position>(axisId), LVString::to<QString>(title));
+	});
+}
+
+qint32
+QwtPlot_axisTitle(LStrHandle _retVal, quintptr _instance, int32 axisId)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		_retVal << instance->axisTitle(static_cast<QwtAxis::Position>(axisId));
+	});
+}
+
+qint32
+QwtPlot_setAxisMaxMinor(quintptr _instance, int32 axisId, qint32 maxMinor)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		instance->setAxisMaxMinor(static_cast<QwtAxis::Position>(axisId), maxMinor);
+	});
+}
+
+qint32
+QwtPlot_axisMaxMinor(qint32* _retVal, quintptr _instance, int32 axisId)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		*_retVal = instance->axisMaxMinor(static_cast<QwtAxis::Position>(axisId));
+	});
+}
+
+qint32
+QwtPlot_setAxisMaxMajor(quintptr _instance, int32 axisId, qint32 maxMajor)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		instance->setAxisMaxMajor(static_cast<QwtAxis::Position>(axisId), maxMajor);
+	});
+}
+
+qint32
+QwtPlot_axisMaxMajor(qint32* _retVal, quintptr _instance, int32 axisId)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		*_retVal = instance->axisMaxMajor(static_cast<QwtAxis::Position>(axisId));
+	});
+}
+
+qint32
+QwtPlot_replot(quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlot*>(_instance);
+		instance->replot();
+	});
+}
+
+qint32
+LQwtPlotBarChart_LQwtPlotBarChart(quintptr* _retVal, LStrHandle title)
+{
+	return lqInvoke([=]
+	{
+		auto retVal = new LQwtPlotBarChart(LVString::to<QString>(title));
+		*_retVal = reinterpret_cast<quintptr>(retVal);
+	});
+}
+
+qint32
+LQwtPlotBarChart_barFrameStyle(int32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<LQwtPlotBarChart*>(_instance);
+		*_retVal = instance->barFrameStyle();
+	});
+}
+
+qint32
+LQwtPlotBarChart_setBarFrameStyle(quintptr _instance, int32 style)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<LQwtPlotBarChart*>(_instance);
+		instance->setBarFrameStyle(static_cast<QwtColumnSymbol::FrameStyle>(style));
+	});
+}
+
+qint32
+LQwtPlotBarChart_barFrameLineWidth(qint32* _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<LQwtPlotBarChart*>(_instance);
+		*_retVal = instance->barFrameLineWidth();
+	});
+}
+
+qint32
+LQwtPlotBarChart_setBarFrameLineWidth(quintptr _instance, qint32 width)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<LQwtPlotBarChart*>(_instance);
+		instance->setBarFrameLineWidth(width);
+	});
+}
+
+qint32
+LQwtPlotBarChart_barPalette(LStrHandle _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<LQwtPlotBarChart*>(_instance);
+		_retVal << instance->barPalette();
+	});
+}
+
+qint32
+LQwtPlotBarChart_setBarPalette(quintptr _instance, LStrHandle palette)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<LQwtPlotBarChart*>(_instance);
+		instance->setBarPalette(deserialize<QPalette>(palette));
+	});
+}
+
+qint32
+LQwtTextScaleDraw_LQwtTextScaleDraw(quintptr* _retVal, LVArray<LStrHandle>** labels)
+{
+	return lqInvoke([=]
+	{
+		auto retVal = new LQwtTextScaleDraw((*labels)->toQList<QString>());
+		*_retVal = reinterpret_cast<quintptr>(retVal);
+	});
+}
+
+qint32
+LQwtTextScaleDraw_labels(LVArray<LStrHandle>** _retVal, quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<LQwtTextScaleDraw*>(_instance);
+		_retVal << instance->labels();
+	});
+}
+
+qint32
+LQwtTextScaleDraw_setLabels(quintptr _instance, LVArray<LStrHandle>** labels)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<LQwtTextScaleDraw*>(_instance);
+		instance->setLabels((*labels)->toQList<QString>());
+	});
+}
+
+qint32
 LQChart_LQChart(quintptr* _retVal, const char* _className, qint32 historyLength, double xMultiplier, quintptr parent)
 {
 	return lqInvoke([=]
@@ -10047,7 +11020,7 @@ LQChart_axisTitle(LStrHandle _retVal, quintptr _instance, int32 axisId)
 	return lqInvoke(_instance, [=]
 	{
 		auto instance = reinterpret_cast<LQChart*>(_instance);
-		_retVal << instance->axisTitle(static_cast<QwtPlot::Axis>(axisId));
+		_retVal << instance->axisTitle(static_cast<QwtAxis::Position>(axisId));
 	});
 }
 
@@ -10087,7 +11060,7 @@ LQChart_isAxisAutoScaling(bool* _retVal, quintptr _instance, int32 axisId)
 	return lqInvoke(_instance, [=]
 	{
 		auto instance = reinterpret_cast<LQChart*>(_instance);
-		*_retVal = instance->isAxisAutoScaling(static_cast<QwtPlot::Axis>(axisId));
+		*_retVal = instance->isAxisAutoScaling(static_cast<QwtAxis::Position>(axisId));
 	});
 }
 
@@ -10097,7 +11070,7 @@ LQChart_setAxisAutoScaling(quintptr _instance, int32 axisId, bool* autoScaling)
 	return lqInvoke(_instance, [=]
 	{
 		auto instance = reinterpret_cast<LQChart*>(_instance);
-		instance->setAxisAutoScaling(static_cast<QwtPlot::Axis>(axisId), *autoScaling);
+		instance->setAxisAutoScaling(static_cast<QwtAxis::Position>(axisId), *autoScaling);
 	});
 }
 
@@ -10107,7 +11080,7 @@ LQChart_setAxisTitle(quintptr _instance, int32 axisId, LStrHandle title)
 	return lqInvoke(_instance, [=]
 	{
 		auto instance = reinterpret_cast<LQChart*>(_instance);
-		instance->setAxisTitle(static_cast<QwtPlot::Axis>(axisId), LVString::to<QString>(title));
+		instance->setAxisTitle(static_cast<QwtAxis::Position>(axisId), LVString::to<QString>(title));
 	});
 }
 
@@ -10140,5 +11113,3 @@ LQChart_setYAxisRange(quintptr _instance, double min, double max)
 		instance->setYAxisRange(min, max);
 	});
 }
-
-
