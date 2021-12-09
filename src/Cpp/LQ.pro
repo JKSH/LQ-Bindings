@@ -46,6 +46,7 @@ SOURCES += \
     lqapplication.cpp
 
 HEADERS += \
+    lqextras.h \
     lqmain.h \
     lqlibinterface.h \
     lqtypes.h \
