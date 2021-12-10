@@ -1,5 +1,5 @@
 /*\
- * Copyright (c) 2020 Sze Howe Koh
+ * Copyright (c) 2021 Sze Howe Koh
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -502,5 +502,17 @@ findSignalIndex(qint64* _retVal, quintptr _instance, const char* normalizedSigna
 		// However, that would be the wrong index for an overridden virtual signal (not
 		// that I can think of any such cases in Qt)
 	}
+	return LQ::NoError;
+}
+
+qint32
+QObject_deleteLater(uintptr_t _instance)
+{
+	if (!isRunning)
+		return LQ::EngineNotRunningError;
+	if (!_instance)
+		return LQ::NullPointerUseError;
+
+	reinterpret_cast<QObject*>(_instance)->deleteLater();
 	return LQ::NoError;
 }

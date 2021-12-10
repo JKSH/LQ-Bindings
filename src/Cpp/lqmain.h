@@ -1,5 +1,5 @@
 /*\
- * Copyright (c) 2016 Sze Howe Koh
+ * Copyright (c) 2021 Sze Howe Koh
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -34,6 +34,8 @@ extern qint32 Q_DECL_EXPORT emit_dbl(quintptr _instance, const char* normalizedS
 extern qint32 Q_DECL_EXPORT emit_string(quintptr _instance, const char* normalizedSignal, LStrHandle data);
 extern qint32 Q_DECL_EXPORT registerLQObject(quintptr _instance, LVArray<LStrHandle>** signalList, LStrHandle superClassName);
 extern qint32 Q_DECL_EXPORT findSignalIndex(qint64* _retVal, quintptr _instance, const char* normalizedSignal);
+
+extern qint32 Q_DECL_EXPORT QObject_deleteLater(uintptr_t _instance);
 
 }
 
