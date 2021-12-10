@@ -35,7 +35,7 @@ public:
 	void append(const QVector<double>& values)
 	{ append(QVector<QVector<double>>{values}); }
 
-	QString axisTitle(QwtPlot::Axis axisId) const
+	QString axisTitle(QwtAxis::Position axisId) const
 	{ return QwtPlot::axisTitle(axisId).text(); }
 
 	QStringList curveTitles() const
@@ -44,9 +44,9 @@ public:
 	int historyLength() const
 	{ return _maxLength; }
 
-	bool isAxisAutoScaling(QwtPlot::Axis axisId) const;
+	bool isAxisAutoScaling(QwtAxis::Position axisId) const;
 
-	void setAxisAutoScaling(QwtPlot::Axis axisId, bool autoScaling = true);
+	void setAxisAutoScaling(QwtAxis::Position axisId, bool autoScaling = true);
 
 	void setAxisTitle(int axisId, const QString& title)
 	{ QwtPlot::setAxisTitle(axisId, title); }
