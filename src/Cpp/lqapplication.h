@@ -14,12 +14,13 @@
 #include <QVector>
 #include "lqerrors.h"
 #include "lqtypes.h"
+#include "lqglobal.h"
 
 // TODO: Make this flag a static member of LQApplication and let lqlibinterface.cpp
 // call LQApplication::isActive()
 extern std::atomic_bool isRunning;
 
-class LQApplication : public QApplication
+class LQ_EXPORT LQApplication : public QApplication
 {
 	Q_OBJECT
 

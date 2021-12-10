@@ -11,6 +11,7 @@
 
 #include <QDataStream>
 #include "extcode.h"
+#include "lqglobal.h"
 
 template <typename T>
 using LQTable = QVector<QVector<T>>;
@@ -25,9 +26,9 @@ inline LStrHandle newLStr() { return (LStrHandle)DSNewHandle(lStrHeaderSize); }
 
 namespace LVString
 {
-template <typename T> T to(LStrHandle lStr);
-template<> QByteArray to<QByteArray>(LStrHandle lStr);
-template<> QString to<QString>(LStrHandle lStr);
+template <typename T> LQ_EXPORT T to(LStrHandle lStr);
+template<> LQ_EXPORT QByteArray to<QByteArray>(LStrHandle lStr);
+template<> LQ_EXPORT QString to<QString>(LStrHandle lStr);
 }
 
 // Structs declared between lv_prolog.h and lv_epilog.h get aligned according to LabVIEW's expectations

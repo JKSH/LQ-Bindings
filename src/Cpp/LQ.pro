@@ -47,6 +47,7 @@ SOURCES += \
 
 HEADERS += \
     lqextras.h \
+    lqglobal.h \
     lqmain.h \
     lqlibinterface.h \
     lqtypes.h \
@@ -58,3 +59,5 @@ INCLUDEPATH += $$clean_path($$CINTOOLS_PATH)
 # TODO: Move LQ Extras to its own external library
 include(lqextras/LQExtras.pri)
 include($$clean_path($$QWT_PATH)/features/qwt.prf)
+
+DEFINES += LQ_LIBRARY
