@@ -937,6 +937,7 @@ extern qint32 Q_DECL_EXPORT QWinThumbnailToolButton_setFlat(quintptr _instance, 
 extern qint32 Q_DECL_EXPORT QWinThumbnailToolButton_isFlat(bool* _retVal, quintptr _instance);
 extern qint32 Q_DECL_EXPORT QWinThumbnailToolButton_click(quintptr _instance);
 #endif // Q_OS_WIN
+extern qint32 Q_DECL_EXPORT QwtPlotItem_delete(quintptr _instance);
 extern qint32 Q_DECL_EXPORT QwtPlotItem_attach(quintptr _instance, quintptr plot);
 extern qint32 Q_DECL_EXPORT QwtPlotItem_detach(quintptr _instance);
 extern qint32 Q_DECL_EXPORT QwtPlotItem_plot(quintptr* _retVal, quintptr _instance);

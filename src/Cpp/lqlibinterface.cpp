@@ -9242,6 +9242,16 @@ QWinThumbnailToolButton_click(quintptr _instance)
 #endif // Q_OS_WIN
 
 qint32
+QwtPlotItem_delete(quintptr _instance)
+{
+	return lqInvoke(_instance, [=]
+	{
+		auto instance = reinterpret_cast<QwtPlotItem*>(_instance);
+		delete instance;
+	});
+}
+
+qint32
 QwtPlotItem_attach(quintptr _instance, quintptr plot)
 {
 	return lqInvoke(_instance, [=]
