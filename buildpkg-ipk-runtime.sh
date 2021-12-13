@@ -42,6 +42,11 @@ mkdir -p                              "$PKG_DATA_DIR"/lib
 cp    -R "$LQ_DEV_ROOT"/3rdparty/     "$PKG_DATA_DIR"/3rdparty/
 cp       "$LQ_DEV_ROOT"/LICENSE.MPLv2 "$PKG_DATA_DIR"/
 cp       "$LQ_DEV_ROOT"/README.md     "$PKG_DATA_DIR"/
+mkdir -p                              "$PKG_DATA_DIR"/include/
+cp       "$LQ_DEV_ROOT"/src/Cpp/*.h   "$PKG_DATA_DIR"/include/
+rm                                    "$PKG_DATA_DIR"/include/lqextras.h
+rm                                    "$PKG_DATA_DIR"/include/lqlibinterface.h
+rm                                    "$PKG_DATA_DIR"/include/lqmain.h
 cp    -R "$CPP_DIR"/libLQ.so*         "$PKG_DATA_DIR"/lib/
 cp    -R "$QWT_ROOT"/lib/libqwt.so*   "$PKG_DATA_DIR"/lib/
 test $? -eq 0 || exit $?

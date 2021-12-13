@@ -78,6 +78,11 @@ REM Copy files
 robocopy %LQ_DEV_ROOT%\3rdparty\     %PKG_DATA_DIR%\3rdparty\ /E
 COPY     %LQ_DEV_ROOT%\LICENSE.MPLv2 %PKG_DATA_DIR%\
 COPY     %LQ_DEV_ROOT%\README.md     %PKG_DATA_DIR%\
+mkdir                                %PKG_DATA_DIR%\include\
+COPY     %LQ_DEV_ROOT%\src\Cpp\*.h   %PKG_DATA_DIR%\include\
+DEL                                  %PKG_DATA_DIR%\include\lqextras.h
+DEL                                  %PKG_DATA_DIR%\include\lqlibinterface.h
+DEL                                  %PKG_DATA_DIR%\include\lqmain.h
 mkdir                                %PKG_DATA_DIR%\bin\
 COPY     %CPP_DIR%\release\LQ.dll    %PKG_DATA_DIR%\bin\
 COPY     %QWT_ROOT%\lib\qwt.dll      %PKG_DATA_DIR%\bin\
