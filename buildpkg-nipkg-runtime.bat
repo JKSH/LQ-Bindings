@@ -15,7 +15,7 @@ SET LV_ROOT_64=C:\Program Files\National Instruments\LabVIEW 2014
 SET MAKE=nmake
 SET NIPKG_EXE="C:\Program Files\National Instruments\NI Package Manager\nipkg.exe"
 SET LV_PORT=3363
-SET PKG_VERSION=0.3.1
+SET PKG_VERSION=0.4.0
 REM ==================================================================================
 
 REM Set absolute paths according to this project's folder structure
