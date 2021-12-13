@@ -190,6 +190,7 @@ extern qint32 Q_DECL_EXPORT QPen_setJoinStyle(LStrHandle _instance, int32 joinSt
 extern qint32 Q_DECL_EXPORT QPen_isCosmetic(bool* _retVal, LStrHandle _instance);
 extern qint32 Q_DECL_EXPORT QPen_setCosmetic(LStrHandle _instance, bool* cosmetic);
 extern qint32 Q_DECL_EXPORT QPixmap_QPixmap(LStrHandle _retVal, LStrHandle fileName);
+extern qint32 Q_DECL_EXPORT QPixmap_save(bool* _retVal, LStrHandle _instance, LStrHandle fileName);
 extern qint32 Q_DECL_EXPORT QPixmap_size(QSize* _retVal, LStrHandle _instance);
 extern qint32 Q_DECL_EXPORT QApplication_font(LStrHandle _retVal, quintptr _instance, const char* className);
 extern qint32 Q_DECL_EXPORT QApplication_setFont(quintptr _instance, LStrHandle font, const char* className);

@@ -1772,6 +1772,16 @@ QPixmap_QPixmap(LStrHandle _retVal, LStrHandle fileName)
 }
 
 qint32
+QPixmap_save(bool* _retVal, LStrHandle _instance, LStrHandle fileName)
+{
+	return lqInvoke([=]
+	{
+		auto instance = deserialize<QPixmap>(_instance);
+		*_retVal = instance.save(LVString::to<QString>(fileName));
+	});
+}
+
+qint32
 QPixmap_size(QSize* _retVal, LStrHandle _instance)
 {
 	return lqInvoke([=]
