@@ -60,14 +60,11 @@ This is a pre-alpha release, which means (i) the API will likely change in the
 near future, (ii) the library is far from feature-complete, (iii) performance is
 not optimized, and (iv) you might experience crashes. Other issues include:
 
-* You currently can't free any resources or disconnect signals, except by
-  calling _LQCoreEngine.lvclass:Stop Engine.vi_.
+* You currently can't disconnect signals, except by calling
+  _LQCoreEngine.lvclass:Stop Engine.vi_.
 
 * QWinThumbnailToolButton cannot be applied to non-Qt windows, such as LabVIEW
   front panels.
-
-* There are a few small memory leaks, which will persist until you close
-  LabVIEW.
 
 
 Roadmap
