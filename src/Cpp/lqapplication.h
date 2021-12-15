@@ -14,12 +14,19 @@
 #include <QVector>
 #include "lqerrors.h"
 #include "lqtypes.h"
+#include "lqglobal.h"
 
-class LQApplication : public QApplication
+// TODO: Make this flag a static member of LQApplication and let lqlibinterface.cpp
+// call LQApplication::isActive()
+extern std::atomic_bool isRunning;
+
+class LQ_EXPORT LQApplication : public QApplication
 {
 	Q_OBJECT
 
 public:
+	static bool isActive() { return isRunning; }
+
 	enum BindingStatus
 	{
 		Unbound,
@@ -183,7 +190,5 @@ newLQObject(const char* className, Uu ... args)
 
 	return new LQMetaBinding<T>(className, args ...);
 }
-
-extern std::atomic_bool isRunning;
 
 #endif // LQAPPLICATION_H

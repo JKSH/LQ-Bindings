@@ -13,6 +13,7 @@
 static const QMap<int, QByteArray> errorMap
 {
 	{LQ::NoError, "No error."},
+	{LQ::IllegalDeletionWarning, "This class cannot be deleted."},
 	{LQ::EngineNotRunningError, "The widget engine is not running."},
 	{LQ::EngineAlreadyRunningError, "The widget engine is already running."},
 	{LQ::NotAnLQObjectError, "This QObject was not implemented and registered in LabVIEW."},

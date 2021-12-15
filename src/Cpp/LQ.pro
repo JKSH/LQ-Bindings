@@ -17,7 +17,7 @@ unix {
     # NOTE: VERSION is needed to set the binaries' soname.
     !defined(CINTOOLS_PATH, var): CINTOOLS_PATH = /usr/local/natinst/LabVIEW-2014/cintools
     !defined(QWT_PATH,      var): QWT_PATH      = /usr/local/qwt-6.2.0
-    !defined(VERSION,       var): VERSION       = 0.3.0
+    !defined(VERSION,       var): VERSION       = 0.4.0
 }
 
 TEMPLATE = lib
@@ -46,6 +46,8 @@ SOURCES += \
     lqapplication.cpp
 
 HEADERS += \
+    lqextras.h \
+    lqglobal.h \
     lqmain.h \
     lqlibinterface.h \
     lqtypes.h \
@@ -57,3 +59,5 @@ INCLUDEPATH += $$clean_path($$CINTOOLS_PATH)
 # TODO: Move LQ Extras to its own external library
 include(lqextras/LQExtras.pri)
 include($$clean_path($$QWT_PATH)/features/qwt.prf)
+
+DEFINES += LQ_LIBRARY

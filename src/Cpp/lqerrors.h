@@ -1,5 +1,5 @@
 /*\
- * Copyright (c) 2016 Sze Howe Koh
+ * Copyright (c) 2021 Sze Howe Koh
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -23,6 +23,7 @@ namespace LQ
 			  - Have warnings > 8000
 		*/
 		NoError = 0,
+		IllegalDeletionWarning = 8000,
 		EngineNotRunningError = -8000,
 		EngineAlreadyRunningError = -8001,
 		NotAnLQObjectError = -8002,

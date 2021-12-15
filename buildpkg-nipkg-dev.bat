@@ -16,7 +16,7 @@ SET LV_EXE="C:\Program Files (x86)\National Instruments\LabVIEW 2014\LabVIEW.exe
 SET LV_PORT=3363
 SET LV_YEAR_START=2016
 SET LV_YEAR_END=2021
-SET PKG_VERSION=0.3.1
+SET PKG_VERSION=0.4.0
 REM ==================================================================================
 
 REM Set absolute paths according to this project's folder structure

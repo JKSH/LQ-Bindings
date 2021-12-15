@@ -19,7 +19,7 @@ System Requirements
 To build the C++ shared library (runtime):
 * MSVC 2015 or newer (Windows), GCC 5.3.1 or newer (Linux)
 * [Qt](https://www.qt.io/) 5.12 or newer
-* [Qwt](https://qwt.sourceforge.io/) 6.1.2 or newer
+* [Qwt](https://qwt.sourceforge.io/) 6.2.0 or newer
 
 To build the NIPM packages (dev and runtime):
 * [NI Package Manager 19.0](http://www.ni.com/en-us/support/downloads/ni-package-manager.html)
