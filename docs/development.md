@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Development
+redirect_from:
+  - /docs/development.html
 ---
 
 Most of the code in the [main GitHub repo](https://github.com/JKSH/LQ-Bindings/) is auto-generated
@@ -10,7 +12,7 @@ instead.
 Also, do not call VIs directly from the main Git repository. These VIs have "Separate compiled code
 from source file" enabled, which causes [significant lag](https://bitbucket.org/jksh/lq-codegen/issues/56/labview-disable-separate-compiled-code)
 when opening or closing large LQ-based projects. Instead, only use the VIs that you have
-[installed](index.html). Alternative, run the build scripts to generate usable VIs (see the **Building
+[installed](quickstart.html). Alternative, run the build scripts to generate usable VIs (see the **Building
 from Source** section below).
 
 

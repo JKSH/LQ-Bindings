@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Installation
+redirect_from:
+  - /docs/installation.html
 ---
 
 Minimum Supported Platforms
@@ -16,7 +18,7 @@ Installation Instructions
 -------------------------
 The recommended way to install LQ is to add the official LQ feed to the
 [NI Package Manager](https://www.ni.com/en-us/support/downloads/ni-package-manager.html) (NIPM). If
-you already have NIPM on your PC, read the [Quickstart guide](/docs/).
+you already have NIPM on your PC, read the [Quickstart guide](quickstart.html).
 
 Alternatively, download the *.zip files from
 [https://github.com/JKSH/LQ-Bindings/releases](https://github.com/JKSH/LQ-Bindings/releases)

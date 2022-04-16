@@ -3,8 +3,8 @@ description: LQ lets LabVIEW programmers create dynamic, flexible, and powerful 
 author: Sze Howe Koh
 email: szehowe.koh@gmail.com
 header_pages:
-  - docs/index.md
-  - docs/development.md
+  - quickstart.md
+  - development.md
 theme: minima
 plugins:
   - jekyll-redirect-from
