@@ -1,23 +1,21 @@
 ---
 layout: page
-title: Quickstart
+title: Windows
 redirect_from:
   - /docs/
   - /docs/installation.html
   - /feeds/
   - /feeds/win_x86/
   - /feeds/win_x64/
+  - quickstart.html
 ---
 
-LQ lets LabVIEW programmers create dynamic, flexible, and powerful GUIs by harnessing the Qt
-toolkit.
-
-The recommended way to install LQ on Windows is via
-[NI Package Manager](https://www.ni.com/en-us/support/downloads/ni-package-manager.html) (NIPM).
-
-
-Recommended Installation
+Recommended Setup Method
 ------------------------
+
+Use the [NI Package Manager](https://www.ni.com/en-us/support/downloads/ni-package-manager.html)
+(NIPM) to set up the feed and install the LQ packages on your Windows development machine.
+
 1. Open NIPM and click the **Settings** icon.  
    ![NIPM settings icon](assets/images/nipm-settings-icon.png)
 
@@ -42,9 +40,9 @@ Recommended Installation
 7. Open an example project, run it, and study its code.
 
 
-Alternative Installation
-------------------------
-If you cannot use NIPM, then download the *.zip files from
+Advanced Setup Method
+---------------------
+If you cannot use NIPM, then download the _*.zip_ files from
 [https://github.com/JKSH/LQ-Bindings/releases](https://github.com/JKSH/LQ-Bindings/releases)
 and manually extract their contents into their destinations:
 

@@ -29,8 +29,7 @@ to NI Package Manager (NIPM):
 Then, install the LQ package:  
 ![Installing LQ packages](docs/assets/images/nipm-packages-install-lq.png)
 
-For step-by-step instructions, read the [Quickstart guide](https://jksh.github.io/LQ-Bindings/docs/).
-The guide also links to alternative installation methods that don't require NIPM.
+For step-by-step instructions, read the [Windows setup guide](https://jksh.github.io/LQ-Bindings/setup-win.html).
 
 
 Examples
@@ -74,7 +73,7 @@ See http://github.com/JKSH/LQ-Bindings/wiki/Roadmap
 
 License
 -------
-Copyright (c) 2021 Sze Howe Koh <<szehowe.koh@gmail.com>>
+Copyright (c) 2022 Sze Howe Koh <<szehowe.koh@gmail.com>>
 
 The LQ library is published under the [Mozilla Public License v2.0](LICENSE.MPLv2),
 while examples are published under the [MIT License](examples/LICENSE.MIT).
