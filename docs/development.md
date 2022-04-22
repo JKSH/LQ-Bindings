@@ -48,8 +48,12 @@ To build the LQ packages from scratch:
 5. (If using LabVIEW 2014-2017) Install the additional National Instruments tools listed under the
    **System Requirements** section above.
 6. Clone the repo from [https://github.com/JKSH/LQ-Bindings/](https://github.com/JKSH/LQ-Bindings/).
-7. Open _/buildpkg-nipkg-runtime.bat_ and _/buildpkg-nipkg-dev.bat_ with a text
+7. Open _buildpkg-nipkg-runtime.bat_ and _buildpkg-nipkg-dev.bat_ with a text
    editor. Check the file paths at the top of each file and and edit them if necessary.
 8. Open the Command Prompt and ensure that your compiler is in the PATH (e.g. by launching _x86 Native
    Tools Command Prompt for VS 2019_)
 9. From the Command Prompt, run the _*.bat_ files.
+
+
+The steps are mostly the same for the Linux packages -- just use _buildpkg-ipk-runtime.sh_ instead
+of _buildpkg-nipkg-runtime.bat_)
