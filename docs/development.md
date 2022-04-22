@@ -5,6 +5,10 @@ redirect_from:
   - /docs/development.html
 ---
 
+This page is about how to modify and build the LQ source code, not about using LQ in your own
+projects. For the latter, see the setup guides for [Windows](setup-win.html) and
+[NI Linux RT](setup-nilrt.html) instead.
+
 Most of the code in the [main GitHub repo](https://github.com/JKSH/LQ-Bindings/) is auto-generated
 and should not be edited by hand. See the [code generator repo](https://github.com/JKSH/LQ-CodeGen/)
 instead.

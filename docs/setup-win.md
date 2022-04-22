@@ -39,6 +39,9 @@ Use the [NI Package Manager](https://www.ni.com/en-us/support/downloads/ni-packa
 
 7. Open an example project, run it, and study its code.
 
+Finally, if you have an NI Linux RT device with an Embedded UI, see the
+[NI Linux RT setup guide](setup-nilrt.html).
+
 
 Advanced Setup Method
 ---------------------
