@@ -20,17 +20,31 @@ Deployment Platforms
 * NI Linux RT 19.0 or newer (x64)
 
 
-Installation
-------------
-First, add the LQ feed (_**https://jksh.github.io/LQ-Bindings/feeds/win_x86/**_)
-to NI Package Manager (NIPM):  
+Installation on Windows
+-----------------------
+First, add the LQ feed to NI Package Manager (NIPM):
+    * _**https://jksh.github.io/LQ-Bindings/feeds/win_x86/**_ or
+    * _**https://jksh.github.io/LQ-Bindings/feeds/win_x64/**_
+ 
 ![Adding the LQ feed](docs/assets/images/nipm-add-feed-lq.png)
 
 Then, install the LQ package:  
 ![Installing LQ packages](docs/assets/images/nipm-packages-install-lq.png)
 
-For step-by-step instructions, read the [Quickstart guide](https://jksh.github.io/LQ-Bindings/docs/).
-The guide also links to alternative installation methods that don't require NIPM.
+For step-by-step instructions, read the [Windows setup guide](https://jksh.github.io/LQ-Bindings/setup-win.html).
+
+
+Installation on NI Linux RT
+---------------------------
+First, add the LQ feed via NI Measurement & Automation Explorer (NI MAX):
+    * _**https://dl.cloudsmith.io/public/lq-bindings/linux_ipk_x64/raw/files**_ 
+ 
+![Adding the LQ feed](docs/assets/images/nimax-ipk-feed-details.png)
+
+Then, install the LQ package:  
+![Installing the LQ package](docs/assets/images/nimax-select-ipk.png)
+
+For step-by-step instructions, read the [NI Linux RT setup guide](https://jksh.github.io/LQ-Bindings/setup-nilrt.html).
 
 
 Examples
@@ -74,7 +88,7 @@ See http://github.com/JKSH/LQ-Bindings/wiki/Roadmap
 
 License
 -------
-Copyright (c) 2021 Sze Howe Koh <<szehowe.koh@gmail.com>>
+Copyright (c) 2022 Sze Howe Koh <<szehowe.koh@gmail.com>>
 
 The LQ library is published under the [Mozilla Public License v2.0](LICENSE.MPLv2),
 while examples are published under the [MIT License](examples/LICENSE.MIT).

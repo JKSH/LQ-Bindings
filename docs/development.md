@@ -1,7 +1,13 @@
 ---
 layout: page
 title: Development
+redirect_from:
+  - /docs/development.html
 ---
+
+This page is about how to modify and build the LQ source code, not about using LQ in your own
+projects. For the latter, see the setup guides for [Windows](setup-win.html) and
+[NI Linux RT](setup-nilrt.html) instead.
 
 Most of the code in the [main GitHub repo](https://github.com/JKSH/LQ-Bindings/) is auto-generated
 and should not be edited by hand. See the [code generator repo](https://github.com/JKSH/LQ-CodeGen/)
@@ -10,7 +16,7 @@ instead.
 Also, do not call VIs directly from the main Git repository. These VIs have "Separate compiled code
 from source file" enabled, which causes [significant lag](https://bitbucket.org/jksh/lq-codegen/issues/56/labview-disable-separate-compiled-code)
 when opening or closing large LQ-based projects. Instead, only use the VIs that you have
-[installed](index.html). Alternative, run the build scripts to generate usable VIs (see the **Building
+[installed](quickstart.html). Alternative, run the build scripts to generate usable VIs (see the **Building
 from Source** section below).
 
 
@@ -42,8 +48,12 @@ To build the LQ packages from scratch:
 5. (If using LabVIEW 2014-2017) Install the additional National Instruments tools listed under the
    **System Requirements** section above.
 6. Clone the repo from [https://github.com/JKSH/LQ-Bindings/](https://github.com/JKSH/LQ-Bindings/).
-7. Open _/buildpkg-nipkg-runtime.bat_ and _/buildpkg-nipkg-dev.bat_ with a text
+7. Open _buildpkg-nipkg-runtime.bat_ and _buildpkg-nipkg-dev.bat_ with a text
    editor. Check the file paths at the top of each file and and edit them if necessary.
 8. Open the Command Prompt and ensure that your compiler is in the PATH (e.g. by launching _x86 Native
    Tools Command Prompt for VS 2019_)
 9. From the Command Prompt, run the _*.bat_ files.
+
+
+The steps are mostly the same for the Linux packages -- just use _buildpkg-ipk-runtime.sh_ instead
+of _buildpkg-nipkg-runtime.bat_)

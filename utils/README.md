@@ -1,8 +1,12 @@
 LQ Utilities
 ============
 * _CLI_Disable Source Separation.vi_ is a LabVIEWCLI wrapper for the VIs in the
-  [Distribution](Distribution) folder. These VIs can also be run manually.
+  [Disabling Source Separation](Disabling Source Separation) folder. These VIs
+  can also be run manually.
 
-* _LQ-Packager.lvproj_ contains the settings for generating the NIPM package. It
-  depends on an Auto-Populating Folder that doesn't exist until the
-  [deployment script](../deployLQ.bat] is run.
+* _CLI_Write Nipkg Metadata.vi_ is the LabVIEWCLI entrypoint for the VIs in the
+  [Packaging](Packaging) folder.
+
+* The [Packaging](Packaging) folder contains the code, templates, and variables
+  for generating *.nipkg packages (for Windows) and *.ipk packages (for NI Linux
+  RT)
