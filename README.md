@@ -23,8 +23,8 @@ Deployment Platforms
 Installation on Windows
 -----------------------
 First, add the LQ feed to NI Package Manager (NIPM):
-    * _**https://jksh.github.io/LQ-Bindings/feeds/win_x86/**_ or
-    * _**https://jksh.github.io/LQ-Bindings/feeds/win_x64/**_
+* _**https://jksh.github.io/LQ-Bindings/feeds/win_x86/**_ or
+* _**https://jksh.github.io/LQ-Bindings/feeds/win_x64/**_
  
 ![Adding the LQ feed](docs/assets/images/nipm-add-feed-lq.png)
 
@@ -37,7 +37,7 @@ For step-by-step instructions, read the [Windows setup guide](https://jksh.githu
 Installation on NI Linux RT
 ---------------------------
 First, add the LQ feed via NI Measurement & Automation Explorer (NI MAX):
-    * _**https://dl.cloudsmith.io/public/lq-bindings/linux_ipk_x64/raw/files**_ 
+* _**https://dl.cloudsmith.io/public/lq-bindings/linux_ipk_x64/raw/files**_ 
  
 ![Adding the LQ feed](docs/assets/images/nimax-ipk-feed-details.png)
 
