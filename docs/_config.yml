@@ -4,6 +4,7 @@ author: Sze Howe Koh
 email: szehowe.koh@gmail.com
 header_pages:
   - quickstart.md
+  - setup-nilrt.md
   - development.md
 theme: minima
 plugins:
